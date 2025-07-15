@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2w71ybi2n04m"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ilnc5"]
-font_size = 21
+[ext_resource type="Script" uid="uid://dlnnxjv1itxum" path="res://dialogue_box.gd" id="1_senjy"]
 
-[node name="dialogue_box" type="Label"]
+[node name="dialogue_box" type="RichTextLabel"]
 z_index = 10
+offset_right = 110.0
+offset_bottom = 30.0
 text = "hello there"
-label_settings = SubResource("LabelSettings_ilnc5")
+script = ExtResource("1_senjy")
