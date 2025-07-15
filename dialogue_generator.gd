@@ -59,7 +59,7 @@ func _show_next_line():
 	get_tree().current_scene.add_child(active_box)
 	active_box.global_position = marker.global_position
 	
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	if speaker_data.animator:
 		if speaker_data.animator.has_animation("idle"):
 			speaker_data.animator.play("idle")

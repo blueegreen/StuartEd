@@ -4,5 +4,6 @@
 font_size = 21
 
 [node name="dialogue_box" type="Label"]
+z_index = 10
 text = "hello there"
 label_settings = SubResource("LabelSettings_ilnc5")
