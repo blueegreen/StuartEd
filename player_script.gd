@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var movement_speed := 100.
-var jump_height := 110.
-var gravity := 980.
+@export var movement_speed := 100.
+@export var jump_height := 110.
+@export var gravity := 980.
 
 func _process(delta):
 	var dir = Input.get_axis("left", "right")

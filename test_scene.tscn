@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://vxrwcdjbfb88"]
+[gd_scene load_steps=12 format=3 uid="uid://vxrwcdjbfb88"]
 
+[ext_resource type="Script" uid="uid://jqk3t42g3cmp" path="res://test_level_progress.gd" id="1_coq8p"]
 [ext_resource type="Script" uid="uid://bwluf2eio0xxt" path="res://pinnable_test.gd" id="1_uhqqe"]
+[ext_resource type="Script" uid="uid://cgxnag04ahfj1" path="res://test_dialogue_manager.gd" id="2_2nij2"]
 [ext_resource type="Script" uid="uid://c2owto735lng8" path="res://player_script.gd" id="2_ia1lp"]
+[ext_resource type="Script" uid="uid://sr4ol0xmn8ix" path="res://dialogue_generator.gd" id="3_2nij2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6adnx"]
 resource_local_to_scene = true
@@ -23,6 +26,17 @@ size = Vector2(53, 24)
 size = Vector2(61, 100)
 
 [node name="test_scene" type="Node2D"]
+
+[node name="level_progress" type="Node2D" parent="."]
+script = ExtResource("1_coq8p")
+
+[node name="interaction_manager" type="Node2D" parent="." node_paths=PackedStringArray("level_progress", "player_dialogue_marker")]
+script = ExtResource("2_2nij2")
+level_progress = NodePath("../level_progress")
+player_dialogue_marker = NodePath("../PlayerCharacter/dialogue_marker")
+
+[node name="dialogue_generator" type="Node2D" parent="."]
+script = ExtResource("3_2nij2")
 
 [node name="A" type="Area2D" parent="."]
 position = Vector2(546, 252)
@@ -84,3 +98,6 @@ script = ExtResource("2_ia1lp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
 position = Vector2(1062, 494)
 shape = SubResource("RectangleShape2D_2nij2")
+
+[node name="dialogue_marker" type="Marker2D" parent="PlayerCharacter"]
+position = Vector2(984, 370)

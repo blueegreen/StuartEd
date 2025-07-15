@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2w71ybi2n04m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ilnc5"]
+font_size = 21
+
+[node name="dialogue_box" type="Label"]
+text = "hello there"
+label_settings = SubResource("LabelSettings_ilnc5")

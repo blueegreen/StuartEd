@@ -21,7 +21,6 @@ func _process_click(position):
 		for n in result:
 			if n.collider.z_index > top.z_index or n.collider.get_index() > top.get_index():
 				top = n.collider
-		print(top)
 		return top
 	else:
 		return null
