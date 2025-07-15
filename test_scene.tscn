@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://vxrwcdjbfb88"]
+
+[ext_resource type="Script" uid="uid://bwluf2eio0xxt" path="res://pinnable_test.gd" id="1_uhqqe"]
+[ext_resource type="Script" uid="uid://c2owto735lng8" path="res://player_script.gd" id="2_ia1lp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6adnx"]
+resource_local_to_scene = true
+size = Vector2(60, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhqqe"]
+size = Vector2(41, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sasra"]
+size = Vector2(1159, 117.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coq8p"]
+size = Vector2(140, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia1lp"]
+size = Vector2(53, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nij2"]
+size = Vector2(61, 100)
+
+[node name="test_scene" type="Node2D"]
+
+[node name="A" type="Area2D" parent="."]
+position = Vector2(546, 252)
+scale = Vector2(4.9382224, 4.8515573)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="A"]
+shape = SubResource("RectangleShape2D_6adnx")
+
+[node name="A2" type="Area2D" parent="."]
+position = Vector2(546, 252)
+scale = Vector2(4.9382224, 4.8515573)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="A2"]
+position = Vector2(29, 27)
+shape = SubResource("RectangleShape2D_uhqqe")
+debug_color = Color(0.8079601, 0.29567388, 0.73359144, 0.41960785)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(578, 636)
+shape = SubResource("RectangleShape2D_sasra")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_uhqqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(229, 454)
+shape = SubResource("RectangleShape2D_coq8p")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(0, -84)
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_uhqqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(229, 454)
+shape = SubResource("RectangleShape2D_coq8p")
+
+[node name="A3" type="Area2D" parent="."]
+position = Vector2(546, 252)
+scale = Vector2(4.9382224, 4.8515573)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="A3"]
+position = Vector2(49.207993, 45.7585)
+shape = SubResource("RectangleShape2D_ia1lp")
+debug_color = Color(4.379898e-06, 0.6265144, 0.5133941, 0.41960785)
+
+[node name="PlayerCharacter" type="CharacterBody2D" parent="."]
+collision_mask = 4
+platform_on_leave = 2
+script = ExtResource("2_ia1lp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
+position = Vector2(1062, 494)
+shape = SubResource("RectangleShape2D_2nij2")
