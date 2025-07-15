@@ -9,7 +9,6 @@ func _process(delta):
 	velocity.x = dir * movement_speed
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = -sqrt(2 * gravity * jump_height)
-		print(velocity.y)
 	velocity.y += gravity * delta
 	move_and_slide()
 	velocity.x = clampf(velocity.x, -movement_speed, movement_speed)
