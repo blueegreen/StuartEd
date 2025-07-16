@@ -6,7 +6,7 @@ signal mouse_released()
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("click") and not event.is_echo():
-			interaction_started.emit(_process_click(event.position))
+			_process_click(event.position)
 		elif event.is_action_released("click"):
 			mouse_released.emit()
 
@@ -21,6 +21,4 @@ func _process_click(position):
 		for n in result:
 			if n.collider.z_index > top.z_index or n.collider.get_index() > top.get_index():
 				top = n.collider
-		return top
-	else:
-		return null
+		interaction_started.emit(top)

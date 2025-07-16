@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://vxrwcdjbfb88"]
+[gd_scene load_steps=15 format=3 uid="uid://vxrwcdjbfb88"]
 
 [ext_resource type="Script" uid="uid://jqk3t42g3cmp" path="res://test_level_progress.gd" id="1_coq8p"]
 [ext_resource type="Script" uid="uid://bwluf2eio0xxt" path="res://pinnable_test.gd" id="1_uhqqe"]
-[ext_resource type="Script" uid="uid://cgxnag04ahfj1" path="res://test_dialogue_manager.gd" id="2_2nij2"]
+[ext_resource type="Script" uid="uid://cgxnag04ahfj1" path="res://test_interaction_manager.gd" id="2_2nij2"]
 [ext_resource type="Script" uid="uid://c2owto735lng8" path="res://player_script.gd" id="2_ia1lp"]
-[ext_resource type="Script" uid="uid://sr4ol0xmn8ix" path="res://dialogue_generator.gd" id="3_2nij2"]
+[ext_resource type="Script" uid="uid://sr4ol0xmn8ix" path="res://dialogue_manager.gd" id="3_2nij2"]
+[ext_resource type="Script" uid="uid://c6a0qn1ctt4ch" path="res://deadzone.gd" id="6_7cbxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6adnx"]
 resource_local_to_scene = true
@@ -16,6 +17,9 @@ size = Vector2(41, 38)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sasra"]
 size = Vector2(1159, 117.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cbxl"]
+size = Vector2(52.5, 307.25)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coq8p"]
 size = Vector2(140, 66)
 
@@ -25,29 +29,37 @@ size = Vector2(53, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nij2"]
 size = Vector2(61, 100)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pr8v"]
+size = Vector2(323, 1117)
+
 [node name="test_scene" type="Node2D"]
 
 [node name="level_progress" type="Node2D" parent="."]
 script = ExtResource("1_coq8p")
 
-[node name="interaction_manager" type="Node2D" parent="." node_paths=PackedStringArray("level_progress", "player_dialogue_marker")]
+[node name="interaction_manager" type="Node2D" parent="." node_paths=PackedStringArray("level_progress", "dialogue_manager", "player_dialogue_marker")]
 script = ExtResource("2_2nij2")
 level_progress = NodePath("../level_progress")
+dialogue_manager = NodePath("../dialogue_generator")
 player_dialogue_marker = NodePath("../PlayerCharacter/dialogue_marker")
 
 [node name="dialogue_generator" type="Node2D" parent="."]
 script = ExtResource("3_2nij2")
 
 [node name="A" type="Area2D" parent="."]
-position = Vector2(546, 252)
-scale = Vector2(4.9382224, 4.8515573)
+position = Vector2(436, 195)
+scale = Vector2(3.5985303, 3.888286)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A"]
 shape = SubResource("RectangleShape2D_6adnx")
 
 [node name="A2" type="Area2D" parent="."]
-position = Vector2(546, 252)
-scale = Vector2(4.9382224, 4.8515573)
+position = Vector2(436, 195)
+scale = Vector2(3.5985303, 3.888286)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A2"]
 position = Vector2(29, 27)
@@ -59,31 +71,55 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(578, 636)
+position = Vector2(613, 635)
 shape = SubResource("RectangleShape2D_sasra")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(132, 370)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_sasra")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(853, 152.375)
+shape = SubResource("RectangleShape2D_7cbxl")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1142, 125)
+shape = SubResource("RectangleShape2D_7cbxl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1014, 300)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_7cbxl")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1000, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_7cbxl")
+
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(322, 457)
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_uhqqe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(229, 454)
 shape = SubResource("RectangleShape2D_coq8p")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
-position = Vector2(0, -84)
+position = Vector2(322, 373)
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_uhqqe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2(229, 454)
 shape = SubResource("RectangleShape2D_coq8p")
 
 [node name="A3" type="Area2D" parent="."]
-position = Vector2(546, 252)
-scale = Vector2(4.9382224, 4.8515573)
+position = Vector2(436, 195)
+scale = Vector2(3.5985303, 3.888286)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="A3"]
 position = Vector2(49.207993, 45.7585)
@@ -91,13 +127,47 @@ shape = SubResource("RectangleShape2D_ia1lp")
 debug_color = Color(4.379898e-06, 0.6265144, 0.5133941, 0.41960785)
 
 [node name="PlayerCharacter" type="CharacterBody2D" parent="."]
+position = Vector2(-163, 0)
 collision_mask = 4
 platform_on_leave = 2
 script = ExtResource("2_ia1lp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter"]
-position = Vector2(1062, 494)
+position = Vector2(951, 485)
 shape = SubResource("RectangleShape2D_2nij2")
 
 [node name="dialogue_marker" type="Marker2D" parent="PlayerCharacter"]
 position = Vector2(984, 370)
+
+[node name="deadzone" type="Area2D" parent="." node_paths=PackedStringArray("respawn_point")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_7cbxl")
+respawn_point = NodePath("respawn_point")
+
+[node name="respawn_point" type="Marker2D" parent="deadzone"]
+position = Vector2(647, 278)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deadzone"]
+position = Vector2(-90, 352)
+shape = SubResource("RectangleShape2D_8pr8v")
+debug_color = Color(0.9602217, 0, 0.5199581, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="deadzone"]
+position = Vector2(1329, 352)
+shape = SubResource("RectangleShape2D_8pr8v")
+debug_color = Color(0.9602217, 0, 0.5199581, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="deadzone"]
+position = Vector2(613, -161)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_8pr8v")
+debug_color = Color(0.9602217, 0, 0.5199581, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="deadzone"]
+position = Vector2(613, 859)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_8pr8v")
+debug_color = Color(0.9602217, 0, 0.5199581, 0.41960785)
+
+[connection signal="body_entered" from="deadzone" to="deadzone" method="_on_body_entered"]
