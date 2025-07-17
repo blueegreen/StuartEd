@@ -21,7 +21,6 @@ func event_is_active_write(level: String, event: String, is_active: bool):
 		print("Failed to save config: ", error)
 
 func event_is_active_read(level: String, event: String):
-	
 	var file = config.load("user://savegame.cfg")
 	if file != OK:
 		print("Failed to load config: ", file)
