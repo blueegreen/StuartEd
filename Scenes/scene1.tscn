@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1but43m7smrc"]
+
+[ext_resource type="Script" uid="uid://bj3nm1niec47j" path="res://Scenes/scene1_manager.gd" id="1_iqsqo"]
+[ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_1mf5u"]
+[ext_resource type="Texture2D" uid="uid://b680qvlrhiwaa" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/1.png" id="2_2w676"]
+[ext_resource type="Texture2D" uid="uid://ctmmkxy7qqgck" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/2.png" id="3_wplxe"]
+[ext_resource type="Texture2D" uid="uid://dfg8ppwj63y2e" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/4.png" id="4_5dfij"]
+[ext_resource type="Texture2D" uid="uid://bcfj4ljic5rox" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/7.png" id="5_d2tun"]
+[ext_resource type="Texture2D" uid="uid://gbv5fuvoe1p8" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/10.png" id="6_m8drc"]
+[ext_resource type="Texture2D" uid="uid://cdsb4p36llfs6" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/67.png" id="7_arbli"]
+[ext_resource type="Texture2D" uid="uid://d4eqqg71h04d" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/69.png" id="8_s2pjx"]
+
+[node name="Scene1" type="Control" node_paths=PackedStringArray("gallery", "selector_box")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_iqsqo")
+gallery = NodePath("VBoxContainer/Gallery")
+selector_box = NodePath("SelectorBox")
+sprite_textures = Array[Texture2D]([ExtResource("2_2w676"), ExtResource("3_wplxe"), ExtResource("4_5dfij"), ExtResource("5_d2tun"), ExtResource("6_m8drc"), ExtResource("7_arbli"), ExtResource("8_s2pjx")])
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 68.0
+offset_right = 685.0
+offset_bottom = 150.0
+alignment = 1
+
+[node name="SelectorBox" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 230.0
+offset_right = 239.0
+offset_bottom = 350.0
+color = Color(0.38274598, 0.27189896, 0.6330362, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 221.0
+offset_right = 499.0
+offset_bottom = 353.0
+
+[node name="Gallery" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_1mf5u")
+
+[node name="ConfirmButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_1mf5u")
+
+[node name="RButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_1mf5u")
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/LButton" to="." method="_on_l_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/RButton" to="." method="_on_r_button_button_down"]
