@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-InputManager="*res://InputManager.gd"
-MouseAnchor="*res://mouse_anchor.tscn"
+InputManager="*res://Autoload/InputManager.gd"
+MouseAnchor="*res://old_stuff/mouse_anchor.tscn"
 
 [display]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2w71ybi2n04m"]
 
-[ext_resource type="Script" uid="uid://dlnnxjv1itxum" path="res://dialogue_box.gd" id="1_senjy"]
+[ext_resource type="Script" uid="uid://dlnnxjv1itxum" path="res://old_stuff/dialogue_box.gd" id="1_senjy"]
 
 [node name="dialogue_box" type="RichTextLabel"]
 z_index = 10

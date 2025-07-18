@@ -6,7 +6,7 @@ extends Node2D
 var is_dialogue_active = false
 
 @export var level_progress : test_level_progress
-@export var dialogue_manager : Dialogue_Manager
+@export var dialogue_manager : test_Dialogue_Manager
 @export var player_dialogue_marker : Marker2D
 
 var dialogue_context : Dictionary

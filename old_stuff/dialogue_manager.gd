@@ -1,11 +1,11 @@
 extends Node2D
-class_name Dialogue_Manager
+class_name test_Dialogue_Manager
 
 #scripts are to be given in this format: (script, context_data)
 #script: ["A: hello", "B: hi: 2"] and so on
 #context_data: {A: {"marker":ref, "animatedsprite":ref}, B: {"maker":ref, "animatedsprite":ref}}
 
-var dialogue_box_scene = preload("res://dialogue_box.tscn")
+var dialogue_box_scene = preload("res://old_stuff/dialogue_box.tscn")
 var active_box : RichTextLabel = null
 var current_script : Array[String] = []
 var current_context : Dictionary = {}
