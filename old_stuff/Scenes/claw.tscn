@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2vwatujbtal7"]
 
-[ext_resource type="Script" uid="uid://o1woat1yupmr" path="res://Scenes/claw.gd" id="1_bcojo"]
+[ext_resource type="Script" uid="uid://o1woat1yupmr" path="res://old_stuff/Scenes/claw.gd" id="1_bcojo"]
 [ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_8412e"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_8412e"]

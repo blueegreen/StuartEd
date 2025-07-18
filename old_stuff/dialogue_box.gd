@@ -1,5 +1,5 @@
 extends RichTextLabel
-class_name dialogue_box
+class_name test_dialogue_box
 
 #@export var dict : Dictionary = {"Message":"@","Animation":0}
 #
