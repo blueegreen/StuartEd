@@ -5,28 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_x3xpc"]
 [ext_resource type="Texture2D" uid="uid://ctmmkxy7qqgck" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/2.png" id="3_g3msu"]
 
-[node name="LevelSelector" type="Control" node_paths=PackedStringArray("left_button", "right_button", "select_button")]
+[node name="LevelSelector" type="Control" node_paths=PackedStringArray("frame_box", "slide_area", "left_button", "right_button", "select_button")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_22lal")
 level_images = Array[Texture2D]([ExtResource("2_t6kw3"), ExtResource("3_g3msu")])
+frame_box = NodePath("HBoxContainer/FrameBox")
+slide_area = NodePath("HBoxContainer/FrameBox/SlideArea")
 left_button = NodePath("HBoxContainer/LeftButton")
 right_button = NodePath("HBoxContainer/RightButton")
 select_button = NodePath("HBoxContainer/SelectButton")
-level_scenes = ["res://Scenes/scene1.tscn", "res://test_scene.tscn"]
-
-[node name="FrameBox" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 343.0
-offset_top = 55.0
-offset_right = 471.0
-offset_bottom = 183.0
-
-[node name="SlideArea" type="Container" parent="FrameBox"]
-clip_contents = true
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
+level_scenes = Array[String](["res://Scenes/scene1.tscn", "res://test_scene.tscn"])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -42,6 +31,15 @@ texture_normal = ExtResource("2_x3xpc")
 [node name="SelectButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_x3xpc")
+
+[node name="FrameBox" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SlideArea" type="Container" parent="HBoxContainer/FrameBox"]
+clip_contents = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
 
 [node name="RightButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2

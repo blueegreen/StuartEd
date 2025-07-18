@@ -1,8 +1,8 @@
 extends Control
 
 @export var level_images: Array[Texture2D] = []
-@onready var frame_box: Control = $FrameBox
-@onready var slide_area: Control = $FrameBox/SlideArea
+@export var frame_box: Panel
+@export var slide_area: Container
 @export var left_button: TextureButton
 @export var right_button: TextureButton
 @export var select_button: TextureButton
@@ -39,7 +39,7 @@ func _show_level(index: int) -> void:
 	tex.offset_right = 0
 	tex.offset_bottom = 0
 
-	# Resize frame_box to match texture size
+	# Resized frame_box to match texture size
 	if texture:
 		var tex_size := texture.get_size()
 		frame_box.custom_minimum_size = tex_size
@@ -104,3 +104,4 @@ func _animate_switch(next_index: int, to_left: bool) -> void:
 	old_tex.queue_free()
 	current_index = next_index
 	is_animating = false
+ 
