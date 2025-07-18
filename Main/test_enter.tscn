@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkso7nrj71ljn"]
+
+[ext_resource type="Script" uid="uid://fc566mcxwv2n" path="res://Main/test_enter.gd" id="1_7ffxn"]
+[ext_resource type="Shader" uid="uid://dbmbx5pu7ir58" path="res://Main/blur.gdshader" id="2_yyhhj"]
+[ext_resource type="Texture2D" uid="uid://b680qvlrhiwaa" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/1.png" id="3_yyhhj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyhhj"]
+size = Vector2(257, 257)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_51eak"]
+shader = ExtResource("2_yyhhj")
+shader_parameter/strength = 1.574000074765
+shader_parameter/sample_power = 4
+shader_parameter/is_canvas_group = true
+
+[node name="TestEnter" type="Node2D"]
+script = ExtResource("1_7ffxn")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(277, 168)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(37.5, 46.5)
+shape = SubResource("RectangleShape2D_yyhhj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(315, 217)
+scale = Vector2(1.9240409, 1.9240409)
+texture = ExtResource("3_yyhhj")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 186.99998
+offset_top = 86.0
+offset_right = 314.50214
+offset_bottom = 214.0
+scale = Vector2(2.0086856, 2.0086856)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_51eak")
+offset_left = 186.0
+offset_top = 86.0
+offset_right = 314.0
+offset_bottom = 214.0
+scale = Vector2(2.0086856, 2.0086856)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 261.0
+offset_top = 181.0
+offset_right = 311.0
+offset_bottom = 212.0
+scale = Vector2(2.0086856, 2.0086856)
+text = "Enter"

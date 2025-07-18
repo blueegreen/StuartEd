@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bljplo27kbrai"]
+
+[ext_resource type="Script" path="res://dialogue_box.gd" id="1_senjy"]
+
+[node name="dialogue_box" type="RichTextLabel"]
+z_index = 10
+offset_right = 230.0
+offset_bottom = 67.0
+text = "hello there"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+script = ExtResource("1_senjy")
