@@ -4,13 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_8412e"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_8412e"]
-target_nodepath = NodePath("Arm/Forearm/Hand")
-joint_one_bone_idx = 1
-joint_one_bone2d_node = NodePath("Arm/Forearm")
-joint_two_bone_idx = 0
-joint_two_bone2d_node = NodePath("Arm")
+target_nodepath = NodePath("../IKTarget")
+joint_one_bone_idx = 2
+joint_two_bone_idx = 1
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_p07vi"]
+enabled = true
 modification_count = 1
 modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_8412e")
 
@@ -22,46 +21,55 @@ position = Vector2(205, 58)
 rotation = -0.005460195
 modification_stack = SubResource("SkeletonModificationStack2D_p07vi")
 
-[node name="Arm" type="Bone2D" parent="ClawSkeleton"]
-position = Vector2(1.9999695, 19.000008)
-rotation = 3.1399715
-scale = Vector2(3.657428, 1)
-
-[node name="Forearm" type="Bone2D" parent="ClawSkeleton/Arm"]
-position = Vector2(16.132862, -2.9043427)
-rotation = 1.5549808
-scale = Vector2(3.6517808, 0.27900258)
-skew = -0.19268835
-
-[node name="Hand" type="Bone2D" parent="ClawSkeleton/Arm/Forearm"]
-position = Vector2(-16.697666, -0.62687683)
-rotation = -1.5616604
-scale = Vector2(3.65554, 0.27529678)
-skew = 0.11247313
-
-[node name="Sprite2D" type="Sprite2D" parent="ClawSkeleton/Arm/Forearm/Hand"]
-position = Vector2(4.458488, -11.579935)
-rotation = 0.2958468
-scale = Vector2(-0.020540928, 0.21344055)
-texture = ExtResource("2_8412e")
-
-[node name="Sprite2D2" type="Sprite2D" parent="ClawSkeleton/Arm/Forearm/Hand"]
-position = Vector2(4.909536, -36.54548)
-rotation = 2.8933873
-scale = Vector2(-0.020540928, 0.21344055)
-texture = ExtResource("2_8412e")
-
-[node name="Sprite2D3" type="Sprite2D" parent="ClawSkeleton/Arm/Forearm/Hand"]
-position = Vector2(-6.165306, -11.461093)
-rotation = 2.6077611
-scale = Vector2(-0.020540928, 0.21344055)
-texture = ExtResource("2_8412e")
-
-[node name="Sprite2D4" type="Sprite2D" parent="ClawSkeleton/Arm/Forearm/Hand"]
-position = Vector2(-11.784538, -35.13253)
-rotation = 3.175742
-scale = Vector2(-0.020540928, 0.21344055)
-texture = ExtResource("2_8412e")
-
 [node name="IKTarget" type="Node2D" parent="."]
-position = Vector2(165, 180)
+position = Vector2(166, 356)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="ArmLU" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(126, 23)
+rotation = 0.6915519
+scale = Vector2(0.19774336, 1.0006245)
+texture = ExtResource("2_8412e")
+polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+
+[node name="ArmLD" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(44, 123)
+rotation = -0.33345264
+scale = Vector2(0.19774336, 1.0006245)
+texture = ExtResource("2_8412e")
+polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+
+[node name="ArmRU" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(160, 38.000023)
+rotation = -0.64671767
+scale = Vector2(0.19774334, 1.0006245)
+texture = ExtResource("2_8412e")
+polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+
+[node name="ArmRD" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(230.00002, 110.99999)
+rotation = 0.26272357
+scale = Vector2(0.19774334, 1.0006244)
+texture = ExtResource("2_8412e")
+polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+
+[node name="Hinge" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(117.99999, -6.000001)
+rotation = -0.015552014
+scale = Vector2(0.48126745, 0.50124085)
+texture = ExtResource("2_8412e")
+polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+
+[node name="Arm" type="Polygon2D" parent="Polygon2D"]
+position = Vector2(130.99998, -267.00003)
+rotation = -0.015552014
+scale = Vector2(0.23931712, 2.1029937)
+texture = ExtResource("2_8412e")
+polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
+uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
