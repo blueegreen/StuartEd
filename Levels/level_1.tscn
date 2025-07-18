@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqni4fi1ydgfr"]
+
+[ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="1_n0qsc"]
+
+[node name="level_1" type="Node2D"]
+
+[node name="Level1Scene" type="Sprite2D" parent="."]
+texture = ExtResource("1_n0qsc")
+
+[node name="LevelCamera" type="Camera2D" parent="."]

@@ -13,12 +13,21 @@ config_version=5
 config/name="StuartEd"
 run/main_scene="uid://vxrwcdjbfb88"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.18431373, 0.20392157, 0.22352941, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
 InputManager="*res://InputManager.gd"
 MouseAnchor="*res://mouse_anchor.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
 
 [input]
 
@@ -57,3 +66,8 @@ down={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Objects"
 2d_physics/layer_3="Static"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.18431373, 0.20392157, 0.22352941, 1)
