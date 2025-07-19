@@ -1,4 +1,4 @@
-extends Node2D
+extends MinigameScene
 
 enum state {FREE, LOCKED}
 var _current_state : state = state.FREE
@@ -80,6 +80,8 @@ func check_and_shuffle():
 		if _grabbed_ball.is_stuart:
 			print("stuart_found")
 			stuart_found.emit()
+			if GameState.level_state:
+				GameState.level_state.set_flag("stuart found", true)
 			#end_scene()
 
 		var trans = _grabbed_ball.global_transform
@@ -94,10 +96,5 @@ func check_and_shuffle():
 	_current_state = state.FREE
 
 
-func _on_back_button_input_event(_viewport, event, _shape_idx):
-	if event.is_action_pressed("click"):
-		end_scene()
-
-
-func end_scene():
-	queue_free()
+func _on_back_button_toggled(_toggled_on):
+	_end_scene()

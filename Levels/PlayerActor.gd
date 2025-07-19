@@ -3,7 +3,7 @@ class_name Player
 
 signal finished_walk
 
-@export var speed := 100.0
+@export var speed := 200.0
 @export var minimum_walk_distance := 10.0
 
 var _walk_tween : Tween
@@ -60,4 +60,5 @@ func walk_to_actor(actor: Actor):
 
 func end_walk():
 	try_animation("idle")
+	await get_tree().process_frame
 	finished_walk.emit()

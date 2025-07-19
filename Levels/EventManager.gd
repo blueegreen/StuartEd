@@ -10,7 +10,7 @@ func start_event(event_name: String):
 	if self.has_method(event_name):
 		self.call_deferred(event_name)
 	else:
-		push_warning("No such event method: %s" % event_name)
+		push_warning("No such event method: ", event_name)
 
 
 #check based on level_state if successful interaction - if so, call player to move, and wait for player to reach correct point
@@ -25,11 +25,11 @@ func start_dialogue_event(actor: Actor, interaction: InteractionEntry):
 	
 	_event_active = true
 	InputManager.set_interaction_paused(true)
-	
+
 	if interaction.walk_required:
 		GameState.player.walk_to_actor(actor)
 		await GameState.player.finished_walk
-	
+
 	GameState.dialogue_manager.start_dialogue(interaction.dialogue)
 	await GameState.dialogue_manager.dialogue_finished
 	

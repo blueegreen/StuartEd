@@ -1,24 +1,63 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqni4fi1ydgfr"]
+[gd_scene load_steps=24 format=3 uid="uid://cqni4fi1ydgfr"]
 
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_fhktt"]
 [ext_resource type="Script" uid="uid://da33m8xjogj2n" path="res://Levels/DialogueManager.gd" id="2_eepv7"]
 [ext_resource type="Script" uid="uid://b4fhhkdkaep2b" path="res://Levels/LevelState.gd" id="4_2e10j"]
 [ext_resource type="Script" uid="uid://14kptbmd43y8" path="res://Levels/Level_1/level_1_event_manager.gd" id="4_fhktt"]
+[ext_resource type="PackedScene" uid="uid://cmgkfvckglwi" path="res://Levels/clue_book.tscn" id="5_2e10j"]
 [ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="5_odamq"]
 [ext_resource type="Script" uid="uid://bphyce4y3eqn6" path="res://Levels/PlayerActor.gd" id="6_joalh"]
 [ext_resource type="Script" uid="uid://di6q5t0gcaqg4" path="res://Levels/CharacterActor.gd" id="7_joalh"]
+[ext_resource type="Texture2D" uid="uid://debw8neyun8ib" path="res://Assets/sprite_sheet_2.png" id="7_llsuh"]
 [ext_resource type="Script" uid="uid://bnqjatayjieo0" path="res://Levels/Actor.gd" id="8_vbnv0"]
 [ext_resource type="Script" uid="uid://dkrou68ep8l47" path="res://Levels/InteractionEntry.gd" id="9_fhktt"]
 [ext_resource type="Script" uid="uid://dljpblmxv0myl" path="res://Levels/ActionInteractionResource.gd" id="10_eepv7"]
+[ext_resource type="Texture2D" uid="uid://deo65img6xb2y" path="res://Assets/sprite_sheet_1.png" id="11_vbnv0"]
+[ext_resource type="Texture2D" uid="uid://b0ykrtjbbhoce" path="res://Assets/sprite_sheet_3.png" id="12_eepv7"]
+[ext_resource type="Texture2D" uid="uid://gyteslrl45k7" path="res://Assets/level_1_namecard.png" id="13_llsuh"]
 
 [sub_resource type="Curve2D" id="Curve2D_n0qsc"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -535, 376, -155.727, 25.289001, 155.727, -25.289001, -242, 389, -86.091805, 33.07961, 86.091805, -33.07961, 41, 363, 0, 0, 0, 0, 297, 321)
+"points": PackedVector2Array(0, 0, 0, 0, -535, 376, -155.727, 25.289001, 155.727, -25.289001, -242, 389, -86.091805, 33.07961, 86.091805, -33.07961, 41, 363, 0, 0, 0, 0, 236, 323)
 }
 point_count = 4
 
+[sub_resource type="Resource" id="Resource_odamq"]
+script = ExtResource("9_fhktt")
+dialogue = Array[String](["Owner: hello there!", "Owner: what's your business here?: getting Stuart and Ed", "Owner: yes! two of the weirdest things came in here a while ago!", "Owner:  one of them jumped into the claw machine over there while the other disappeared!"])
+flags_triggered = Array[String](["talked to shop"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_c0yvh"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop"])
+dialogue = Array[String](["Owner: It jumped into the machine with a streak of horizontal stripes", "Owner: but the kid has been hogging it ever since..."])
+flags_triggered = Array[String](["talked to shop again"])
+clues_triggered = Array[String](["horizontal stripes"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_jpf6d"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop", "talked to shop again", "talked to fortune"])
+dialogue = Array[String](["Owner: the lady of dreams hadn't had her orb flicker in 15 years!", "Owner: hmm... all the machines flickered as well when that weird guy came here", "Player: Ed is known for messing with electronics"])
+clues_triggered = Array[String](["entity causes flickering"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_kqu4s"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop", "talked to shop again", "talked to fortune", "kid left"])
+dialogue = Array[String](["Owner: looks like the kid won before leaving", "Owner: you wanna try your luck too?", "Owner: I'll give you some free tries at it"])
+flags_triggered = Array[String](["machine unlocked"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_byskb"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_odamq"), SubResource("Resource_c0yvh"), SubResource("Resource_jpf6d"), SubResource("Resource_kqu4s")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
 [sub_resource type="Resource" id="Resource_llsuh"]
 script = ExtResource("9_fhktt")
+dialogue = Array[String](["Player: these walls hold decades of history"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
 [sub_resource type="Resource" id="Resource_2e10j"]
@@ -31,61 +70,170 @@ metadata/_custom_type_script = "uid://dljpblmxv0myl"
 [node name="ContextData" type="Node" parent="."]
 script = ExtResource("1_fhktt")
 speakers = {
-"Fortune": NodePath("../FortuneCharacter"),
-"Kid": NodePath("../KidCharacter"),
-"Owner": NodePath("../OwnerCharacter"),
-"Player": NodePath("../Path2D/PathFollow2D/Player")
+"Fortune": NodePath("../Level1Scene/FortuneCharacter"),
+"Kid": NodePath("../Level1Scene/KidCharacter"),
+"Owner": NodePath("../Level1Scene/OwnerCharacter"),
+"Player": NodePath("../Level1Scene/Path2D/PathFollow2D/Player")
 }
 metadata/_custom_type_script = "uid://bsqmc8xqmnpbj"
 
 [node name="LevelState" type="Node" parent="."]
 script = ExtResource("4_2e10j")
+flags = {
+"ed found": false,
+"kid left": false,
+"machine unlocked": false,
+"stuart found": false,
+"talked to fortune": false,
+"talked to shop": false,
+"talked to shop again": false
+}
+clues = {
+"big shoes": false,
+"entity causes flickering": false,
+"getting Stuart and Ed": true,
+"horizontal stripes": false
+}
 metadata/_custom_type_script = "uid://b4fhhkdkaep2b"
 
-[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("context_data")]
+[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("context_data", "clue_book")]
 script = ExtResource("2_eepv7")
 context_data = NodePath("../ContextData")
+clue_book = NodePath("../ClueBook")
 metadata/_custom_type_script = "uid://da33m8xjogj2n"
 
 [node name="EventManager" type="Node" parent="."]
 script = ExtResource("4_fhktt")
 metadata/_custom_type_script = "uid://df2sbvmy1xank"
 
-[node name="Level1Scene" type="Sprite2D" parent="."]
-texture = ExtResource("5_odamq")
+[node name="ClueBook" parent="." instance=ExtResource("5_2e10j")]
+position = Vector2(731, -157)
+rotation = -0.11188968
 
 [node name="LevelCamera" type="Camera2D" parent="."]
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Level1Scene" type="Sprite2D" parent="."]
+clip_children = 2
+texture = ExtResource("5_odamq")
+
+[node name="Path2D" type="Path2D" parent="Level1Scene"]
 position = Vector2(23, 3)
 curve = SubResource("Curve2D_n0qsc")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-535, 376)
-rotation = 0.27201244
+[node name="PathFollow2D" type="PathFollow2D" parent="Level1Scene/Path2D"]
+position = Vector2(-76.365814, 378.88208)
+rotation = 0.020081816
+progress = 461.40427
+rotates = false
 
-[node name="Player" type="Area2D" parent="Path2D/PathFollow2D"]
+[node name="Player" type="Area2D" parent="Level1Scene/Path2D/PathFollow2D"]
 z_index = 2
 script = ExtResource("6_joalh")
 
-[node name="OwnerCharacter" type="Area2D" parent="."]
+[node name="SpriteSheet2" type="Sprite2D" parent="Level1Scene/Path2D/PathFollow2D/Player"]
+position = Vector2(-0.99113655, -126.38046)
+scale = Vector2(0.785, 0.785)
+texture = ExtResource("7_llsuh")
+hframes = 3
+vframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 900, 800)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/Path2D/PathFollow2D/Player"]
+polygon = PackedVector2Array(-61.24209, -29.658295, -14.74617, -204.62724, 46.94012, -220.86922, 77.958176, -170.48192, 19.452003, -145.302, 38.67751, -34.66574)
+
+[node name="OwnerCharacter" type="Area2D" parent="Level1Scene"]
 z_index = 1
+position = Vector2(-259, 26)
+script = ExtResource("7_joalh")
+interaction_resource = SubResource("Resource_byskb")
+
+[node name="SpriteSheet1" type="Sprite2D" parent="Level1Scene/OwnerCharacter"]
+position = Vector2(53, -58)
+texture = ExtResource("11_vbnv0")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 800, 1200, 800)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/OwnerCharacter"]
+polygon = PackedVector2Array(-80, 28, -80, -43, -52, -72, -10, -122, -10, -181, 36, -228, 78, -234, 120, -214, 225, -134, 210, -105, 76, -105, 120, -55, 169, -73, 190, -42, 134, 2, 81, -21, 109, 41, 110, 155, 61, 180, 44, 80, -53, 76)
+
+[node name="FortuneCharacter" type="Area2D" parent="Level1Scene"]
+z_index = 1
+position = Vector2(118, 0)
 script = ExtResource("7_joalh")
 
-[node name="FortuneCharacter" type="Area2D" parent="."]
+[node name="SpriteSheet2" type="Sprite2D" parent="Level1Scene/FortuneCharacter"]
+position = Vector2(-50, 2)
+texture = ExtResource("11_vbnv0")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(1200, 0, 1200, 800)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/FortuneCharacter"]
+polygon = PackedVector2Array(-40, 243, -74, 45, -37, -96, 16, -102, 44, 13, 38, 234)
+
+[node name="KidCharacter" type="Area2D" parent="Level1Scene"]
 z_index = 1
+position = Vector2(320, 26)
 script = ExtResource("7_joalh")
 
-[node name="KidCharacter" type="Area2D" parent="."]
-z_index = 1
-script = ExtResource("7_joalh")
+[node name="SpriteSheet3" type="Sprite2D" parent="Level1Scene/KidCharacter"]
+position = Vector2(-29, -5)
+texture = ExtResource("11_vbnv0")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 1200, 800)
 
-[node name="VendingActor" type="Area2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/KidCharacter"]
+polygon = PackedVector2Array(-53, 135, -43, 29, -76, 24, -45, 10, -80, -31, -24, -80, 31, -52, 2, 5, 44, 19, 11, 29, 34, 118, 24, 120, -42, 127)
+
+[node name="VendingActor" type="Area2D" parent="Level1Scene"]
+position = Vector2(277, -111)
 script = ExtResource("8_vbnv0")
 
-[node name="ArcadeActor" type="Area2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/VendingActor"]
+polygon = PackedVector2Array(-103, -109, 80, -155, 172, 359, -108, 380)
+
+[node name="ArcadeActor" type="Area2D" parent="Level1Scene"]
+position = Vector2(-340, -83)
 script = ExtResource("8_vbnv0")
 
-[node name="WallActor" type="Area2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/ArcadeActor"]
+polygon = PackedVector2Array(-145, 155, -104, -71, -48, -128, 55, -75, 312, -83, 327, 225, 87, 260)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level1Scene/ArcadeActor"]
+polygon = PackedVector2Array(800, 242, 726, -198, 761, -253, 829, -247)
+
+[node name="WallActor" type="Area2D" parent="Level1Scene"]
+position = Vector2(-531, -170)
 script = ExtResource("8_vbnv0")
 interaction_resource = SubResource("Resource_2e10j")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/WallActor"]
+polygon = PackedVector2Array(-2, -200, 54, -111, 15, 220, -98, 133, -47, -187)
+
+[node name="WinnerActor" type="Area2D" parent="Level1Scene"]
+position = Vector2(245, -280)
+script = ExtResource("8_vbnv0")
+
+[node name="SpriteSheet3" type="Sprite2D" parent="Level1Scene/WinnerActor"]
+position = Vector2(4, -18)
+texture = ExtResource("12_eepv7")
+hframes = 3
+region_enabled = true
+region_rect = Rect2(500, 500, 1500, 500)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/WinnerActor"]
+polygon = PackedVector2Array(-60, -19, -64, 44, 78, 8, 56, -51)
+
+[node name="PlacardActor" type="Area2D" parent="Level1Scene"]
+position = Vector2(-75, -294)
+script = ExtResource("8_vbnv0")
+
+[node name="Level1Namecard" type="Sprite2D" parent="Level1Scene/PlacardActor"]
+position = Vector2(74, 295)
+texture = ExtResource("13_llsuh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/PlacardActor"]
+polygon = PackedVector2Array(-121, -31, -93, 54, 109, 30, 54, -35)

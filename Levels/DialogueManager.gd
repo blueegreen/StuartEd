@@ -8,7 +8,7 @@ signal dialogue_finished
 
 var _current_script : Array[String]
 var _current_script_index := -1
-var _current_parts : Array[String]
+var _current_parts : PackedStringArray
 var _current_character : CharacterActor
 var _dialogue_active := false
 var _clue_active := false
@@ -90,7 +90,7 @@ func _unhandled_input(event):
 		_next_line()
 
 func _clue_tried(clue: String):
-	if _current_parts.size() == 4:
+	if _clue_active:
 		if clue == _current_parts[2]:
 			_next_line()
 
@@ -99,4 +99,5 @@ func _end_dialogue():
 		_current_character.try_animation("idle")
 	_dialogue_active = false
 	_clue_active = false
+	await get_tree().process_frame
 	dialogue_finished.emit()

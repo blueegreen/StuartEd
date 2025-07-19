@@ -6,11 +6,6 @@ class_name Actor
 func _ready():
 	await get_tree().process_frame
 	InputManager.interaction_started.connect(_on_click)
-	if GameState.level_state:
-		GameState.level_state.flag_changed.connect(_set_own_state)
-	pass
-
-func _set_own_state():
 	pass
 
 func _on_click(target: Node2D):
@@ -23,7 +18,7 @@ func _on_click(target: Node2D):
 	for entry in interaction_resource.interactions:
 		var matching_entry := true
 		for flag_name in entry.required_flags:
-			if GameState.level_state.is_flag_true(flag_name) != entry.required_flags[flag_name]:
+			if not GameState.level_state.is_flag_true(flag_name):
 				matching_entry = false
 				break
 		if matching_entry:

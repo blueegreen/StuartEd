@@ -5,9 +5,6 @@ class_name ContextData
 
 @export var speakers : Dictionary = {}
 
-func _ready():
-	print(speakers)
-
 func get_speaker(speaker_name: String) -> Node:
 	if speakers.has(speaker_name):
 		var node = get_node(speakers[speaker_name])

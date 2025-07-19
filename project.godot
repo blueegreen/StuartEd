@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 
 InputManager="*res://Autoload/InputManager.gd"
 GameState="*res://Autoload/GameState.gd"
-MouseAnchor="*res://Autoload/mouse_anchor.tscn"
 
 [display]
 

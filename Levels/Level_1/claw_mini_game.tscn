@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctsx0rgrkke0q"]
+[gd_scene load_steps=22 format=3 uid="uid://ctsx0rgrkke0q"]
 
 [ext_resource type="Script" uid="uid://ct815phpxyews" path="res://Levels/Level_1/claw_mini_game.gd" id="1_3hyft"]
 [ext_resource type="Texture2D" uid="uid://cebf0o3gettc3" path="res://Assets/level_1_minigame_bg.png" id="1_n74i4"]
@@ -52,8 +52,27 @@ _data = {
 &"shuffle": SubResource("Animation_3hyft")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3hyft"]
-radius = 56.32051
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hyft"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5bypn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g52r2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5e0gk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0w0ks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j71om"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t58j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k4oln"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ye6rc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6xqnv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hpoix"]
 
 [node name="ClawMiniGame" type="Node2D" node_paths=PackedStringArray("animation_player", "path_follow", "claw", "claw_attacher")]
 z_index = 5
@@ -144,12 +163,6 @@ position = Vector2(54, 135.99998)
 rotation = -0.064745545
 polygon = PackedVector2Array(-106.740845, 85.27251, -6.8186646, -18.479881, 74.87782, 97.04796)
 
-[node name="back_button" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="back_button"]
-position = Vector2(172, -262)
-shape = SubResource("CircleShape2D_3hyft")
-
 [node name="Control" type="Control" parent="."]
 z_index = 3
 layout_mode = 3
@@ -178,16 +191,34 @@ alignment = 1
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 2
 size_flags_horizontal = 6
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3hyft")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5bypn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g52r2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5e0gk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0w0ks")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j71om")
 
 [node name="down" type="Button" parent="Control/HBoxContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3hyft")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5bypn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g52r2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5e0gk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0w0ks")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j71om")
 
 [node name="right" type="Button" parent="Control/HBoxContainer"]
 custom_minimum_size = Vector2(80, 60)
 layout_mode = 2
 size_flags_horizontal = 6
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3hyft")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5bypn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g52r2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5e0gk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0w0ks")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j71om")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -198,10 +229,23 @@ offset_bottom = 661.0
 mouse_filter = 2
 color = Color(0.18431373, 0.20392157, 0.22352941, 1)
 
-[connection signal="input_event" from="back_button" to="." method="_on_back_button_input_event"]
+[node name="back_button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 123.0
+offset_top = -311.0
+offset_right = 223.0
+offset_bottom = -211.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6t58j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k4oln")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ye6rc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6xqnv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hpoix")
+toggle_mode = true
+
 [connection signal="button_down" from="Control/HBoxContainer/left" to="." method="_on_left_button_down"]
 [connection signal="button_up" from="Control/HBoxContainer/left" to="." method="_on_left_button_up"]
 [connection signal="button_down" from="Control/HBoxContainer/down" to="." method="_on_down_button_down"]
 [connection signal="button_up" from="Control/HBoxContainer/down" to="." method="_on_down_button_up"]
 [connection signal="button_down" from="Control/HBoxContainer/right" to="." method="_on_right_button_down"]
 [connection signal="button_up" from="Control/HBoxContainer/right" to="." method="_on_right_button_up"]
+[connection signal="toggled" from="back_button" to="." method="_on_back_button_toggled"]
