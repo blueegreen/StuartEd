@@ -1,19 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwc5h2c1eqrqm"]
+[gd_scene load_steps=12 format=3 uid="uid://dwc5h2c1eqrqm"]
 
 [ext_resource type="Script" uid="uid://be5voray2025v" path="res://Main/level_selector.gd" id="1_22lal"]
-[ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="2_5yo0r"]
+[ext_resource type="Texture2D" uid="uid://b680qvlrhiwaa" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/1.png" id="2_t6kw3"]
 [ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_x3xpc"]
-[ext_resource type="Texture2D" uid="uid://b53her2wwdwx0" path="res://Assets/level_2_scene.png" id="3_4rcow"]
-[ext_resource type="Texture2D" uid="uid://b703piycoqr6q" path="res://Assets/level_3_scene.png" id="4_0obos"]
+[ext_resource type="Texture2D" uid="uid://ctmmkxy7qqgck" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/2.png" id="3_g3msu"]
+[ext_resource type="Texture2D" uid="uid://dfg8ppwj63y2e" path="res://Assets/FORTEST[ONLY][DONOTOPEN]{18+}/4.png" id="4_43tak"]
 [ext_resource type="PackedScene" uid="uid://cqni4fi1ydgfr" path="res://Levels/level_1.tscn" id="5_w7roj"]
 [ext_resource type="PackedScene" uid="uid://vxrwcdjbfb88" path="res://old_stuff/test_scene.tscn" id="6_5yo0r"]
 [ext_resource type="PackedScene" uid="uid://d1but43m7smrc" path="res://old_stuff/Scenes/scene1.tscn" id="7_4rcow"]
-[ext_resource type="Texture2D" uid="uid://cxkw57l0wimim" path="res://Assets/sprite_sheet_4.png" id="8_5yo0r"]
 [ext_resource type="Shader" uid="uid://dbmbx5pu7ir58" path="res://Main/blur.gdshader" id="9_w7roj"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4rcow"]
-atlas = ExtResource("8_5yo0r")
-region = Rect2(0, 0, 384, 384)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yo0r"]
 shader = ExtResource("9_w7roj")
@@ -22,40 +17,32 @@ shader_parameter/sample_power = 4
 shader_parameter/is_canvas_group = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rcow"]
-size = Vector2(384, 384)
+size = Vector2(128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0obos"]
-atlas = ExtResource("8_5yo0r")
-region = Rect2(384, 0, 384, 384)
-
-[node name="LevelSelector" type="Control" node_paths=PackedStringArray("frame_box", "slide_area", "left_button", "right_button", "select_button", "area", "blur", "label")]
+[node name="LevelSelector" type="Control" node_paths=PackedStringArray("frame_box", "slide_area", "left_button", "right_button", "select_button")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_22lal")
-level_images = Array[Texture2D]([ExtResource("2_5yo0r"), ExtResource("3_4rcow"), ExtResource("4_0obos")])
+level_images = Array[Texture2D]([ExtResource("2_t6kw3"), ExtResource("3_g3msu"), ExtResource("4_43tak")])
 frame_box = NodePath("HBoxContainer/FrameBox")
 slide_area = NodePath("HBoxContainer/FrameBox/SlideArea")
 left_button = NodePath("HBoxContainer/LeftButton")
 right_button = NodePath("HBoxContainer/RightButton")
 select_button = NodePath("HBoxContainer/SelectButton")
 level_scenes = Array[PackedScene]([ExtResource("5_w7roj"), ExtResource("6_5yo0r"), ExtResource("7_4rcow")])
-area = NodePath("HBoxContainer/FrameBox/Area2D")
-blur = NodePath("HBoxContainer/FrameBox/blur")
-label = NodePath("HBoxContainer/FrameBox/Label")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = -295.0
-offset_top = 45.0
-offset_right = 481.0
-offset_bottom = 429.0
+offset_left = 207.0
+offset_top = 210.0
+offset_right = 599.0
+offset_bottom = 338.0
 
 [node name="RightButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_4rcow")
+texture_normal = ExtResource("2_x3xpc")
 
 [node name="SelectButton" type="TextureButton" parent="HBoxContainer"]
-visible = false
 layout_mode = 2
 texture_normal = ExtResource("2_x3xpc")
 
@@ -63,15 +50,16 @@ texture_normal = ExtResource("2_x3xpc")
 layout_mode = 2
 
 [node name="SlideArea" type="Container" parent="HBoxContainer/FrameBox"]
+clip_contents = true
 layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
 
 [node name="blur" type="ColorRect" parent="HBoxContainer/FrameBox"]
 material = SubResource("ShaderMaterial_5yo0r")
 layout_mode = 0
-offset_left = -122.0
-offset_top = -127.0
-offset_right = 262.0
-offset_bottom = 257.0
+offset_right = 128.0
+offset_bottom = 128.0
 
 [node name="Area2D" type="Area2D" parent="HBoxContainer/FrameBox"]
 
@@ -89,4 +77,4 @@ text = "Enter"
 
 [node name="LeftButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_0obos")
+texture_normal = ExtResource("2_x3xpc")

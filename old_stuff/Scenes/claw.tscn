@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2vwatujbtal7"]
 
-[ext_resource type="Script" uid="uid://o1woat1yupmr" path="res://old_stuff/Scenes/claw.gd" id="1_bcojo"]
-[ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_8412e"]
+[ext_resource type="Script" path="res://Scenes/claw.gd" id="1_38vjb"]
+[ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_p0gv6"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_8412e"]
 target_nodepath = NodePath("../IKTarget")
@@ -14,7 +14,7 @@ modification_count = 1
 modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_8412e")
 
 [node name="Claw" type="Node2D"]
-script = ExtResource("1_bcojo")
+script = ExtResource("1_38vjb")
 
 [node name="ClawSkeleton" type="Skeleton2D" parent="."]
 position = Vector2(205, 58)
@@ -30,7 +30,7 @@ position = Vector2(166, 356)
 position = Vector2(126, 23)
 rotation = 0.6915519
 scale = Vector2(0.19774336, 1.0006245)
-texture = ExtResource("2_8412e")
+texture = ExtResource("2_p0gv6")
 polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 
@@ -38,7 +38,7 @@ uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 position = Vector2(44, 123)
 rotation = -0.33345264
 scale = Vector2(0.19774336, 1.0006245)
-texture = ExtResource("2_8412e")
+texture = ExtResource("2_p0gv6")
 polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 
@@ -46,7 +46,7 @@ uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 position = Vector2(160, 38.000023)
 rotation = -0.64671767
 scale = Vector2(0.19774334, 1.0006245)
-texture = ExtResource("2_8412e")
+texture = ExtResource("2_p0gv6")
 polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 
@@ -54,7 +54,7 @@ uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 position = Vector2(230.00002, 110.99999)
 rotation = 0.26272357
 scale = Vector2(0.19774334, 1.0006244)
-texture = ExtResource("2_8412e")
+texture = ExtResource("2_p0gv6")
 polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 
@@ -62,7 +62,7 @@ uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 position = Vector2(117.99999, -6.000001)
 rotation = -0.015552014
 scale = Vector2(0.48126745, 0.50124085)
-texture = ExtResource("2_8412e")
+texture = ExtResource("2_p0gv6")
 polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 
@@ -70,6 +70,6 @@ uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 position = Vector2(130.99998, -267.00003)
 rotation = -0.015552014
 scale = Vector2(0.23931712, 2.1029937)
-texture = ExtResource("2_8412e")
+texture = ExtResource("2_p0gv6")
 polygon = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)
 uv = PackedVector2Array(128, 128, 0, 128, 0, 0, 127.999985, 0)

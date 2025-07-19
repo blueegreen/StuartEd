@@ -1,16 +1,21 @@
 extends Control
 
 @export var level_images: Array[Texture2D] = []
-@onready var frame_box: Control = $FrameBox
-@onready var slide_area: Control = $FrameBox/SlideArea
+@export var frame_box: Panel
+@export var slide_area: Container
 @export var left_button: TextureButton
 @export var right_button: TextureButton
 @export var select_button: TextureButton
+@export var level_scenes: Array[PackedScene]
+@export var area: Area2D
+@export var blur: ColorRect
+@export var label: Label
+
 
 var current_index := 0
 var is_animating := false
 
-@export var level_scenes: Array[String]
+
 
 func _ready() -> void:
 	if level_images.is_empty():
@@ -21,7 +26,23 @@ func _ready() -> void:
 	left_button.pressed.connect(_on_left_button)
 	right_button.pressed.connect(_on_right_button)
 	select_button.pressed.connect(_on_select_button_pressed)
+	
+	area.connect("mouse_entered",_on_mouse_entered)
+	area.connect("mouse_exited",_on_mouse_exited)
+	
+	blur.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	area.z_index = 1
+	blur.hide()
+	label.hide()
 
+
+func _on_mouse_entered():
+	blur.show()
+	label.show()
+
+func _on_mouse_exited():
+	blur.hide()
+	label.hide()
 
 func _show_level(index: int) -> void:
 	slide_area.get_children().map(func(c): c.queue_free())
@@ -39,13 +60,15 @@ func _show_level(index: int) -> void:
 	tex.offset_right = 0
 	tex.offset_bottom = 0
 
-	# Resize frame_box to match texture size
+	# Resized frame_box to match texture size
 	if texture:
 		var tex_size := texture.get_size()
 		frame_box.custom_minimum_size = tex_size
 		frame_box.size = tex_size
 
 	slide_area.add_child(tex)
+
+	
 
 func _on_left_button() -> void:
 	if is_animating or level_images.size() <= 1:
@@ -62,12 +85,12 @@ func _on_right_button() -> void:
 	_animate_switch(next_index, true)
 
 func _on_select_button_pressed() -> void:
-	var selected_level_path = level_scenes[current_index]
+	var selected_level = level_scenes[current_index]
 
-	if ResourceLoader.exists(selected_level_path):
-		get_tree().change_scene_to_file(selected_level_path)
+	if ResourceLoader.exists(selected_level.resource_path):
+		get_tree().change_scene_to_packed(selected_level)
 	else:
-		print("Level not found:", selected_level_path)
+		print("Level not found:", selected_level)
 
 
 func _animate_switch(next_index: int, to_left: bool) -> void:

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbvuo18jvmqhf"]
+
+[ext_resource type="Script" path="res://mouse_anchor.gd" id="1_w1brh"]
+[ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_08etq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08etq"]
+
+[node name="MouseAnchor" type="StaticBody2D"]
+collision_layer = 0
+script = ExtResource("1_w1brh")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.33191842, 0.33191842)
+texture = ExtResource("2_08etq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_08etq")
