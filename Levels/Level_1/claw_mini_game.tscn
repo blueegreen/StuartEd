@@ -1,0 +1,207 @@
+[gd_scene load_steps=12 format=3 uid="uid://ctsx0rgrkke0q"]
+
+[ext_resource type="Script" uid="uid://ct815phpxyews" path="res://Levels/Level_1/claw_mini_game.gd" id="1_3hyft"]
+[ext_resource type="Texture2D" uid="uid://cebf0o3gettc3" path="res://Assets/level_1_minigame_bg.png" id="1_n74i4"]
+[ext_resource type="Texture2D" uid="uid://bymya5f71ndgl" path="res://Assets/level_1_minigame_claw.png" id="2_3hyft"]
+[ext_resource type="PackedScene" uid="uid://dgbh1c2umltwr" path="res://Levels/Level_1/gacha_ball.tscn" id="2_5bypn"]
+[ext_resource type="Texture2D" uid="uid://b4648a8ckqvfe" path="res://Assets/level_1_minigame_fg.png" id="3_5bypn"]
+
+[sub_resource type="Curve2D" id="Curve2D_3hyft"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -314, -185, 0, 0, 0, 0, 21, -236)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bypn"]
+radius = 13.4514675
+
+[sub_resource type="Animation" id="Animation_3hyft"]
+resource_name = "shuffle"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.7),
+"transitions": PackedFloat32Array(3.4822013, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5bypn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g52r2"]
+_data = {
+&"RESET": SubResource("Animation_5bypn"),
+&"shuffle": SubResource("Animation_3hyft")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hyft"]
+radius = 56.32051
+
+[node name="ClawMiniGame" type="Node2D" node_paths=PackedStringArray("animation_player", "path_follow", "claw", "claw_attacher")]
+z_index = 5
+script = ExtResource("1_3hyft")
+animation_player = NodePath("AnimationPlayer")
+gacha_ball_scene = ExtResource("2_5bypn")
+path_follow = NodePath("Level1MinigameBg/Path2D/PathFollow2D")
+claw = NodePath("Level1MinigameBg/Path2D/PathFollow2D/Level1MinigameClaw")
+claw_attacher = NodePath("Level1MinigameBg/Path2D/PathFollow2D/Level1MinigameClaw/Area2D")
+
+[node name="Level1MinigameBg" type="Sprite2D" parent="."]
+clip_children = 2
+texture = ExtResource("1_n74i4")
+
+[node name="Path2D" type="Path2D" parent="Level1MinigameBg"]
+curve = SubResource("Curve2D_3hyft")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Level1MinigameBg/Path2D"]
+position = Vector2(-146.49997, -210.5)
+progress = 169.42996
+rotates = false
+
+[node name="Level1MinigameClaw" type="Sprite2D" parent="Level1MinigameBg/Path2D/PathFollow2D"]
+z_index = 1
+position = Vector2(158.99997, 202.50002)
+texture = ExtResource("2_3hyft")
+
+[node name="Area2D" type="Area2D" parent="Level1MinigameBg/Path2D/PathFollow2D/Level1MinigameClaw"]
+position = Vector2(-139.94446, -89.43422)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1MinigameBg/Path2D/PathFollow2D/Level1MinigameClaw/Area2D"]
+position = Vector2(2, 1)
+shape = SubResource("CircleShape2D_5bypn")
+
+[node name="Level1MinigameFg" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("3_5bypn")
+
+[node name="LevelCamera" type="Camera2D" parent="."]
+
+[node name="gacha_ball" parent="." instance=ExtResource("2_5bypn")]
+position = Vector2(-261, -43)
+is_stuart = true
+
+[node name="gacha_ball2" parent="." instance=ExtResource("2_5bypn")]
+position = Vector2(-198, -92)
+
+[node name="gacha_ball3" parent="." instance=ExtResource("2_5bypn")]
+position = Vector2(-10, -23)
+
+[node name="gacha_ball4" parent="." instance=ExtResource("2_5bypn")]
+position = Vector2(-122, -4)
+
+[node name="gacha_ball5" parent="." instance=ExtResource("2_5bypn")]
+position = Vector2(-199, 40)
+
+[node name="gacha_ball6" parent="." instance=ExtResource("2_5bypn")]
+position = Vector2(-291, -143)
+
+[node name="gacha_ball7" parent="." instance=ExtResource("2_5bypn")]
+position = Vector2(-57, 49)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-389, -227, -408.3833, -105.332, -457, 209, 203, 198, 162.62506, -120.7944, 155, -181, 60, -180, 70, -119, 97, 120, -385, 148, -351, -206, -312, -230, 145, -196, 137, -233, -321, -259)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g52r2")
+}
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="AnimatableBody2D"]
+position = Vector2(-144.99997, 145)
+rotation = -0.064745545
+polygon = PackedVector2Array(-106.740845, 85.27251, -6.8186646, -18.479881, 74.87782, 97.04796)
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="AnimatableBody2D"]
+position = Vector2(-309, 151)
+rotation = -0.064745545
+polygon = PackedVector2Array(-106.740845, 85.27251, -6.8186646, -18.479881, 74.87782, 97.04796)
+
+[node name="CollisionShape2D3" type="CollisionPolygon2D" parent="AnimatableBody2D"]
+position = Vector2(54, 135.99998)
+rotation = -0.064745545
+polygon = PackedVector2Array(-106.740845, 85.27251, -6.8186646, -18.479881, 74.87782, 97.04796)
+
+[node name="back_button" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="back_button"]
+position = Vector2(172, -262)
+shape = SubResource("CircleShape2D_3hyft")
+
+[node name="Control" type="Control" parent="."]
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.00003
+offset_top = 130.00002
+offset_right = -40.00003
+offset_bottom = 190.00002
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.029495424
+alignment = 1
+
+[node name="left" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="down" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="right" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -1098.0
+offset_top = -652.0
+offset_right = 1076.0
+offset_bottom = 661.0
+mouse_filter = 2
+color = Color(0.18431373, 0.20392157, 0.22352941, 1)
+
+[connection signal="input_event" from="back_button" to="." method="_on_back_button_input_event"]
+[connection signal="button_down" from="Control/HBoxContainer/left" to="." method="_on_left_button_down"]
+[connection signal="button_up" from="Control/HBoxContainer/left" to="." method="_on_left_button_up"]
+[connection signal="button_down" from="Control/HBoxContainer/down" to="." method="_on_down_button_down"]
+[connection signal="button_up" from="Control/HBoxContainer/down" to="." method="_on_down_button_up"]
+[connection signal="button_down" from="Control/HBoxContainer/right" to="." method="_on_right_button_down"]
+[connection signal="button_up" from="Control/HBoxContainer/right" to="." method="_on_right_button_up"]

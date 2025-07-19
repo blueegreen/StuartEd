@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqni4fi1ydgfr"]
+
+[ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_fhktt"]
+[ext_resource type="Script" uid="uid://da33m8xjogj2n" path="res://Levels/DialogueManager.gd" id="2_eepv7"]
+[ext_resource type="Script" uid="uid://b4fhhkdkaep2b" path="res://Levels/LevelState.gd" id="4_2e10j"]
+[ext_resource type="Script" uid="uid://14kptbmd43y8" path="res://Levels/Level_1/level_1_event_manager.gd" id="4_fhktt"]
+[ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="5_odamq"]
+[ext_resource type="Script" uid="uid://bphyce4y3eqn6" path="res://Levels/PlayerActor.gd" id="6_joalh"]
+[ext_resource type="Script" uid="uid://di6q5t0gcaqg4" path="res://Levels/CharacterActor.gd" id="7_joalh"]
+[ext_resource type="Script" uid="uid://bnqjatayjieo0" path="res://Levels/Actor.gd" id="8_vbnv0"]
+[ext_resource type="Script" uid="uid://dkrou68ep8l47" path="res://Levels/InteractionEntry.gd" id="9_fhktt"]
+[ext_resource type="Script" uid="uid://dljpblmxv0myl" path="res://Levels/ActionInteractionResource.gd" id="10_eepv7"]
+
+[sub_resource type="Curve2D" id="Curve2D_n0qsc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -535, 376, -155.727, 25.289001, 155.727, -25.289001, -242, 389, -86.091805, 33.07961, 86.091805, -33.07961, 41, 363, 0, 0, 0, 0, 297, 321)
+}
+point_count = 4
+
+[sub_resource type="Resource" id="Resource_llsuh"]
+script = ExtResource("9_fhktt")
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_2e10j"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_llsuh")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
+[node name="level_1" type="Node2D"]
+
+[node name="ContextData" type="Node" parent="."]
+script = ExtResource("1_fhktt")
+speakers = {
+"Fortune": NodePath("../FortuneCharacter"),
+"Kid": NodePath("../KidCharacter"),
+"Owner": NodePath("../OwnerCharacter"),
+"Player": NodePath("../Path2D/PathFollow2D/Player")
+}
+metadata/_custom_type_script = "uid://bsqmc8xqmnpbj"
+
+[node name="LevelState" type="Node" parent="."]
+script = ExtResource("4_2e10j")
+metadata/_custom_type_script = "uid://b4fhhkdkaep2b"
+
+[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("context_data")]
+script = ExtResource("2_eepv7")
+context_data = NodePath("../ContextData")
+metadata/_custom_type_script = "uid://da33m8xjogj2n"
+
+[node name="EventManager" type="Node" parent="."]
+script = ExtResource("4_fhktt")
+metadata/_custom_type_script = "uid://df2sbvmy1xank"
+
+[node name="Level1Scene" type="Sprite2D" parent="."]
+texture = ExtResource("5_odamq")
+
+[node name="LevelCamera" type="Camera2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(23, 3)
+curve = SubResource("Curve2D_n0qsc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-535, 376)
+rotation = 0.27201244
+
+[node name="Player" type="Area2D" parent="Path2D/PathFollow2D"]
+z_index = 2
+script = ExtResource("6_joalh")
+
+[node name="OwnerCharacter" type="Area2D" parent="."]
+z_index = 1
+script = ExtResource("7_joalh")
+
+[node name="FortuneCharacter" type="Area2D" parent="."]
+z_index = 1
+script = ExtResource("7_joalh")
+
+[node name="KidCharacter" type="Area2D" parent="."]
+z_index = 1
+script = ExtResource("7_joalh")
+
+[node name="VendingActor" type="Area2D" parent="."]
+script = ExtResource("8_vbnv0")
+
+[node name="ArcadeActor" type="Area2D" parent="."]
+script = ExtResource("8_vbnv0")
+
+[node name="WallActor" type="Area2D" parent="."]
+script = ExtResource("8_vbnv0")
+interaction_resource = SubResource("Resource_2e10j")

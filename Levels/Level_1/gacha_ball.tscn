@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgbh1c2umltwr"]
+
+[ext_resource type="Script" uid="uid://bdaovabbg3yjp" path="res://Levels/Level_1/gacha_ball.gd" id="1_n64ft"]
+[ext_resource type="Texture2D" uid="uid://b0ykrtjbbhoce" path="res://Assets/sprite_sheet_3.png" id="1_rto5r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n64ft"]
+radius = 38.0
+
+[node name="gacha_ball" type="RigidBody2D" node_paths=PackedStringArray("stuart_sprite")]
+script = ExtResource("1_n64ft")
+stuart_sprite = NodePath("SpriteSheet3")
+
+[node name="SpriteSheet4" type="Sprite2D" parent="."]
+position = Vector2(-4, -8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_rto5r")
+region_enabled = true
+region_rect = Rect2(0, 500, 500, 500)
+
+[node name="SpriteSheet3" type="Sprite2D" parent="."]
+position = Vector2(2.3841858e-07, 1.1368684e-13)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_rto5r")
+offset = Vector2(13.645, 18.175)
+hframes = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_n64ft")

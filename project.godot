@@ -19,12 +19,14 @@ config/icon="res://icon.svg"
 [autoload]
 
 InputManager="*res://Autoload/InputManager.gd"
-MouseAnchor="*res://old_stuff/mouse_anchor.tscn"
+GameState="*res://Autoload/GameState.gd"
+MouseAnchor="*res://Autoload/mouse_anchor.tscn"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"

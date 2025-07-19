@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b05emusnacq1d"]
+
+[ext_resource type="Script" uid="uid://b6ai1hb7e44wo" path="res://Levels/clue.gd" id="1_le5ty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le5ty"]
+size = Vector2(233.5, 91)
+
+[sub_resource type="LabelSettings" id="LabelSettings_le5ty"]
+line_spacing = -10.29
+font_size = 30
+font_color = Color(0.20747353, 0.07815468, 0.05101807, 1)
+
+[node name="Clue" type="Area2D" node_paths=PackedStringArray("label")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_le5ty")
+label = NodePath("Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(116.25, 45.5)
+shape = SubResource("RectangleShape2D_le5ty")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_right = 229.0
+offset_bottom = 91.0
+text = "lorem ipsum dolor met"
+label_settings = SubResource("LabelSettings_le5ty")
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
