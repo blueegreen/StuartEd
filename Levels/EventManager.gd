@@ -31,12 +31,13 @@ func start_dialogue_event(actor: Actor, interaction: InteractionEntry):
 		await GameState.player.finished_walk
 
 	GameState.dialogue_manager.start_dialogue(interaction.dialogue)
-	await GameState.dialogue_manager.dialogue_finished
+	var is_success = await GameState.dialogue_manager.dialogue_finished
 	
-	for flag in interaction.flags_triggered:
-		GameState.level_state.set_flag(flag, true)
-	for clue in interaction.clues_triggered:
-		GameState.level_state.set_clue(clue, true)
+	if is_success:
+		for flag in interaction.flags_triggered:
+			GameState.level_state.set_flag(flag, true)
+		for clue in interaction.clues_triggered:
+			GameState.level_state.set_clue(clue, true)
 
 	InputManager.set_interaction_paused(false)
 	_event_active = false

@@ -85,7 +85,7 @@ func _next_line():
 func _unhandled_input(event):
 	if event.is_action_pressed("click") and not event.is_echo() and _dialogue_active:
 		if _clue_active: #if prompting for clue don't further dialogue unless correct clue input
-			_end_dialogue()
+			_end_dialogue(false)
 			return
 		_next_line()
 
@@ -94,10 +94,10 @@ func _clue_tried(clue: String):
 		if clue == _current_parts[2]:
 			_next_line()
 
-func _end_dialogue():
+func _end_dialogue(is_success := true):
 	if _current_character:
 		_current_character.try_animation("idle")
 	_dialogue_active = false
 	_clue_active = false
 	await get_tree().process_frame
-	dialogue_finished.emit()
+	dialogue_finished.emit(is_success)

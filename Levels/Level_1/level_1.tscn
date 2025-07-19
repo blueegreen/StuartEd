@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cqni4fi1ydgfr"]
+[gd_scene load_steps=38 format=3 uid="uid://cqni4fi1ydgfr"]
 
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_fhktt"]
 [ext_resource type="Script" uid="uid://da33m8xjogj2n" path="res://Levels/DialogueManager.gd" id="2_eepv7"]
@@ -55,6 +55,87 @@ script = ExtResource("10_eepv7")
 interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_odamq"), SubResource("Resource_c0yvh"), SubResource("Resource_jpf6d"), SubResource("Resource_kqu4s")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
+[sub_resource type="Resource" id="Resource_bmyhu"]
+script = ExtResource("9_fhktt")
+dialogue = Array[String](["Player: she seems one with the cosmos", "Player: best leave her be"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_gqlel"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop"])
+dialogue = Array[String](["Fortune: hello!", "Fortune: what do you wish to talk to the lady of dreams for?: getting Stuart and Ed", "Fortune: AAHH! I could have told you...", "Fortune: but my trusty orb of wisdom is not shining bright and true!", "Fortune: It flickers like a candle in the wind!"])
+flags_triggered = Array[String](["talked to fortune"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_smy0f"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop", "talked to fortune"])
+dialogue = Array[String](["Fortune: it flickers like a candle in the wind!", "Fortune: I wonder why could that be?: entity causes flickering", "Fortune: ahh yes! I see now!", "Fortune: the spirit has made home inside my orb!", "Fortune: ALAKAZAM ALAKAZOO get out of my orb you!", "event1"])
+flags_triggered = Array[String](["kid left"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_d8g6h"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop", "talked to fortune", "kid left"])
+dialogue = Array[String](["Fortune: flickering... somewhere.", "Fortune: and a spirit that really likes...", "Fortune: big shoes?", "Fortune: idk I just go with the orb's wisdom."])
+clues_triggered = Array[String](["big shoes"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_mtdwk"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_bmyhu"), SubResource("Resource_gqlel"), SubResource("Resource_smy0f"), SubResource("Resource_d8g6h")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
+[sub_resource type="Resource" id="Resource_1gvqh"]
+script = ExtResource("9_fhktt")
+dialogue = Array[String](["Player: the kid is engrossed in that machine.", "Player: best leave him be."])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_de8wl"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop"])
+dialogue = Array[String](["Kid: What?", "Kid: Leave me alone man I'm tryna win big here!"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_b6ljx"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_1gvqh"), SubResource("Resource_de8wl")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
+[sub_resource type="Resource" id="Resource_i77d6"]
+script = ExtResource("9_fhktt")
+dialogue = Array[String](["Player: the beautiful claw machine...", "Player: too bad that kid's playing with it."])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_wxxfp"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop"])
+dialogue = Array[String](["Player: I need to investigate it, but that damn kid..."])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_un3n4"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop", "kid left"])
+dialogue = Array[String](["Player: I can play it now but...", "Player: I forgot my wallet at the super secret lab"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_y0e6u"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop", "kid left", "machine unlocked"])
+dialogue = Array[String](["Player: Stuart should be in here!", "event2"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_ac02e"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop", "kid left", "machine unlocked", "stuart found"])
+dialogue = Array[String](["Player: I've already found Stuart here."])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_ga5c8"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_i77d6"), SubResource("Resource_wxxfp"), SubResource("Resource_un3n4"), SubResource("Resource_y0e6u"), SubResource("Resource_ac02e")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
 [sub_resource type="Resource" id="Resource_llsuh"]
 script = ExtResource("9_fhktt")
 dialogue = Array[String](["Player: these walls hold decades of history"])
@@ -102,8 +183,9 @@ context_data = NodePath("../ContextData")
 clue_book = NodePath("../ClueBook")
 metadata/_custom_type_script = "uid://da33m8xjogj2n"
 
-[node name="EventManager" type="Node" parent="."]
+[node name="EventManager" type="Node" parent="." node_paths=PackedStringArray("kid")]
 script = ExtResource("4_fhktt")
+kid = NodePath("../Level1Scene/KidCharacter")
 metadata/_custom_type_script = "uid://df2sbvmy1xank"
 
 [node name="ClueBook" parent="." instance=ExtResource("5_2e10j")]
@@ -162,6 +244,7 @@ polygon = PackedVector2Array(-80, 28, -80, -43, -52, -72, -10, -122, -10, -181, 
 z_index = 1
 position = Vector2(118, 0)
 script = ExtResource("7_joalh")
+interaction_resource = SubResource("Resource_mtdwk")
 
 [node name="SpriteSheet2" type="Sprite2D" parent="Level1Scene/FortuneCharacter"]
 position = Vector2(-50, 2)
@@ -177,6 +260,7 @@ polygon = PackedVector2Array(-40, 243, -74, 45, -37, -96, 16, -102, 44, 13, 38, 
 z_index = 1
 position = Vector2(320, 26)
 script = ExtResource("7_joalh")
+interaction_resource = SubResource("Resource_b6ljx")
 
 [node name="SpriteSheet3" type="Sprite2D" parent="Level1Scene/KidCharacter"]
 position = Vector2(-29, -5)
@@ -191,6 +275,7 @@ polygon = PackedVector2Array(-53, 135, -43, 29, -76, 24, -45, 10, -80, -31, -24,
 [node name="VendingActor" type="Area2D" parent="Level1Scene"]
 position = Vector2(277, -111)
 script = ExtResource("8_vbnv0")
+interaction_resource = SubResource("Resource_ga5c8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/VendingActor"]
 polygon = PackedVector2Array(-103, -109, 80, -155, 172, 359, -108, 380)
