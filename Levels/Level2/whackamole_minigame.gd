@@ -39,6 +39,7 @@ func _on_stuart_key_popped():
 		open_drawer()
 
 func open_drawer():
+	SfxManager.play_sfx("drawer_open")
 	var drawer_tween = create_tween()
 	var final_pos = drawer.position + Vector2(0, 130)
 	var unlock_stuart = func():
