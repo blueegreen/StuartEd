@@ -20,7 +20,8 @@ config/icon="res://icon.svg"
 
 InputManager="*res://Autoload/InputManager.gd"
 GameState="*res://Autoload/GameState.gd"
-SfxManager="*res://Autoload/sfx_manager.gd"
+SfxManager="*res://Autoload/SFXManager.tscn"
+MusicManager="*res://Autoload/music_manager.tscn"
 
 [display]
 
