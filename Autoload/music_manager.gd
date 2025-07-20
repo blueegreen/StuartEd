@@ -6,7 +6,8 @@ extends Node
 @export var default_music: AudioStream
 @export var no_music_scenes: Array[PackedScene]
 @export var persistence_rules_keys: Array[PackedScene]
-@export var persistence_rules_values: Array[Array]
+@export var persistence_rules_values: Array[Array] #keep in mind its Array[Array[PackedScene]]
+#but godot doesnt allow this is kinda sad
 
 var _current_scene: PackedScene = null
 var _persistence_rules: Dictionary = {}
