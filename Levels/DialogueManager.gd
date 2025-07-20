@@ -119,10 +119,19 @@ func _show_text_box(source: String, dialogue: String):
 	text_box.line_finished.connect(_on_text_box_finished_displaying)
 	get_tree().root.add_child(text_box)
 	var speaker := context_data.get_speaker(source)
-	if speaker is CharacterActor:
-		text_box.global_position = speaker.global_position
-		text_box.display_text(dialogue)
-		_can_advance = false
+	var text_position := Vector2.ZERO
+	if speaker is Player:
+		text_position = speaker.global_position + Vector2(0, -100)
+		speaker.direction = sign(GameState.event_manager.last_clicked_actor.global_position.x - speaker.global_position.x)
+	elif speaker is CharacterActor:
+		var offsetx = sign(GameState.player.global_position.x - speaker.global_position.x) * 150
+		text_position = speaker.global_position + Vector2(offsetx, -100)
+	elif speaker == null:
+		pass
+		
+	text_box.global_position = text_position
+	text_box.display_text(dialogue)
+	_can_advance = false
 
 func _on_text_box_finished_displaying():
 	_can_advance = true

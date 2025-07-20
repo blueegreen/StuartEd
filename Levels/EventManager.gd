@@ -2,6 +2,7 @@ extends Node
 class_name EventManager
 
 var _event_active := false
+var last_clicked_actor : Actor
 
 func _ready():
 	GameState.event_manager = self
@@ -24,6 +25,7 @@ func start_dialogue_event(actor: Actor, interaction: InteractionEntry):
 		return
 	
 	_event_active = true
+	last_clicked_actor = actor
 	InputManager.set_interaction_paused(true)
 
 	if interaction.walk_required:

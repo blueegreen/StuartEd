@@ -10,7 +10,7 @@ func get_speaker(speaker_name: String) -> Node2D:
 		var node = get_node(speakers[speaker_name])
 		if node:
 			return node
-		push_warning("Speaker '%s' found but path is invalid" % speaker_name)
+		push_warning("Speaker " + speaker_name + " found but path is invalid")
 	else:
-		push_warning("Speaker '%s' not found in context" % speaker_name)
+		push_warning("Speaker " + speaker_name + " not found in context")
 	return null

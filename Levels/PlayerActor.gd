@@ -8,6 +8,10 @@ signal finished_walk
 
 var _walk_tween : Tween
 var _walking = false
+var direction := 1:
+	set(value):
+		direction = sign(value)
+		scale.x = sign(value)
 
 func _ready():
 	super()
@@ -28,8 +32,9 @@ func walk_to_point(pos: Vector2):
 	var path : Path2D = path_follow.get_parent()
 	var curve := path.curve
 
+	pos += sign(global_position - pos) * 100
 	var local_pos = path.to_local(pos)
-
+	
 	var closest_offset := curve.get_closest_offset(local_pos)
 	var curve_length := curve.get_baked_length()
 
@@ -43,8 +48,7 @@ func walk_to_point(pos: Vector2):
 	#start_walk
 	
 	try_animation("walk")
-	var direction = sign(closest_offset - current_distance)
-	scale.x = direction
+	direction = sign(closest_offset - current_distance)
 
 	var walk_time = distance / speed
 	var target_ratio := closest_offset / curve_length
