@@ -83,11 +83,13 @@ func on_click():
 	
 	var check = func():
 		if _is_ed:
+			SfxManager.play_sfx("rightchoice_whirlpool")
 			ed_clicked.emit()
 			var fade_tween = create_tween()
 			fade_tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 0.75).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			fade_tween.tween_callback(end_check)
 		else:
+			SfxManager.play_sfx("wrongchoice_whirlpool")
 			_paused = false
 			_active_area.collision_layer = 5
 			var revert_tween = create_tween()
