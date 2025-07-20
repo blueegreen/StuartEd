@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d13a3oqd7qf07"]
+[gd_scene load_steps=3 format=3 uid="uid://d13a3oqd7qf07"]
 
 [ext_resource type="Script" uid="uid://dg6cgwk2e3nt4" path="res://Autoload/sfx_manager.gd" id="1_fsbtp"]
 [ext_resource type="AudioStream" uid="uid://cvpbbfnpk26ip" path="res://Audio/Sfx/caught_wackamole.wav" id="2_dkvub"]
-[ext_resource type="AudioStream" uid="uid://ceetvshbr42va" path="res://Audio/Sfx/unsucessful_wackamole.wav" id="3_4knfp"]
 
 [node name="SfxManager" type="Node2D"]
 script = ExtResource("1_fsbtp")
-sfx_names = Array[String](["CaughtMole", "ClickCashRegister"])
-sfx_streams = Array[AudioStream]([ExtResource("2_dkvub"), ExtResource("3_4knfp")])
+sfx = Dictionary[String, AudioStream]({
+"mole_caught": ExtResource("2_dkvub")
+})
