@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cqni4fi1ydgfr"]
+[gd_scene load_steps=73 format=3 uid="uid://cqni4fi1ydgfr"]
 
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_fhktt"]
 [ext_resource type="Script" uid="uid://da33m8xjogj2n" path="res://Levels/DialogueManager.gd" id="2_eepv7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmgkfvckglwi" path="res://Levels/clue_book.tscn" id="5_2e10j"]
 [ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="5_odamq"]
 [ext_resource type="Texture2D" uid="uid://bukgm8c0ng4iw" path="res://Assets/misc/gradient_circle.png" id="6_byskb"]
+[ext_resource type="PackedScene" uid="uid://bxp65i2lm28mg" path="res://Levels/Level_1/winner_mini_game.tscn" id="6_kqu4s"]
 [ext_resource type="Shader" uid="uid://iebxi3gkewmw" path="res://Assets/checkers.gdshader" id="6_odamq"]
 [ext_resource type="Script" uid="uid://di6q5t0gcaqg4" path="res://Levels/CharacterActor.gd" id="7_joalh"]
 [ext_resource type="Texture2D" uid="uid://d1k8i1hrh7b1v" path="res://Assets/misc/particle3.png" id="7_jpf6d"]
@@ -18,8 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://deo65img6xb2y" path="res://Assets/sprite_sheet_1.png" id="11_vbnv0"]
 [ext_resource type="Texture2D" uid="uid://b0ykrtjbbhoce" path="res://Assets/sprite_sheet_3.png" id="12_eepv7"]
 [ext_resource type="Texture2D" uid="uid://gyteslrl45k7" path="res://Assets/level_1_namecard.png" id="13_llsuh"]
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_byskb"]
+[ext_resource type="PackedScene" uid="uid://ctsx0rgrkke0q" path="res://Levels/Level_1/claw_mini_game.tscn" id="20_kqu4s"]
 
 [sub_resource type="Environment" id="Environment_byskb"]
 background_mode = 3
@@ -37,6 +37,177 @@ shader_parameter/square_size = 112.5
 shader_parameter/scroll_speed = 50.0
 shader_parameter/angle = 32.3350000000064
 shader_parameter/canvas_size = Vector2(1920, 1080)
+
+[sub_resource type="Animation" id="Animation_i77d6"]
+resource_name = "flicker"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level1Scene/WinnerActor/SpriteSheet3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.39999998, 0.6, 0.6666666, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 2, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_wxxfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level1Scene/WinnerActor/SpriteSheet3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_un3n4"]
+_data = {
+&"RESET": SubResource("Animation_wxxfp"),
+&"flicker": SubResource("Animation_i77d6")
+}
+
+[sub_resource type="Animation" id="Animation_b6ljx"]
+resource_name = "event2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GradientCircle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GradientCircle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-4.756828, 1),
+"update": 0,
+"values": [Vector2(0.21080476, 0.21080476), Vector2(2.744, 2.744)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GradientCircle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(18.892157, 18.892157, 18.892157, 1), Color(18.892157, 18.892157, 18.892157, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Level1Scene/KidCharacter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(0.35355338, 1),
+"update": 0,
+"values": [Vector2(282, 1), Vector2(1148, -192)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Level1Scene/KidCharacter:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(0.39229208, 1),
+"update": 0,
+"values": [0.0, 12.566371]
+}
+
+[sub_resource type="Animation" id="Animation_un3n4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GradientCircle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GradientCircle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.21080476, 0.21080476)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GradientCircle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(18.892157, 18.892157, 18.892157, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Level1Scene/KidCharacter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(282, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Level1Scene/KidCharacter:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0e6u"]
+_data = {
+&"RESET": SubResource("Animation_un3n4"),
+&"event2": SubResource("Animation_b6ljx")
+}
 
 [sub_resource type="Curve2D" id="Curve2D_n0qsc"]
 _data = {
@@ -320,14 +491,50 @@ script = ExtResource("10_eepv7")
 interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_i77d6"), SubResource("Resource_wxxfp"), SubResource("Resource_un3n4"), SubResource("Resource_y0e6u"), SubResource("Resource_ac02e")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
+[sub_resource type="Resource" id="Resource_gjifi"]
+script = ExtResource("9_fhktt")
+dialogue = Array[String](["Player: so many games...", "Player: I'll need to come back here, for research."])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_o6tuk"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_gjifi")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
 [sub_resource type="Resource" id="Resource_llsuh"]
 script = ExtResource("9_fhktt")
-dialogue = Array[String](["Player: these walls hold decades of history"])
+dialogue = Array[String](["Player: these walls hold decades of history", "Owner: but if no one is left to remember...", "Fortune: did it really happen?"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
 [sub_resource type="Resource" id="Resource_2e10j"]
 script = ExtResource("10_eepv7")
 interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_llsuh")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
+[sub_resource type="Resource" id="Resource_ww80e"]
+script = ExtResource("9_fhktt")
+dialogue = Array[String](["event3"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_fc0v8"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["ed found"])
+dialogue = Array[String](["Player: I've already found Ed there"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_5wbbn"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_ww80e"), SubResource("Resource_fc0v8")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
+[sub_resource type="Resource" id="Resource_q8xbh"]
+script = ExtResource("9_fhktt")
+dialogue = Array[String](["Player: Nelly's Arcade...", "Owner: I'm Nelly"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_nol20"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_q8xbh")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
 [sub_resource type="Animation" id="Animation_byskb"]
@@ -405,14 +612,18 @@ context_data = NodePath("../ContextData")
 clue_book = NodePath("../ClueBook")
 metadata/_custom_type_script = "uid://da33m8xjogj2n"
 
-[node name="EventManager" type="Node" parent="." node_paths=PackedStringArray("kid")]
+[node name="EventManager" type="Node" parent="." node_paths=PackedStringArray("kid", "flicker_animator", "event_animator", "lights")]
 script = ExtResource("4_fhktt")
+claw_game_scene = ExtResource("20_kqu4s")
+winner_scene = ExtResource("6_kqu4s")
 kid = NodePath("../Level1Scene/KidCharacter")
+flicker_animator = NodePath("../AnimationPlayer")
+event_animator = NodePath("../AnimationPlayer2")
+lights = NodePath("../lighting")
 metadata/_custom_type_script = "uid://df2sbvmy1xank"
 
 [node name="ClueBook" parent="." instance=ExtResource("5_2e10j")]
 position = Vector2(731, -157)
-rotation = -0.11188968
 
 [node name="LevelCamera" type="Camera2D" parent="."]
 
@@ -447,16 +658,22 @@ energy = 0.6
 shadow_enabled = true
 texture = ExtResource("6_byskb")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="lighting"]
-occluder = SubResource("OccluderPolygon2D_byskb")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="lighting"]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.7497799, 0.7497801, 0.74977976, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_byskb")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="lighting"]
+[node name="BackgroundShader" type="ColorRect" parent="."]
+z_index = -2
+material = SubResource("ShaderMaterial_2e10j")
+offset_left = -1061.0
+offset_top = -618.0
+offset_right = 1063.0
+offset_bottom = 615.0
+mouse_filter = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 2
 position = Vector2(-85, 24)
 texture = ExtResource("7_jpf6d")
@@ -476,14 +693,24 @@ scale_amount_max = 0.75
 color = Color(0.7653154, 0.6484944, 0, 1)
 color_ramp = ExtResource("8_kqu4s")
 
-[node name="BackgroundShader" type="ColorRect" parent="."]
-z_index = -2
-material = SubResource("ShaderMaterial_2e10j")
-offset_left = -1061.0
-offset_top = -618.0
-offset_right = 1063.0
-offset_bottom = 615.0
-mouse_filter = 2
+[node name="GradientCircle" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+z_index = 11
+position = Vector2(101, 74)
+scale = Vector2(0.21080476, 0.21080476)
+texture = ExtResource("6_byskb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_un3n4")
+}
+autoplay = "RESET"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y0e6u")
+}
 
 [node name="Level1Scene" type="Sprite2D" parent="."]
 clip_children = 2
@@ -586,6 +813,7 @@ polygon = PackedVector2Array(-103, -109, 80, -155, 172, 359, -108, 380)
 [node name="ArcadeActor" type="Area2D" parent="Level1Scene"]
 position = Vector2(-340, -83)
 script = ExtResource("8_vbnv0")
+interaction_resource = SubResource("Resource_o6tuk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/ArcadeActor"]
 polygon = PackedVector2Array(-145, 155, -104, -71, -48, -128, 55, -75, 312, -83, 327, 225, 87, 260)
@@ -604,6 +832,7 @@ polygon = PackedVector2Array(-2, -200, 54, -111, 15, 220, -98, 133, -47, -187)
 [node name="WinnerActor" type="Area2D" parent="Level1Scene"]
 position = Vector2(245, -280)
 script = ExtResource("8_vbnv0")
+interaction_resource = SubResource("Resource_5wbbn")
 
 [node name="SpriteSheet3" type="Sprite2D" parent="Level1Scene/WinnerActor"]
 position = Vector2(4, -18)
@@ -618,6 +847,7 @@ polygon = PackedVector2Array(-60, -19, -64, 44, 78, 8, 56, -51)
 [node name="PlacardActor" type="Area2D" parent="Level1Scene"]
 position = Vector2(-75, -294)
 script = ExtResource("8_vbnv0")
+interaction_resource = SubResource("Resource_nol20")
 
 [node name="Level1Namecard" type="Sprite2D" parent="Level1Scene/PlacardActor"]
 modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)

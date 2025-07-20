@@ -1,16 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmgkfvckglwi"]
+[gd_scene load_steps=7 format=3 uid="uid://cmgkfvckglwi"]
 
 [ext_resource type="Script" uid="uid://catedtwh6tvs8" path="res://Levels/clue_book.gd" id="1_1o5we"]
 [ext_resource type="Texture2D" uid="uid://cxkw57l0wimim" path="res://Assets/sprite_sheet_4.png" id="1_4efew"]
 [ext_resource type="PackedScene" uid="uid://b05emusnacq1d" path="res://Levels/clue.tscn" id="3_5g0og"]
 
-[node name="ClueBook" type="Node2D"]
+[sub_resource type="Animation" id="Animation_5g0og"]
+resource_name = "wave"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 1.4),
+"transitions": PackedFloat32Array(0.5, -2, 2, 1),
+"update": 0,
+"values": [0.0, -0.05235987755982989, 0.05235987755982989, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_inp17"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_odbig"]
+_data = {
+&"RESET": SubResource("Animation_inp17"),
+&"wave": SubResource("Animation_5g0og")
+}
+
+[node name="ClueBook" type="Node2D" node_paths=PackedStringArray("animator")]
 script = ExtResource("1_1o5we")
 clue_scene = ExtResource("3_5g0og")
+animator = NodePath("AnimationPlayer")
 
 [node name="SpriteSheet4" type="Sprite2D" parent="."]
+modulate = Color(0.95620495, 0.8567446, 0.6727404, 1)
 position = Vector2(-44, 37)
 rotation = -1.4696519
 texture = ExtResource("1_4efew")
 region_enabled = true
 region_rect = Rect2(0, 400, 800, 800)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_odbig")
+}

@@ -11,7 +11,11 @@ var _current_script_index := -1
 var _current_parts : PackedStringArray
 var _current_character : CharacterActor
 var _dialogue_active := false
-var _clue_active := false
+var _clue_active := false:
+	set(value):
+		_clue_active = value
+		if clue_book:
+			clue_book.set_wave(value)
 
 var _can_advance := true
 @onready var _text_box_scene = preload("res://Levels/dialogue_box.tscn")
@@ -101,6 +105,8 @@ func _clue_tried(clue: String):
 	if _clue_active:
 		if clue == _current_parts[2]:
 			_next_line()
+		else:
+			_end_dialogue(false)
 
 func _end_dialogue(is_success := true):
 	if text_box:
@@ -125,12 +131,14 @@ func _show_text_box(source: String, dialogue: String):
 		speaker.direction = sign(GameState.event_manager.last_clicked_actor.global_position.x - speaker.global_position.x)
 	elif speaker is CharacterActor:
 		var offsetx = sign(GameState.player.global_position.x - speaker.global_position.x) * 150
+		GameState.player.direction = -sign(offsetx)
 		text_position = speaker.global_position + Vector2(offsetx, -100)
 	elif speaker == null:
 		pass
 		
 	text_box.global_position = text_position
-	text_box.display_text(dialogue)
+	var is_question = _clue_active
+	text_box.display_text(dialogue, is_question)
 	_can_advance = false
 
 func _on_text_box_finished_displaying():

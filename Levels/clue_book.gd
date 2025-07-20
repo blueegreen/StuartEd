@@ -4,6 +4,7 @@ class_name ClueBook
 @export var start_pos := Vector2(-107, -217)
 @export var clue_height := 100.
 @export var clue_scene : PackedScene
+@export var animator : AnimationPlayer
 
 signal clue_tried(clue: String)
 var _clue_index = 0
@@ -33,3 +34,9 @@ func _update_clues(_clue:= "", _value:= true):
 
 func _on_clue_click(clue: String):
 	clue_tried.emit(clue)
+
+func set_wave(value: bool):
+	if value:
+		animator.play("wave")
+	else:
+		animator.pause()
