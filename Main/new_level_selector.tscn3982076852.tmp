@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bg8ob4ov828t8"]
+
+[ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="1_6tn1n"]
+[ext_resource type="Script" uid="uid://mr3t6c3xokq6" path="res://Main/new_level_selector.gd" id="1_qiqfk"]
+[ext_resource type="Texture2D" uid="uid://cxkw57l0wimim" path="res://Assets/sprite_sheet_4.png" id="2_jfi0t"]
+[ext_resource type="Texture2D" uid="uid://b53her2wwdwx0" path="res://Assets/level_2_scene.png" id="3_xs182"]
+[ext_resource type="Texture2D" uid="uid://b703piycoqr6q" path="res://Assets/level_3_scene.png" id="4_aejnl"]
+[ext_resource type="PackedScene" uid="uid://cqni4fi1ydgfr" path="res://Levels/Level_1/level_1.tscn" id="5_dbhc1"]
+[ext_resource type="PackedScene" uid="uid://bewv1v6ckfimv" path="res://Levels/Level2/level_2.tscn" id="6_8w5xm"]
+[ext_resource type="PackedScene" uid="uid://dc8n6lpynnnnl" path="res://Levels/Level2/whackamole_minigame.tscn" id="7_gfbmn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiqfk"]
+atlas = ExtResource("2_jfi0t")
+region = Rect2(0, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj2k3"]
+atlas = ExtResource("2_jfi0t")
+region = Rect2(384, 0, 384, 384)
+
+[node name="NewLevelSelector" type="Node2D" node_paths=PackedStringArray("level_texture", "hover_overlay", "enter_label", "left_button", "right_button")]
+script = ExtResource("1_qiqfk")
+level_images = Array[Texture2D]([ExtResource("1_6tn1n"), ExtResource("3_xs182"), ExtResource("4_aejnl")])
+level_scenes = Array[PackedScene]([ExtResource("5_dbhc1"), ExtResource("6_8w5xm"), ExtResource("7_gfbmn")])
+level_texture = NodePath("LevelDisplay/LevelTexture")
+hover_overlay = NodePath("LevelDisplay/HoverOverlay")
+enter_label = NodePath("LevelDisplay/HoverOverlay/Label")
+left_button = NodePath("LeftButton")
+right_button = NodePath("RightButton")
+
+[node name="LevelDisplay" type="Panel" parent="."]
+offset_right = 1928.0
+offset_bottom = 1088.0
+
+[node name="LevelTexture" type="TextureRect" parent="LevelDisplay"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 136.0
+offset_right = 2288.0
+offset_bottom = 1216.0
+scale = Vector2(0.637451, 0.637451)
+texture = ExtResource("1_6tn1n")
+
+[node name="HoverOverlay" type="Panel" parent="LevelDisplay"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 232.0
+offset_right = 1320.0
+offset_bottom = 784.0
+
+[node name="Label" type="Label" parent="LevelDisplay/HoverOverlay"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 224.0
+offset_right = 402.0
+offset_bottom = 247.0
+scale = Vector2(1.6955276, 1.6955276)
+text = "Enter"
+horizontal_alignment = 1
+
+[node name="LeftButton" type="TextureButton" parent="."]
+offset_left = 488.0
+offset_top = 696.0
+offset_right = 872.0
+offset_bottom = 1080.0
+texture_normal = SubResource("AtlasTexture_qiqfk")
+
+[node name="RightButton" type="TextureButton" parent="."]
+offset_left = 904.0
+offset_top = 688.0
+offset_right = 1288.0
+offset_bottom = 1072.0
+texture_normal = SubResource("AtlasTexture_vj2k3")

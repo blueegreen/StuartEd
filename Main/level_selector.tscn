@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwc5h2c1eqrqm"]
+[gd_scene load_steps=17 format=3 uid="uid://dwc5h2c1eqrqm"]
 
 [ext_resource type="Script" uid="uid://be5voray2025v" path="res://Main/level_selector.gd" id="1_22lal"]
 [ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="2_5yo0r"]
@@ -10,10 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d1but43m7smrc" path="res://old_stuff/Scenes/scene1.tscn" id="7_4rcow"]
 [ext_resource type="Texture2D" uid="uid://cxkw57l0wimim" path="res://Assets/sprite_sheet_4.png" id="8_5yo0r"]
 [ext_resource type="Shader" uid="uid://dbmbx5pu7ir58" path="res://Main/blur.gdshader" id="9_w7roj"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4rcow"]
-atlas = ExtResource("8_5yo0r")
-region = Rect2(0, 0, 384, 384)
+[ext_resource type="Shader" path="res://Assets/checkers.gdshader" id="11_4rcow"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yo0r"]
 shader = ExtResource("9_w7roj")
@@ -22,56 +19,60 @@ shader_parameter/sample_power = 4
 shader_parameter/is_canvas_group = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rcow"]
-size = Vector2(1641.8429, 601.0203)
+size = Vector2(1711.2986, 551.3973)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rcow"]
+atlas = ExtResource("8_5yo0r")
+region = Rect2(0, 0, 384, 384)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0obos"]
 atlas = ExtResource("8_5yo0r")
 region = Rect2(384, 0, 384, 384)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0obos"]
+shader = ExtResource("11_4rcow")
+shader_parameter/light_color = Color(0.11851626, 0.16573259, 0.1971768, 1)
+shader_parameter/dark_color = Color(0.06110371, 0.1466563, 0.14381301, 1)
+shader_parameter/square_size = 112.5
+shader_parameter/scroll_speed = 50.0
+shader_parameter/angle = 32.3350000000064
+shader_parameter/canvas_size = Vector2(1920, 1080)
 
 [node name="LevelSelector" type="Control" node_paths=PackedStringArray("frame_box", "slide_area", "right_button", "left_button", "select_button", "area", "blur", "label")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_22lal")
 level_images = Array[Texture2D]([ExtResource("2_5yo0r"), ExtResource("3_4rcow"), ExtResource("4_0obos")])
-frame_box = NodePath("HBoxContainer/FrameBox")
-slide_area = NodePath("HBoxContainer/FrameBox/SlideArea")
-right_button = NodePath("HBoxContainer/LeftButton")
-left_button = NodePath("HBoxContainer/RightButton")
-select_button = NodePath("HBoxContainer/SelectButton")
+frame_box = NodePath("FrameBox")
+slide_area = NodePath("FrameBox/SlideArea")
+right_button = NodePath("LeftButton")
+left_button = NodePath("RightButton")
+select_button = NodePath("SelectButton")
 level_scenes = Array[PackedScene]([ExtResource("5_w7roj"), ExtResource("6_5yo0r"), ExtResource("7_4rcow")])
-area = NodePath("HBoxContainer/FrameBox/Area2D")
-blur = NodePath("HBoxContainer/FrameBox/blur")
-label = NodePath("HBoxContainer/FrameBox/Label")
+area = NodePath("FrameBox/Area2D")
+blur = NodePath("FrameBox/blur")
+label = NodePath("Label")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="SelectButton" type="TextureButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -114.99999
 offset_top = 113.99999
-offset_right = 661.0
-offset_bottom = 498.0
-scale = Vector2(0.775348, 0.775348)
-
-[node name="LeftButton" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_4rcow")
-
-[node name="SelectButton" type="TextureButton" parent="HBoxContainer"]
-visible = false
-layout_mode = 2
-mouse_filter = 2
+offset_right = 13.000008
+offset_bottom = 242.0
 texture_normal = ExtResource("2_x3xpc")
 
-[node name="FrameBox" type="Panel" parent="HBoxContainer"]
+[node name="FrameBox" type="Panel" parent="."]
 clip_contents = true
-layout_mode = 2
+layout_mode = 0
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="SlideArea" type="Container" parent="HBoxContainer/FrameBox"]
+[node name="SlideArea" type="Container" parent="FrameBox"]
 layout_mode = 0
 mouse_filter = 2
 
-[node name="blur" type="ColorRect" parent="HBoxContainer/FrameBox"]
+[node name="blur" type="ColorRect" parent="FrameBox"]
 material = SubResource("ShaderMaterial_5yo0r")
 layout_mode = 0
 offset_left = -122.0
@@ -79,22 +80,48 @@ offset_top = -127.0
 offset_right = 262.0
 offset_bottom = 257.0
 
-[node name="Area2D" type="Area2D" parent="HBoxContainer/FrameBox"]
+[node name="Area2D" type="Area2D" parent="FrameBox"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/FrameBox/Area2D"]
-position = Vector2(885.62213, 466.88733)
-scale = Vector2(1.0000008, 1.0000008)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrameBox/Area2D"]
+position = Vector2(920.35, 491.69888)
+scale = Vector2(0.64096916, 0.9308995)
 shape = SubResource("RectangleShape2D_4rcow")
 
-[node name="Label" type="Label" parent="HBoxContainer/FrameBox"]
-custom_minimum_size = Vector2(174.705, 133.32)
+[node name="Label" type="Label" parent="."]
+z_index = 2
 layout_mode = 0
-offset_left = 45.0
-offset_top = 47.0
-offset_right = 87.0
-offset_bottom = 70.0
+offset_left = 808.00006
+offset_top = 448.0
+offset_right = 850.00006
+offset_bottom = 471.0
+scale = Vector2(8.47658, 8.47658)
 text = "Enter"
 
-[node name="RightButton" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
+[node name="LeftButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -88.0
+offset_top = 344.0
+offset_right = 296.0
+offset_bottom = 728.0
+texture_normal = SubResource("AtlasTexture_4rcow")
+
+[node name="RightButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1624.0
+offset_top = 344.0
+offset_right = 2008.0
+offset_bottom = 728.0
 texture_normal = SubResource("AtlasTexture_0obos")
+
+[node name="BackgroundShader" type="ColorRect" parent="."]
+z_index = -2
+material = SubResource("ShaderMaterial_0obos")
+layout_mode = 0
+offset_left = -16.0
+offset_top = -48.0
+offset_right = 2108.0
+offset_bottom = 1185.0
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="FrameBox/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="FrameBox/Area2D" to="." method="_on_area_2d_mouse_exited"]

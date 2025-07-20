@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://d13a3oqd7qf07"]
+[gd_scene load_steps=9 format=3 uid="uid://d13a3oqd7qf07"]
 
 [ext_resource type="Script" uid="uid://dg6cgwk2e3nt4" path="res://Autoload/sfx_manager.gd" id="1_fsbtp"]
 [ext_resource type="AudioStream" uid="uid://cvpbbfnpk26ip" path="res://Audio/Sfx/caught_wackamole.wav" id="2_dkvub"]
+[ext_resource type="AudioStream" uid="uid://ceetvshbr42va" path="res://Audio/Sfx/unsucessful_wackamole.wav" id="3_dkvub"]
+[ext_resource type="AudioStream" uid="uid://cd0pd3qr6m5vq" path="res://Audio/Sfx/rightchoice_whirlpool.wav" id="5_2kvog"]
+[ext_resource type="AudioStream" uid="uid://bk7pej5a6jvxx" path="res://Audio/Sfx/wooden_drawer.wav" id="6_0s2ep"]
+[ext_resource type="AudioStream" uid="uid://x38xfscqsd07" path="res://Audio/Sfx/wrongchoice_whirlpool.wav" id="6_2kvog"]
+[ext_resource type="AudioStream" uid="uid://lckw57yq3x3g" path="res://Audio/Sfx/slot_machine.wav" id="7_0s2ep"]
+[ext_resource type="AudioStream" uid="uid://bd0r718vq555a" path="res://Audio/Sfx/robot_arm.wav" id="8_hayev"]
 
 [node name="SfxManager" type="Node2D"]
 script = ExtResource("1_fsbtp")
 sfx = Dictionary[String, AudioStream]({
-"mole_caught": ExtResource("2_dkvub")
+"cashregisterclick": ExtResource("3_dkvub"),
+"drawer_open": ExtResource("6_0s2ep"),
+"mole_caught": ExtResource("2_dkvub"),
+"rightchoice_whirlpool": ExtResource("5_2kvog"),
+"robot_arm": ExtResource("8_hayev"),
+"slot_machine": ExtResource("7_0s2ep"),
+"wrongchoice_whirlpool": ExtResource("6_2kvog")
 })
