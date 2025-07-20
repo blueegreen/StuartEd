@@ -15,6 +15,7 @@ var current_index := 0
 var is_animating := false
 
 func _ready() -> void:
+
 	if level_images.is_empty():
 		return
 	_show_level(current_index)
@@ -52,16 +53,6 @@ func _show_level(index: int) -> void:
 		frame_box.custom_minimum_size = tex_size
 		frame_box.size = tex_size
 
-		# Center anchors
-		tex.anchor_left = 0.5
-		tex.anchor_top = 0.5
-		tex.anchor_right = 0.5
-		tex.anchor_bottom = 0.5
-		tex.offset_left = -tex_size.x / 2
-		tex.offset_top = -tex_size.y / 2
-		tex.offset_right = tex_size.x / 2
-		tex.offset_bottom = tex_size.y / 2
-		tex.position = Vector2(0, 0)
 
 	slide_area.add_child(tex)
 
@@ -103,15 +94,6 @@ func _animate_switch(next_index: int, to_left: bool) -> void:
 		var tex_size := texture.get_size()
 		frame_box.custom_minimum_size = tex_size
 		frame_box.size = tex_size
-
-		new_tex.anchor_left = 0.5
-		new_tex.anchor_top = 0.5
-		new_tex.anchor_right = 0.5
-		new_tex.anchor_bottom = 0.5
-		new_tex.offset_left = -tex_size.x / 2
-		new_tex.offset_top = -tex_size.y / 2
-		new_tex.offset_right = tex_size.x / 2
-		new_tex.offset_bottom = tex_size.y / 2
 
 		var offset = tex_size.x
 		new_tex.position = Vector2(-offset if to_left else offset, 0)

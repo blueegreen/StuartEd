@@ -43,8 +43,8 @@ area = NodePath("HBoxContainer/FrameBox/Area2D")
 blur = NodePath("HBoxContainer/FrameBox/blur")
 label = NodePath("HBoxContainer/FrameBox/Label")
 
-[node name="HBoxContainer" type="Control" parent="."]
-anchors_preset = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = -114.99999
 offset_top = 113.99999
 offset_right = 661.0
@@ -52,26 +52,18 @@ offset_bottom = 498.0
 scale = Vector2(0.775348, 0.775348)
 
 [node name="LeftButton" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 0
-offset_left = 148.32048
-offset_top = 296.64102
-offset_right = 532.3205
-offset_bottom = 680.641
+layout_mode = 2
 texture_normal = SubResource("AtlasTexture_4rcow")
 
 [node name="SelectButton" type="TextureButton" parent="HBoxContainer"]
 visible = false
-layout_mode = 0
+layout_mode = 2
 mouse_filter = 2
 texture_normal = ExtResource("2_x3xpc")
 
 [node name="FrameBox" type="Panel" parent="HBoxContainer"]
 clip_contents = true
-layout_mode = 0
-offset_left = 437.22302
-offset_top = -2.5794773
-offset_right = 437.22302
-offset_bottom = 381.42053
+layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
@@ -104,9 +96,5 @@ offset_bottom = 70.0
 text = "Enter"
 
 [node name="RightButton" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 0
-offset_left = 2242.8638
-offset_top = 296.641
-offset_right = 2626.8638
-offset_bottom = 680.641
+layout_mode = 2
 texture_normal = SubResource("AtlasTexture_0obos")

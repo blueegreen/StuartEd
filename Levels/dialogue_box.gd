@@ -4,9 +4,9 @@ class_name DialogueBox
 var text := ""
 var letter_index = 0
 
-var letter_time = 0.01
-var space_time = 0.02
-var punctuation_time = 0.08
+var letter_time = 0.02
+var space_time = 0.06
+var punctuation_time = 0.2
 var displaying := false
 
 @export var label : Label
@@ -22,7 +22,7 @@ func _process(_delta):
 	#print(str(text.length()) + " " + str(letter_index))
 	pass
 
-func display_text(text_to_display: String, show_at_once := false):
+func display_text(text_to_display: String, is_question := false):
 	letter_index = 0
 	text = text_to_display
 	label.text = text_to_display
@@ -39,11 +39,12 @@ func display_text(text_to_display: String, show_at_once := false):
 	global_position.x -= size.x / 2.
 	global_position.y -= size.y / 2.
 	
-	if show_at_once:
-		label.text = text
-	else:
-		label.text = ""
-		_display_letter()
+	if is_question:
+		modulate = Color("f4daac")
+		#label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+	
+	label.text = ""
+	_display_letter()
 
 func _display_letter():
 	displaying = true
