@@ -35,17 +35,14 @@ func _process(delta):
 				claw.position.y = clamp(claw.position.y + down_speed * delta, _claw_start_pos.y, _claw_start_pos.y + max_distance_lowered)
 
 func _on_left_button_down():
-	SfxManager.play_sfx("robot_arm")
 	_left_down = true
 
 
 func _on_down_button_down():
-	SfxManager.play_sfx("robot_arm")
 	_down_down = true
 
 
 func _on_right_button_down():
-	SfxManager.play_sfx("robot_arm")
 	_right_down = true
 
 
@@ -69,7 +66,6 @@ func _on_down_button_up():
 			break
 	
 	var claw_final_pos = Vector2(claw.position.x, _claw_start_pos.y)
-	SfxManager.play_sfx("cashregisterclick")
 	var tween = create_tween()
 	tween.tween_property(claw, "position", claw_final_pos, 0.8).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(check_and_shuffle)
@@ -82,7 +78,6 @@ func _on_right_button_up():
 func check_and_shuffle():
 	if _grabbed_ball:
 		if _grabbed_ball.is_stuart:
-			SfxManager.play_sfx("mole_caught")
 			print("stuart_found")
 			stuart_found.emit()
 			if GameState.level_state:
@@ -100,7 +95,6 @@ func check_and_shuffle():
 		_grabbed_ball = null
 
 	animation_player.play("shuffle")
-	SfxManager.play_sfx("slot_machine")
 	_current_state = state.FREE
 
 

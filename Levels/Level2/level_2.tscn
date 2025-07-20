@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://bewv1v6ckfimv"]
+[gd_scene load_steps=36 format=3 uid="uid://bof0oxttocuuq"]
 
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_s6hd2"]
 [ext_resource type="Script" uid="uid://b4fhhkdkaep2b" path="res://Levels/LevelState.gd" id="2_jjajc"]
 [ext_resource type="Script" uid="uid://da33m8xjogj2n" path="res://Levels/DialogueManager.gd" id="3_7msqb"]
+[ext_resource type="Script" uid="uid://beqswcxmv8lil" path="res://Levels/Level2/event_manager_level_2.gd" id="4_bd5ij"]
 [ext_resource type="PackedScene" uid="uid://cmgkfvckglwi" path="res://Levels/clue_book.tscn" id="7_4uf0v"]
 [ext_resource type="Shader" uid="uid://iebxi3gkewmw" path="res://Assets/checkers.gdshader" id="8_sl3r2"]
 [ext_resource type="Texture2D" uid="uid://b703piycoqr6q" path="res://Assets/level_3_scene.png" id="9_4n5mf"]
@@ -12,10 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://ds7tm5k88yiad" path="res://Assets/level_3_namecard.png" id="11_7msqb"]
 [ext_resource type="PackedScene" uid="uid://cnc4cbtrya0b" path="res://Levels/player.tscn" id="11_jjajc"]
 [ext_resource type="Script" uid="uid://bnqjatayjieo0" path="res://Levels/Actor.gd" id="12_ojwen"]
-
-[sub_resource type="GDScript" id="GDScript_7msqb"]
-script/source = "extends EventManager
-"
 
 [sub_resource type="Environment" id="Environment_elwpa"]
 background_mode = 3
@@ -346,7 +343,7 @@ script = ExtResource("3_7msqb")
 metadata/_custom_type_script = "uid://da33m8xjogj2n"
 
 [node name="EventManager" type="Node" parent="."]
-script = SubResource("GDScript_7msqb")
+script = ExtResource("4_bd5ij")
 metadata/_custom_type_script = "uid://df2sbvmy1xank"
 
 [node name="ClueBook" parent="." instance=ExtResource("7_4uf0v")]
