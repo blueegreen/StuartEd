@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c3gc4migyyabm" path="res://icon.svg" id="2_x3xpc"]
 [ext_resource type="Texture2D" uid="uid://b53her2wwdwx0" path="res://Assets/level_2_scene.png" id="3_4rcow"]
 [ext_resource type="Texture2D" uid="uid://b703piycoqr6q" path="res://Assets/level_3_scene.png" id="4_0obos"]
-[ext_resource type="PackedScene" uid="uid://cqni4fi1ydgfr" path="res://Levels/level_1.tscn" id="5_w7roj"]
+[ext_resource type="PackedScene" uid="uid://cqni4fi1ydgfr" path="res://Levels/Level_1/level_1.tscn" id="5_w7roj"]
 [ext_resource type="PackedScene" uid="uid://vxrwcdjbfb88" path="res://old_stuff/test_scene.tscn" id="6_5yo0r"]
 [ext_resource type="PackedScene" uid="uid://d1but43m7smrc" path="res://old_stuff/Scenes/scene1.tscn" id="7_4rcow"]
 [ext_resource type="Texture2D" uid="uid://cxkw57l0wimim" path="res://Assets/sprite_sheet_4.png" id="8_5yo0r"]
@@ -17,7 +17,7 @@ region = Rect2(0, 0, 384, 384)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yo0r"]
 shader = ExtResource("9_w7roj")
-shader_parameter/strength = 3.1840001512400002
+shader_parameter/strength = 3.18400015124
 shader_parameter/sample_power = 4
 shader_parameter/is_canvas_group = true
 
