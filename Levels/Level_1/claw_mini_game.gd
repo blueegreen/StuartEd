@@ -35,14 +35,17 @@ func _process(delta):
 				claw.position.y = clamp(claw.position.y + down_speed * delta, _claw_start_pos.y, _claw_start_pos.y + max_distance_lowered)
 
 func _on_left_button_down():
+	SfxManager.play_sfx("robot_arm")
 	_left_down = true
 
 
 func _on_down_button_down():
+	SfxManager.play_sfx("robot_arm")
 	_down_down = true
 
 
 func _on_right_button_down():
+	SfxManager.play_sfx("robot_arm")
 	_right_down = true
 
 

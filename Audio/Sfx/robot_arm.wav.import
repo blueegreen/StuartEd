@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://lckw57yq3x3g"
-path="res://.godot/imported/slot_machine.wav-b461349a537c0851f7366715a05dee02.sample"
+uid="uid://bd0r718vq555a"
+path="res://.godot/imported/robot_arm.wav-dcacb975d81bc7def47a4b4c9ed5acbf.sample"
 
 [deps]
 
-source_file="res://Audio/slot_machine.wav"
-dest_files=["res://.godot/imported/slot_machine.wav-b461349a537c0851f7366715a05dee02.sample"]
+source_file="res://Audio/Sfx/robot_arm.wav"
+dest_files=["res://.godot/imported/robot_arm.wav-dcacb975d81bc7def47a4b4c9ed5acbf.sample"]
 
 [params]
 
