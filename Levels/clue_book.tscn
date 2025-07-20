@@ -48,7 +48,7 @@ clue_scene = ExtResource("3_5g0og")
 animator = NodePath("AnimationPlayer")
 
 [node name="SpriteSheet4" type="Sprite2D" parent="."]
-modulate = Color(0.95620495, 0.8567446, 0.6727404, 1)
+modulate = Color(0.95, 0.93764997, 0.8265, 1)
 position = Vector2(-44, 37)
 rotation = -1.4696519
 texture = ExtResource("1_4efew")
