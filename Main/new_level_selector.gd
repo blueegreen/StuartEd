@@ -6,7 +6,6 @@ extends Node2D
 
 @export var level_texture: TextureRect
 @export var blur_overlay: TextureRect
-@export var enter_label: Label
 @export var left_button: TextureButton
 @export var right_button: TextureButton
 @export var hover_detector: Area2D
@@ -40,9 +39,6 @@ func _ready():
 	
 	blur_overlay.modulate.a = 0.6 
 
-
-	enter_label.visible = false
-
 	hover_detector.mouse_entered.connect(_on_mouse_enter)
 	hover_detector.mouse_exited.connect(_on_mouse_exit)
 
@@ -52,7 +48,7 @@ func _ready():
 
 	await get_tree().process_frame
 	level_texture.set_pivot_offset(level_texture.size / 2)
-	level_texture.scale = Vector2.ONE * 0.8
+	level_texture.scale = Vector2.ONE * .75
 
 	blur_overlay.set_pivot_offset(level_texture.size / 2)
 	level_name_texture.set_pivot_offset(level_name_texture.size / 2)
@@ -110,11 +106,9 @@ func _on_texture_gui_input(event):
 
 func _on_mouse_enter():
 	blur_overlay.visible = true
-	enter_label.visible = true
 
 func _on_mouse_exit():
 	blur_overlay.visible = false
-	enter_label.visible = false
 
 func _on_LeftButton_pressed():
 	show_level((current_index - 1 + level_images.size()) % level_images.size())
@@ -130,13 +124,13 @@ func _process(delta):
 		offset = (local_mouse - center) / center
 
 		var target_angle = offset.x * -max_rotation_deg
-		var target_scale = Vector2.ONE * 0.8 + Vector2(offset.x, -offset.y) * max_scale_offset
+		var target_scale = Vector2.ONE * .75 + Vector2(offset.x, -offset.y) * max_scale_offset
 
 		current_angle = lerp(current_angle, target_angle, delta * 6.0)
 		current_scale = current_scale.lerp(target_scale, delta * 6.0)
 	else:
 		current_angle = lerp(current_angle, 0.0, delta * 6.0)
-		current_scale = current_scale.lerp(Vector2.ONE * 0.8, delta * 6.0)
+		current_scale = current_scale.lerp(Vector2.ONE * .75, delta * 6.0)
 
 	level_texture.rotation_degrees = current_angle
 	level_texture.scale = current_scale

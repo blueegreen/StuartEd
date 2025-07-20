@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://ct0hs2hdn1bv2"]
+
+[ext_resource type="Script" uid="uid://jksu821ckitg" path="res://old_stuff/card_hover_test.gd" id="1_4kkye"]
+[ext_resource type="Shader" uid="uid://rq7ym7cu0rwx" path="res://old_stuff/card_hover_test.gdshader" id="1_cnhpl"]
+[ext_resource type="Texture2D" uid="uid://duki7h2lxgtx3" path="res://Assets/misc/white_rect.png" id="2_oquih"]
+[ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="4_kkdy4"]
+[ext_resource type="Texture2D" uid="uid://gyteslrl45k7" path="res://Assets/level_1_namecard.png" id="5_0khae"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkdy4"]
+shader = ExtResource("1_cnhpl")
+shader_parameter/mouse_screen_pos = Vector2(0, 0)
+shader_parameter/hovering = 0.0
+shader_parameter/screen_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5w1sl"]
+shader = ExtResource("1_cnhpl")
+shader_parameter/mouse_screen_pos = Vector2(0, 0)
+shader_parameter/hovering = 0.0
+shader_parameter/screen_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7d8nr"]
+shader = ExtResource("1_cnhpl")
+shader_parameter/mouse_screen_pos = Vector2(0, 0)
+shader_parameter/hovering = 0.0
+shader_parameter/screen_scale = 1.0
+
+[node name="card_hover_test" type="Button" node_paths=PackedStringArray("normal")]
+material = SubResource("ShaderMaterial_kkdy4")
+offset_right = 200.0
+offset_bottom = 116.0
+icon = ExtResource("2_oquih")
+script = ExtResource("1_4kkye")
+normal = NodePath("Marker2D")
+
+[node name="Level1Scene" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5w1sl")
+position = Vector2(240, 116)
+scale = Vector2(0.21700588, 0.21700588)
+texture = ExtResource("4_kkdy4")
+
+[node name="Level1Namecard" type="Sprite2D" parent="Level1Scene"]
+material = SubResource("ShaderMaterial_7d8nr")
+position = Vector2(179.71875, 755.73987)
+scale = Vector2(2.5313408, 2.5313408)
+texture = ExtResource("5_0khae")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(226, 116)

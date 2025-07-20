@@ -23,6 +23,12 @@ signal stuart_found
 
 func _ready():
 	_claw_start_pos = claw.position
+	await get_tree().create_timer(.1).timeout
+	var dialogue_script : Array[String] = [\
+	"left: stuart should be in one of these...",\
+	"left: do I have enough information to figure it out?"\
+	]
+	GameState.dialogue_manager.start_dialogue(dialogue_script)
 
 func _process(delta):
 	match _current_state:

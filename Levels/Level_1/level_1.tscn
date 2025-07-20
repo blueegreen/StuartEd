@@ -604,6 +604,10 @@ clues = {
 "getting Stuart and Ed": true,
 "horizontal stripes": false
 }
+win_flags = {
+"ed found": false,
+"stuart found": false
+}
 metadata/_custom_type_script = "uid://b4fhhkdkaep2b"
 
 [node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("context_data", "clue_book")]

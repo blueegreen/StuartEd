@@ -84,9 +84,10 @@ func _next_line():
 	
 	#speaking time:
 	
-	_current_character = context_data.get_speaker(_current_parts[0])
-	if _current_character:
-		_current_character.try_animation("talk")
+	if context_data:
+		_current_character = context_data.get_speaker(_current_parts[0])
+		if _current_character:
+			_current_character.try_animation("talk")
 	
 	#debug
 	_show_text_box(_current_parts[0], _current_parts[1])
@@ -124,7 +125,10 @@ func _show_text_box(source: String, dialogue: String):
 	text_box = _text_box_scene.instantiate()
 	text_box.line_finished.connect(_on_text_box_finished_displaying)
 	get_tree().root.add_child(text_box)
-	var speaker := context_data.get_speaker(source)
+	var speaker : Node2D
+	if context_data:
+		speaker = context_data.get_speaker(source)
+
 	var text_position := Vector2.ZERO
 	if speaker is Player:
 		text_position = speaker.global_position + Vector2(0, -100)
@@ -134,7 +138,11 @@ func _show_text_box(source: String, dialogue: String):
 		GameState.player.direction = -sign(offsetx)
 		text_position = speaker.global_position + Vector2(offsetx, -100)
 	elif speaker == null:
-		pass
+		match source:
+			"left":
+				text_position = Vector2(-600, 300)
+			"right":
+				text_position = Vector2(500, 300)
 		
 	text_box.global_position = text_position
 	var is_question = _clue_active
