@@ -21,7 +21,7 @@ func start_event(event_name: String):
 #func start_dialogue_event(actor: Actor, dialogue: Array[String], walk_required: bool = true):
 func start_dialogue_event(actor: Actor, interaction: InteractionEntry):
 	if _event_active:
-		push_warning("event attempted to be interrupted by dialogue")
+		push_warning("dialogue attempted to be interrupted by dialogue")
 		return
 	
 	_event_active = true

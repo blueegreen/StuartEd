@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bfyu5wpqhlggq" path="res://Assets/misc/dialogue_box_sprite.png" id="1_lwvtd"]
 [ext_resource type="Script" uid="uid://ct8nc8hjsfoyi" path="res://Levels/dialogue_box.gd" id="1_u8kkh"]
 
-[sub_resource type="SystemFont" id="SystemFont_u8kkh"]
+[sub_resource type="LabelSettings" id="LabelSettings_hrdno"]
+font_size = 25
+font_color = Color(0, 0, 0, 1)
 
 [node name="DialogueBox" type="MarginContainer" node_paths=PackedStringArray("label", "letter_display_timer")]
 z_index = 10
@@ -30,11 +32,8 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="Label" type="Label" parent="MarginContainer"]
-z_index = 1
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("SystemFont_u8kkh")
-theme_override_font_sizes/font_size = 25
+label_settings = SubResource("LabelSettings_hrdno")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
