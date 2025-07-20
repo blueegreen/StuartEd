@@ -38,6 +38,21 @@ shader_parameter/scroll_speed = 50.0
 shader_parameter/angle = 32.3350000000064
 shader_parameter/canvas_size = Vector2(1920, 1080)
 
+[sub_resource type="Animation" id="Animation_wxxfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level1Scene/WinnerActor/SpriteSheet3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_i77d6"]
 resource_name = "flicker"
 length = 2.0
@@ -55,25 +70,73 @@ tracks/0/keys = {
 "values": [1, 2, 1, 2, 1, 2]
 }
 
-[sub_resource type="Animation" id="Animation_wxxfp"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_un3n4"]
+_data = {
+&"RESET": SubResource("Animation_wxxfp"),
+&"flicker": SubResource("Animation_i77d6")
+}
+
+[sub_resource type="Animation" id="Animation_un3n4"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Level1Scene/WinnerActor/SpriteSheet3:frame")
+tracks/0/path = NodePath("GradientCircle:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_un3n4"]
-_data = {
-&"RESET": SubResource("Animation_wxxfp"),
-&"flicker": SubResource("Animation_i77d6")
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GradientCircle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.21080476, 0.21080476)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GradientCircle:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(18.892157, 18.892157, 18.892157, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Level1Scene/KidCharacter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(282, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Level1Scene/KidCharacter:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_b6ljx"]
@@ -140,69 +203,6 @@ tracks/4/keys = {
 "values": [0.0, 12.566371]
 }
 
-[sub_resource type="Animation" id="Animation_un3n4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GradientCircle:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GradientCircle:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.21080476, 0.21080476)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GradientCircle:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(18.892157, 18.892157, 18.892157, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Level1Scene/KidCharacter:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(282, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Level1Scene/KidCharacter:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y0e6u"]
 _data = {
 &"RESET": SubResource("Animation_un3n4"),
@@ -248,10 +248,8 @@ script = ExtResource("10_eepv7")
 interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_odamq"), SubResource("Resource_c0yvh"), SubResource("Resource_jpf6d"), SubResource("Resource_kqu4s")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
-[sub_resource type="Animation" id="Animation_jpf6d"]
-resource_name = "talk"
-length = 0.6
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_bmyhu"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -259,10 +257,10 @@ tracks/0/path = NodePath("SpriteSheet1:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_kqu4s"]
@@ -280,8 +278,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_bmyhu"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_jpf6d"]
+resource_name = "talk"
+length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -289,10 +289,10 @@ tracks/0/path = NodePath("SpriteSheet1:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gqlel"]
@@ -333,8 +333,8 @@ script = ExtResource("10_eepv7")
 interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_bmyhu"), SubResource("Resource_gqlel"), SubResource("Resource_smy0f"), SubResource("Resource_d8g6h")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
-[sub_resource type="Animation" id="Animation_gqlel"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_smy0f"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -348,8 +348,8 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_smy0f"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_gqlel"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -403,8 +403,8 @@ script = ExtResource("10_eepv7")
 interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_1gvqh"), SubResource("Resource_de8wl")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
-[sub_resource type="Animation" id="Animation_mtdwk"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_1gvqh"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -418,8 +418,8 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_1gvqh"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_mtdwk"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -537,6 +537,21 @@ script = ExtResource("10_eepv7")
 interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_q8xbh")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
+[sub_resource type="Animation" id="Animation_c0yvh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level1Namecard:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.10447469]
+}
+
 [sub_resource type="Animation" id="Animation_byskb"]
 resource_name = "swing"
 length = 3.0
@@ -552,21 +567,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [0.06981317007977318, -0.06981317007977318]
-}
-
-[sub_resource type="Animation" id="Animation_c0yvh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Level1Namecard:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.10447469]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jpf6d"]
