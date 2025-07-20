@@ -51,3 +51,6 @@ func ed_prop_clicked():
 		if GameState.level_state:
 			GameState.level_state.set_flag("ed found", true)
 			_end_scene()
+
+func _on_back_button_button_down():
+	_end_scene()

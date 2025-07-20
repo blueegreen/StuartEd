@@ -1,25 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl14d6ox8opcb"]
+[gd_scene load_steps=15 format=3 uid="uid://cl14d6ox8opcb"]
 
 [ext_resource type="Texture2D" uid="uid://lvd4v4nmhc1y" path="res://Assets/level_2_stomach_bg.png" id="1_1rees"]
 [ext_resource type="Script" uid="uid://bi6gptrh55u8x" path="res://Levels/Level2/lady_minigame.gd" id="1_xs3ux"]
 [ext_resource type="PackedScene" uid="uid://b045xu8mwdaui" path="res://Levels/Level2/lady_whirlpool_prop.tscn" id="2_gqhov"]
-
-[sub_resource type="Animation" id="Animation_gqhov"]
-resource_name = "shake"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Level2StomachBg:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.6333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(2, -2), Vector2(-3, -1), Vector2(3, 3)]
-}
+[ext_resource type="Texture2D" uid="uid://cxkvtfemo2yoe" path="res://Assets/misc/particle1.png" id="4_qespo"]
+[ext_resource type="Texture2D" uid="uid://d1cw7dd828jtl" path="res://Assets/misc/particle2.png" id="5_hjd2k"]
+[ext_resource type="Gradient" uid="uid://purbi78xqmdv" path="res://Assets/misc/fade_in_fade_out.tres" id="5_jkil2"]
 
 [sub_resource type="Animation" id="Animation_aj87v"]
 length = 0.001
@@ -36,11 +22,37 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_gqhov"]
+resource_name = "shake"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level2StomachBg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, -2), Vector2(-3, -1), Vector2(3, 3)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qespo"]
 _data = {
 &"RESET": SubResource("Animation_aj87v"),
 &"shake": SubResource("Animation_gqhov")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qespo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjd2k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkil2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0g0e6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tuvn8"]
 
 [node name="lady_minigame" type="Node2D" node_paths=PackedStringArray("centre_marker")]
 script = ExtResource("1_xs3ux")
@@ -49,7 +61,47 @@ centre_marker = NodePath("orbit_centre")
 prop_scene = ExtResource("2_gqhov")
 
 [node name="Level2StomachBg" type="Sprite2D" parent="."]
+clip_children = 2
 texture = ExtResource("1_1rees")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Level2StomachBg"]
+position = Vector2(-147.28992, 69.14005)
+amount = 50
+texture = ExtResource("4_qespo")
+lifetime = 10.0
+preprocess = 4.03
+emission_shape = 3
+emission_rect_extents = Vector2(180, 180)
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+angular_velocity_max = 10.0
+orbit_velocity_min = -0.3
+orbit_velocity_max = 0.3
+damping_max = 10.0
+scale_amount_min = 0.1
+scale_amount_max = 0.8
+color_ramp = ExtResource("5_jkil2")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Level2StomachBg"]
+position = Vector2(-147.28992, 69.14005)
+amount = 20
+texture = ExtResource("5_hjd2k")
+lifetime = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(180, 180)
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+angular_velocity_max = 10.0
+orbit_velocity_min = -0.3
+orbit_velocity_max = 0.3
+damping_max = 10.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+color_ramp = ExtResource("5_jkil2")
 
 [node name="orbit_centre" type="Marker2D" parent="."]
 position = Vector2(-149, 66)
@@ -61,3 +113,26 @@ libraries = {
 &"": SubResource("AnimationLibrary_qespo")
 }
 autoplay = "shake"
+
+[node name="back_button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_left = -485.0
+offset_top = -258.0
+offset_right = -385.0
+offset_bottom = -158.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qespo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hjd2k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jkil2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0g0e6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tuvn8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -1098.0
+offset_top = -652.0
+offset_right = 1076.0
+offset_bottom = 661.0
+mouse_filter = 2
+color = Color(0.1804, 0.20019998, 0.22, 0.4745098)
+
+[connection signal="button_down" from="back_button" to="." method="_on_back_button_button_down"]

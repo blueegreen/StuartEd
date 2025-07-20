@@ -156,7 +156,7 @@ offset_top = -652.0
 offset_right = 1076.0
 offset_bottom = 661.0
 mouse_filter = 2
-color = Color(0.18431373, 0.20392157, 0.22352941, 1)
+color = Color(0.1804, 0.20019998, 0.22, 0.4745098)
 
 [connection signal="button_down" from="Level2RegisterDrawer/Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="back_button" to="." method="_on_back_button_button_down"]

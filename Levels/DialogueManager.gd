@@ -5,6 +5,7 @@ class_name DialogueManager
 @export var clue_book : ClueBook
 
 signal dialogue_finished
+signal dialogue_changed(new_dialogue : Array[String])
 
 var _current_script : Array[String]
 var _current_script_index := -1
@@ -12,6 +13,11 @@ var _current_parts : PackedStringArray
 var _current_character : CharacterActor
 var _dialogue_active := false
 var _clue_active := false
+
+var dialogue : Array[String]:
+	set(value):
+		dialogue = value
+		dialogue_changed.emit(value)
 
 #script: ["speaker: dialogue: clue (null default): event (null default)", "event_name", ...]
 #if dialogue interrupted / leading to event, emit dialogue_finished

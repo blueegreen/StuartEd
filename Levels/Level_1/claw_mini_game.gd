@@ -82,6 +82,8 @@ func check_and_shuffle():
 			stuart_found.emit()
 			if GameState.level_state:
 				GameState.level_state.set_flag("stuart found", true)
+				_end_scene()
+				return
 			#end_scene()
 
 		var trans = _grabbed_ball.global_transform

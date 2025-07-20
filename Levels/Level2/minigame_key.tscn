@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwm2dcav3e5t4"]
+[gd_scene load_steps=11 format=3 uid="uid://cwm2dcav3e5t4"]
 
 [ext_resource type="Texture2D" uid="uid://dm7w62neeyirv" path="res://Assets/sprite_sheet_5.png" id="1_b4ky8"]
 [ext_resource type="Script" uid="uid://2xqchoe32ex" path="res://Levels/Level2/minigame_key.gd" id="1_pjf26"]
+[ext_resource type="Texture2D" uid="uid://dka2ifjgf2afm" path="res://Assets/misc/particle4.png" id="2_l5751"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjf26"]
 
@@ -13,11 +14,15 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dktp8"]
 
+[sub_resource type="Curve" id="Curve_ukj1g"]
+_data = [Vector2(0.010238908, 0.031337023), 0.0, 0.0, 0, 0, Vector2(0.22866893, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.7308207, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="LabelSettings" id="LabelSettings_l5751"]
 font_size = 33
 font_color = Color(0.13949694, 0.29506874, 0.23451985, 1)
 
-[node name="register_key" type="Button" node_paths=PackedStringArray("label", "key", "key_stuart")]
+[node name="register_key" type="Button" node_paths=PackedStringArray("label", "particles", "key", "key_stuart")]
 z_index = 2
 offset_right = 54.0
 offset_bottom = 62.0
@@ -30,8 +35,29 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_dktp8")
 action_mode = 0
 script = ExtResource("1_pjf26")
 label = NodePath("key/Label")
+particles = NodePath("CPUParticles2D")
 key = NodePath("key")
 key_stuart = NodePath("key_stuart")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(26, 24)
+emitting = false
+amount = 12
+texture = ExtResource("2_l5751")
+lifetime = 0.7000000000000001
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+local_coords = true
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 64.2
+gravity = Vector2(0, 300)
+initial_velocity_max = 200.0
+scale_amount_min = 0.1
+scale_amount_max = 0.9
+scale_amount_curve = SubResource("Curve_ukj1g")
 
 [node name="key" type="Sprite2D" parent="."]
 position = Vector2(42, 49)

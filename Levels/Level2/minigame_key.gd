@@ -3,6 +3,7 @@ class_name RegisterKey
 
 @export var number := 1
 @export var label : Label
+@export var particles : CPUParticles2D
 
 @export var key : Node2D
 @export var key_stuart : Node2D
@@ -68,6 +69,7 @@ func _pop_off():
 	in_motion = true
 	disabled = true
 	
+	particles.emitting = true
 	vel = Vector2(randf_range(-60, 60), randf_range(-500, -600))
 	rot_dir = 1 if vel.x > 0 else -1
 	var fade_tween = create_tween()
