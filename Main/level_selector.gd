@@ -20,7 +20,7 @@ func _ready() -> void:
 	_show_level(current_index)
 
 	right_button.pressed.connect(_on_right_button)
-	left_button.pressed.connect(_on_right_button)
+	left_button.pressed.connect(_on_left_button)
 	select_button.pressed.connect(_on_select_button_pressed)
 	
 	area.connect("mouse_entered", _on_mouse_entered)
@@ -126,4 +126,4 @@ func _animate_switch(next_index: int, to_left: bool) -> void:
 	await tween.finished
 	old_tex.queue_free()
 	current_index = next_index
-	is_animating = false 
+	is_animating = false
