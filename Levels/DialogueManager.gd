@@ -13,6 +13,10 @@ var _current_character : CharacterActor
 var _dialogue_active := false
 var _clue_active := false
 
+var _can_advance := true
+@onready var _text_box_scene = preload("res://Levels/dialogue_box.tscn")
+var text_box : DialogueBox
+
 #script: ["speaker: dialogue: clue (null default): event (null default)", "event_name", ...]
 #if dialogue interrupted / leading to event, emit dialogue_finished
 
@@ -42,6 +46,9 @@ func start_dialogue(script: Array[String]):
 func _next_line():
 	_current_script_index += 1
 	
+	if text_box:
+		text_box.queue_free()
+
 	if _current_character:
 		_current_character.try_animation("idle")
 		_current_character = null
@@ -78,7 +85,7 @@ func _next_line():
 		_current_character.try_animation("talk")
 	
 	#debug
-	#dialogue = [_current_parts[0], _current_parts[1]]
+	_show_text_box(_current_parts[0], _current_parts[1])
 	#debug
 
 
@@ -87,7 +94,8 @@ func _unhandled_input(event):
 		if _clue_active: #if prompting for clue don't further dialogue unless correct clue input
 			_end_dialogue(false)
 			return
-		_next_line()
+		if _can_advance:
+			_next_line()
 
 func _clue_tried(clue: String):
 	if _clue_active:
@@ -95,9 +103,26 @@ func _clue_tried(clue: String):
 			_next_line()
 
 func _end_dialogue(is_success := true):
+	if text_box:
+		text_box.queue_free()
 	if _current_character:
 		_current_character.try_animation("idle")
+		_current_character = null
+
 	_dialogue_active = false
 	_clue_active = false
 	await get_tree().process_frame
 	dialogue_finished.emit(is_success)
+
+func _show_text_box(source: String, dialogue: String):
+	text_box = _text_box_scene.instantiate()
+	text_box.line_finished.connect(_on_text_box_finished_displaying)
+	get_tree().root.add_child(text_box)
+	var speaker := context_data.get_speaker(source)
+	if speaker is CharacterActor:
+		text_box.global_position = speaker.global_position
+		text_box.display_text(dialogue)
+		_can_advance = false
+
+func _on_text_box_finished_displaying():
+	_can_advance = true

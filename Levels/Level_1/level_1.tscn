@@ -329,7 +329,7 @@ clip_children = 2
 texture = ExtResource("5_odamq")
 
 [node name="Path2D" type="Path2D" parent="Level1Scene"]
-position = Vector2(23, 3)
+position = Vector2(56, -167)
 curve = SubResource("Curve2D_n0qsc")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Level1Scene/Path2D"]
@@ -346,6 +346,7 @@ script = ExtResource("6_joalh")
 position = Vector2(-0.99113655, -126.38046)
 scale = Vector2(0.785, 0.785)
 texture = ExtResource("7_llsuh")
+offset = Vector2(-25, 225)
 hframes = 3
 vframes = 2
 region_enabled = true
@@ -356,51 +357,54 @@ polygon = PackedVector2Array(-61.24209, -29.658295, -14.74617, -204.62724, 46.94
 
 [node name="OwnerCharacter" type="Area2D" parent="Level1Scene"]
 z_index = 1
-position = Vector2(-259, 26)
+position = Vector2(-194, -149)
 script = ExtResource("7_joalh")
 interaction_resource = SubResource("Resource_byskb")
 
 [node name="SpriteSheet1" type="Sprite2D" parent="Level1Scene/OwnerCharacter"]
 light_mask = 0
-position = Vector2(53, -58)
+position = Vector2(-11, 117)
 texture = ExtResource("11_vbnv0")
 hframes = 2
 region_enabled = true
 region_rect = Rect2(0, 800, 1200, 800)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/OwnerCharacter"]
+position = Vector2(-64, 175)
 polygon = PackedVector2Array(-80, 28, -80, -43, -52, -72, -10, -122, -10, -181, 36, -228, 78, -234, 120, -214, 225, -134, 210, -105, 76, -105, 120, -55, 169, -73, 190, -42, 134, 2, 81, -21, 109, 41, 110, 155, 61, 180, 44, 80, -53, 76)
 
 [node name="FortuneCharacter" type="Area2D" parent="Level1Scene"]
 z_index = 1
-position = Vector2(118, 0)
+position = Vector2(110, -40)
 script = ExtResource("7_joalh")
 interaction_resource = SubResource("Resource_mtdwk")
 
 [node name="SpriteSheet2" type="Sprite2D" parent="Level1Scene/FortuneCharacter"]
-position = Vector2(-50, 2)
+position = Vector2(-44, 33)
 texture = ExtResource("11_vbnv0")
 hframes = 2
 region_enabled = true
 region_rect = Rect2(1200, 0, 1200, 800)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/FortuneCharacter"]
+position = Vector2(6, 31)
 polygon = PackedVector2Array(-40, 243, -74, 45, -37, -96, 16, -102, 44, 13, 38, 234)
 
 [node name="KidCharacter" type="Area2D" parent="Level1Scene"]
 z_index = 1
-position = Vector2(320, 26)
+position = Vector2(282, 1)
 script = ExtResource("7_joalh")
 interaction_resource = SubResource("Resource_b6ljx")
 
 [node name="SpriteSheet3" type="Sprite2D" parent="Level1Scene/KidCharacter"]
-position = Vector2(-29, -5)
+position = Vector2(7, 14)
 texture = ExtResource("11_vbnv0")
 hframes = 2
 region_enabled = true
 region_rect = Rect2(0, 0, 1200, 800)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/KidCharacter"]
+position = Vector2(36, 19)
 polygon = PackedVector2Array(-53, 135, -43, 29, -76, 24, -45, 10, -80, -31, -24, -80, 31, -52, 2, 5, 44, 19, 11, 29, 34, 118, 24, 120, -42, 127)
 
 [node name="VendingActor" type="Area2D" parent="Level1Scene"]

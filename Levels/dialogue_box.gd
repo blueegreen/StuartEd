@@ -13,6 +13,8 @@ var displaying := false
 @export var letter_display_timer : Timer
 @export var max_width := 700.
 
+signal line_finished
+
 func _process(_delta):
 	#if Input.is_action_just_pressed("click"):
 		#text = text + "lorem ipsum"
@@ -33,7 +35,10 @@ func display_text(text_to_display: String, show_at_once := false):
 		await resized
 		await resized
 		custom_minimum_size.y = size.y
-
+	
+	global_position.x -= size.x / 2.
+	global_position.y -= size.y / 2.
+	
 	if show_at_once:
 		label.text = text
 	else:
@@ -45,7 +50,7 @@ func _display_letter():
 	label.text += text[letter_index]
 	letter_index += 1
 	if letter_index >= text.length():
-		displaying = false
+		line_finished.emit()
 		return
 	
 	match text[letter_index]:
@@ -55,12 +60,6 @@ func _display_letter():
 			letter_display_timer.start(space_time)
 		_:
 			letter_display_timer.start(letter_time)
-
-#func _input(event):
-	#if event.is_action_pressed("click") and not event.is_echo():
-		#if displaying:
-			#display_text(text, true)
-			#get_viewport().set_input_as_handled()
 
 func _on_timer_timeout():
 	_display_letter()
