@@ -69,6 +69,7 @@ mouse_filter = 2
 
 [node name="SlideArea" type="Container" parent="HBoxContainer/FrameBox"]
 layout_mode = 0
+mouse_filter = 2
 
 [node name="blur" type="ColorRect" parent="HBoxContainer/FrameBox"]
 material = SubResource("ShaderMaterial_5yo0r")

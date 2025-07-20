@@ -7,6 +7,7 @@ extends MinigameScene
 @export var stuart : Button
 
 
+
 var _num_popped := 0
 
 func _ready():
