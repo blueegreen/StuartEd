@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwm2dcav3e5t4"]
+
+[ext_resource type="Texture2D" uid="uid://dm7w62neeyirv" path="res://Assets/sprite_sheet_5.png" id="1_b4ky8"]
+[ext_resource type="Script" uid="uid://2xqchoe32ex" path="res://Levels/Level2/minigame_key.gd" id="1_pjf26"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjf26"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5751"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukj1g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4naoe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dktp8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l5751"]
+font_size = 33
+font_color = Color(0.13949694, 0.29506874, 0.23451985, 1)
+
+[node name="register_key" type="Button" node_paths=PackedStringArray("label", "key", "key_stuart")]
+z_index = 2
+offset_right = 54.0
+offset_bottom = 62.0
+pivot_offset = Vector2(27, 31)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pjf26")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l5751")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ukj1g")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4naoe")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dktp8")
+action_mode = 0
+script = ExtResource("1_pjf26")
+label = NodePath("key/Label")
+key = NodePath("key")
+key_stuart = NodePath("key_stuart")
+
+[node name="key" type="Sprite2D" parent="."]
+position = Vector2(42, 49)
+texture = ExtResource("1_b4ky8")
+region_enabled = true
+region_rect = Rect2(500, 0, 500, 500)
+
+[node name="Label" type="Label" parent="key"]
+offset_left = -25.0
+offset_top = -50.0
+offset_right = 15.0
+text = "1"
+label_settings = SubResource("LabelSettings_l5751")
+
+[node name="key_stuart" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(53, 73)
+texture = ExtResource("1_b4ky8")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 500)
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

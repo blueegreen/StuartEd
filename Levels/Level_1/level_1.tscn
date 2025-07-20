@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cqni4fi1ydgfr"]
+[gd_scene load_steps=39 format=3 uid="uid://cqni4fi1ydgfr"]
 
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_fhktt"]
 [ext_resource type="Script" uid="uid://da33m8xjogj2n" path="res://Levels/DialogueManager.gd" id="2_eepv7"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://deo65img6xb2y" path="res://Assets/sprite_sheet_1.png" id="11_vbnv0"]
 [ext_resource type="Texture2D" uid="uid://b0ykrtjbbhoce" path="res://Assets/sprite_sheet_3.png" id="12_eepv7"]
 [ext_resource type="Texture2D" uid="uid://gyteslrl45k7" path="res://Assets/level_1_namecard.png" id="13_llsuh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2e10j"]
 
 [sub_resource type="Curve2D" id="Curve2D_n0qsc"]
 _data = {
@@ -193,6 +195,14 @@ position = Vector2(731, -157)
 rotation = -0.11188968
 
 [node name="LevelCamera" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+material = SubResource("ShaderMaterial_2e10j")
+offset_left = -1061.0
+offset_top = -618.0
+offset_right = 1038.0
+offset_bottom = 615.0
 
 [node name="Level1Scene" type="Sprite2D" parent="."]
 clip_children = 2

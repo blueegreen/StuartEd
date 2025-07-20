@@ -1,0 +1,163 @@
+[gd_scene load_steps=16 format=3 uid="uid://dc8n6lpynnnnl"]
+
+[ext_resource type="Script" uid="uid://ch2qh3st0ctw1" path="res://Levels/Level2/whackamole_minigame.gd" id="1_7vbwf"]
+[ext_resource type="Texture2D" uid="uid://d1ecpmpi5ldn7" path="res://Assets/level_2_register_bg.png" id="1_wnfda"]
+[ext_resource type="Texture2D" uid="uid://clgvvwnj1gbuy" path="res://Assets/level_2_register_drawer.png" id="2_7vbwf"]
+[ext_resource type="Texture2D" uid="uid://eu6muaopwpxc" path="res://Assets/level_2_register_fg.png" id="3_v56jf"]
+[ext_resource type="PackedScene" uid="uid://cwm2dcav3e5t4" path="res://Levels/Level2/minigame_key.tscn" id="4_wnfda"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4e1e0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8j6mv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qqxaf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ng7yn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hf4tl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vbwf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v56jf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gcmq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1vcv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bs1k"]
+
+[node name="Whackamole_minigame" type="Node2D" node_paths=PackedStringArray("drawer", "keys", "pop_timer", "stuart")]
+z_index = 5
+script = ExtResource("1_7vbwf")
+drawer = NodePath("Level2RegisterDrawer")
+keys = NodePath("keys")
+pop_delay = 0.75
+pop_timer = NodePath("Timer")
+stuart = NodePath("Level2RegisterDrawer/Button")
+
+[node name="Level2RegisterBg" type="Sprite2D" parent="."]
+texture = ExtResource("1_wnfda")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -85.0
+offset_top = -107.0
+offset_right = 93.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.28235295, 0.2509804, 0.43529412, 1)
+
+[node name="Level2RegisterDrawer" type="Sprite2D" parent="."]
+position = Vector2(-3, -34)
+texture = ExtResource("2_7vbwf")
+
+[node name="Button" type="Button" parent="Level2RegisterDrawer"]
+offset_left = -32.0
+offset_top = 18.0
+offset_right = 41.0
+offset_bottom = 85.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4e1e0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8j6mv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qqxaf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ng7yn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hf4tl")
+disabled = true
+
+[node name="Level2RegisterFg" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("3_v56jf")
+
+[node name="keys" type="Node2D" parent="."]
+
+[node name="register_key1" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = -81.0
+offset_top = -107.0
+offset_right = -27.0
+offset_bottom = -45.0
+
+[node name="register_key2" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = -20.0
+offset_top = -107.0
+offset_right = 34.0
+offset_bottom = -45.0
+number = 2
+
+[node name="register_key3" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = 40.0
+offset_top = -107.0
+offset_right = 94.0
+offset_bottom = -45.0
+number = 3
+
+[node name="register_key4" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = -82.0
+offset_top = -53.0
+offset_right = -28.0
+offset_bottom = 9.0
+number = 4
+
+[node name="register_key5" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = -20.0
+offset_top = -54.0
+offset_right = 34.0
+offset_bottom = 8.0
+number = 5
+
+[node name="register_key6" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = 41.0
+offset_top = -54.0
+offset_right = 95.0
+offset_bottom = 8.0
+number = 6
+
+[node name="register_key7" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = -82.0
+offset_top = -1.0
+offset_right = -28.0
+offset_bottom = 61.0
+number = 7
+
+[node name="register_key8" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = -20.0
+offset_top = -1.0
+offset_right = 34.0
+offset_bottom = 61.0
+number = 8
+
+[node name="register_key9" parent="keys" instance=ExtResource("4_wnfda")]
+offset_left = 42.0
+offset_top = -1.0
+offset_right = 96.0
+offset_bottom = 61.0
+number = 9
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="back_button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 306.0
+offset_top = -196.0
+offset_right = 406.0
+offset_bottom = -96.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7vbwf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v56jf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gcmq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f1vcv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2bs1k")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -1098.0
+offset_top = -652.0
+offset_right = 1076.0
+offset_bottom = 661.0
+mouse_filter = 2
+color = Color(0.18431373, 0.20392157, 0.22352941, 1)
+
+[connection signal="button_down" from="Level2RegisterDrawer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="back_button" to="." method="_on_back_button_button_down"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

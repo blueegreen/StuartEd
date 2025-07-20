@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://b63sx5cvf4c7g" path="res://Levels/Level_1/winner_mini_game.gd" id="1_b8xkn"]
 [ext_resource type="Texture2D" uid="uid://b0ykrtjbbhoce" path="res://Assets/sprite_sheet_3.png" id="2_b8xkn"]
 
-[sub_resource type="Animation" id="Animation_b8xkn"]
-resource_name = "default"
+[sub_resource type="Animation" id="Animation_o8g2w"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -19,8 +19,8 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_o8g2w"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_b8xkn"]
+resource_name = "default"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -126,6 +126,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_bqy2j")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_70c1p")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_630ug")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0ks4m")
+toggle_mode = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1

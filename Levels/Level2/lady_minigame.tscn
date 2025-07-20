@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl14d6ox8opcb"]
+
+[ext_resource type="Texture2D" uid="uid://lvd4v4nmhc1y" path="res://Assets/level_2_stomach_bg.png" id="1_1rees"]
+[ext_resource type="Script" uid="uid://bi6gptrh55u8x" path="res://Levels/Level2/lady_minigame.gd" id="1_xs3ux"]
+[ext_resource type="PackedScene" uid="uid://b045xu8mwdaui" path="res://Levels/Level2/lady_whirlpool_prop.tscn" id="2_gqhov"]
+
+[sub_resource type="Animation" id="Animation_gqhov"]
+resource_name = "shake"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level2StomachBg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, -2), Vector2(-3, -1), Vector2(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_aj87v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level2StomachBg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qespo"]
+_data = {
+&"RESET": SubResource("Animation_aj87v"),
+&"shake": SubResource("Animation_gqhov")
+}
+
+[node name="lady_minigame" type="Node2D" node_paths=PackedStringArray("centre_marker")]
+script = ExtResource("1_xs3ux")
+num_of_objects = 10
+centre_marker = NodePath("orbit_centre")
+prop_scene = ExtResource("2_gqhov")
+
+[node name="Level2StomachBg" type="Sprite2D" parent="."]
+texture = ExtResource("1_1rees")
+
+[node name="orbit_centre" type="Marker2D" parent="."]
+position = Vector2(-149, 66)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qespo")
+}
+autoplay = "shake"

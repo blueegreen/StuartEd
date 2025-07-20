@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://b045xu8mwdaui"]
+
+[ext_resource type="Texture2D" uid="uid://dm7w62neeyirv" path="res://Assets/sprite_sheet_5.png" id="1_rgrmv"]
+[ext_resource type="Script" uid="uid://dxncts3a87yhm" path="res://Levels/Level2/lady_whirlpool_prop.gd" id="1_w1hox"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1hox"]
+radius = 33.01515
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgrmv"]
+radius = 36.05551
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lscu4"]
+radius = 31.400637
+
+[node name="lady_whirlpool_prop" type="Node2D"]
+script = ExtResource("1_w1hox")
+
+[node name="juice" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="juice"]
+position = Vector2(24, -16)
+texture = ExtResource("1_rgrmv")
+hframes = 3
+vframes = 2
+region_enabled = true
+region_rect = Rect2(0, 500, 1500, 1000)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="juice"]
+polygon = PackedVector2Array(-20, 73, -77, -1, -21, -19, 19, -68, 79, 1, 14, 22)
+
+[node name="lollipop" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D2" type="Sprite2D" parent="lollipop"]
+position = Vector2(-2, 61)
+texture = ExtResource("1_rgrmv")
+hframes = 3
+vframes = 2
+frame = 4
+region_enabled = true
+region_rect = Rect2(0, 500, 1500, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lollipop"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_w1hox")
+
+[node name="flower" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D3" type="Sprite2D" parent="flower"]
+position = Vector2(25, -2)
+texture = ExtResource("1_rgrmv")
+hframes = 3
+vframes = 2
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 500, 1500, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flower"]
+shape = SubResource("CircleShape2D_rgrmv")
+
+[node name="cup" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D4" type="Sprite2D" parent="cup"]
+position = Vector2(25, 22)
+texture = ExtResource("1_rgrmv")
+hframes = 3
+vframes = 2
+frame = 5
+region_enabled = true
+region_rect = Rect2(0, 500, 1500, 1000)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cup"]
+polygon = PackedVector2Array(-44, -31, -35, 37, 48, 27, 32, -40)
+
+[node name="ed" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D5" type="Sprite2D" parent="ed"]
+position = Vector2(8, 7)
+texture = ExtResource("1_rgrmv")
+hframes = 3
+vframes = 2
+frame = 2
+region_enabled = true
+region_rect = Rect2(0, 500, 1500, 1000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ed"]
+shape = SubResource("CircleShape2D_lscu4")
