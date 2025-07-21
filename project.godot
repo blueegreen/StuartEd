@@ -14,7 +14,7 @@ config/name="StuartEd"
 run/main_scene="uid://b7axky1c7rjr6"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.18431373, 0.20392157, 0.22352941, 1)
-config/icon="res://icon.svg"
+config/icon="uid://qyrry3o8ivw3"
 
 [autoload]
 
