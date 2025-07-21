@@ -10,5 +10,5 @@ void fragment() {
 	uv.x += (0.5 - UV.y) * mouse_offset.x * bend_strength;
 	uv.y += (0.5 - UV.x) * mouse_offset.y * bend_strength;
 
-	COLOR = texture(TEXTURE, uv) * texture(TEXTURE, UV);
+	COLOR = texture(TEXTURE, uv) * COLOR;
 }

@@ -8,6 +8,8 @@ var player : Player
 var completed_level_id : Array[int] = []
 var current_level_id : int = 0
 
+var cutscene_viewed = false
+
 func _ready():
 	await get_tree().process_frame
 	if not level_state:

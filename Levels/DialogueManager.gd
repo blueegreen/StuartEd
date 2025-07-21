@@ -39,6 +39,7 @@ func _ready():
 func start_dialogue(script: Array[String]):
 	if _dialogue_active:
 		push_warning("attempted to interrupt dialogue with dialogue in dialogue_manager")
+		dialogue_finished.emit(false)
 		return
 
 	_current_script = script
@@ -130,10 +131,13 @@ func _show_text_box(source: String, dialogue: String):
 		speaker = context_data.get_speaker(source)
 
 	var text_position := Vector2.ZERO
+	var head_position := Vector2.INF
 	if speaker is Player:
+		head_position = speaker.global_position
 		text_position = speaker.global_position + Vector2(0, -100)
 		speaker.direction = sign(GameState.event_manager.last_clicked_actor.global_position.x - speaker.global_position.x)
 	elif speaker is CharacterActor:
+		head_position = speaker.global_position
 		var offsetx = sign(GameState.player.global_position.x - speaker.global_position.x) * 150
 		GameState.player.direction = -sign(offsetx)
 		text_position = speaker.global_position + Vector2(offsetx, -100)
@@ -146,7 +150,7 @@ func _show_text_box(source: String, dialogue: String):
 		
 	text_box.global_position = text_position
 	var is_question = _clue_active
-	text_box.display_text(dialogue, is_question)
+	text_box.display_text(dialogue, is_question, head_position)
 	_can_advance = false
 
 func _on_text_box_finished_displaying():

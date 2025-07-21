@@ -14,6 +14,7 @@ func event3():
 	start_minigame_event(screen_scene)
 
 func start_minigame_event(minigame_scene: PackedScene):
+	await get_tree().process_frame
 	InputManager.set_interaction_paused(true)
 	var new_minigame : MinigameScene = minigame_scene.instantiate()
 	new_minigame.minigame_closed.connect(event_end)

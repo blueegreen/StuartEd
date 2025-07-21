@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ciu7j72o1153g"]
+[gd_scene load_steps=6 format=3 uid="uid://ciu7j72o1153g"]
 
 [ext_resource type="Script" uid="uid://bouo8hnltb7s7" path="res://Autoload/music_manager.gd" id="1_uyo6y"]
+[ext_resource type="AudioStream" uid="uid://c214ruf44h7w" path="res://Audio/music_3.wav" id="2_1a6di"]
 [ext_resource type="AudioStream" uid="uid://72i0x1s805jy" path="res://Audio/main_theme.wav" id="2_2kupa"]
+[ext_resource type="AudioStream" uid="uid://kwmpewojmfje" path="res://Audio/music_2.wav" id="3_lmujw"]
+[ext_resource type="AudioStream" uid="uid://coudu8j2sy811" path="res://Audio/music_1.wav" id="4_4b13d"]
 
-[node name="MusicManager" type="Node2D"]
+[node name="MusicManager" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_uyo6y")
+player = NodePath("AudioStreamPlayer")
+songs = Array[AudioStreamWAV]([ExtResource("2_1a6di"), ExtResource("3_lmujw"), ExtResource("4_4b13d")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_2kupa")
 volume_db = -5.0
-autoplay = true

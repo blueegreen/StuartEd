@@ -22,7 +22,7 @@ func _process(_delta):
 	#print(str(text.length()) + " " + str(letter_index))
 	pass
 
-func display_text(text_to_display: String, is_question := false):
+func display_text(text_to_display: String, is_question := false, _head_position := Vector2.INF):
 	letter_index = 0
 	text = text_to_display
 	label.text = text_to_display

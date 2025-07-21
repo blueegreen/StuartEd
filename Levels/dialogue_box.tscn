@@ -1,12 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://rbfs1vgive7f"]
+[gd_scene load_steps=9 format=3 uid="uid://rbfs1vgive7f"]
 
-[ext_resource type="Texture2D" uid="uid://bfyu5wpqhlggq" path="res://Assets/misc/dialogue_box_sprite.png" id="1_lwvtd"]
 [ext_resource type="Script" uid="uid://ct8nc8hjsfoyi" path="res://Levels/dialogue_box.gd" id="1_u8kkh"]
+[ext_resource type="Shader" uid="uid://bjtlwl2wi5hky" path="res://Assets/paper_texture.gdshader" id="2_18wka"]
+[ext_resource type="Texture2D" uid="uid://cakcnrucrw3xq" path="res://Assets/fonts_ui/new_dialogue_box.png" id="2_ighsm"]
+[ext_resource type="FontFile" uid="uid://7vsihnnmxump" path="res://Assets/fonts_ui/Neucha-Regular.ttf" id="3_18wka"]
+[ext_resource type="Texture2D" uid="uid://b3hy6e3x2ntfm" path="res://Assets/pexels-eva-bronzini-7598536.jpg" id="3_y4wnw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4wnw"]
+shader = ExtResource("2_18wka")
+shader_parameter/paper_tex = ExtResource("3_y4wnw")
+shader_parameter/paper_opacity = 0.238000011305
+shader_parameter/texture_scale = 1.0
 
 [sub_resource type="SystemFont" id="SystemFont_u8kkh"]
 subpixel_positioning = 0
 
+[sub_resource type="LabelSettings" id="LabelSettings_y4wnw"]
+font = ExtResource("3_18wka")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
 [node name="DialogueBox" type="MarginContainer" node_paths=PackedStringArray("label", "letter_display_timer")]
+light_mask = 0
 z_index = 10
 offset_right = 100.0
 offset_bottom = 75.0
@@ -16,13 +33,14 @@ letter_display_timer = NodePath("Timer")
 max_width = 500.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+material = SubResource("ShaderMaterial_y4wnw")
 layout_mode = 2
-texture = ExtResource("1_lwvtd")
-region_rect = Rect2(20, 10, 80, 80)
-patch_margin_left = 50
-patch_margin_top = 20
-patch_margin_right = 50
-patch_margin_bottom = 20
+texture = ExtResource("2_ighsm")
+region_rect = Rect2(75, 55, 45, 80)
+patch_margin_left = 40
+patch_margin_top = 10
+patch_margin_right = 30
+patch_margin_bottom = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -37,6 +55,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_u8kkh")
 theme_override_font_sizes/font_size = 30
+label_settings = SubResource("LabelSettings_y4wnw")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

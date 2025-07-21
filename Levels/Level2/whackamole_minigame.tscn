@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc8n6lpynnnnl"]
+[gd_scene load_steps=18 format=3 uid="uid://dc8n6lpynnnnl"]
 
 [ext_resource type="Script" uid="uid://ch2qh3st0ctw1" path="res://Levels/Level2/whackamole_minigame.gd" id="1_7vbwf"]
 [ext_resource type="Texture2D" uid="uid://d1ecpmpi5ldn7" path="res://Assets/level_2_register_bg.png" id="1_wnfda"]
 [ext_resource type="Texture2D" uid="uid://clgvvwnj1gbuy" path="res://Assets/level_2_register_drawer.png" id="2_7vbwf"]
 [ext_resource type="Texture2D" uid="uid://eu6muaopwpxc" path="res://Assets/level_2_register_fg.png" id="3_v56jf"]
 [ext_resource type="PackedScene" uid="uid://cwm2dcav3e5t4" path="res://Levels/Level2/minigame_key.tscn" id="4_wnfda"]
+[ext_resource type="Shader" uid="uid://bido14asx4jmi" path="res://Assets/grain.gdshader" id="6_v56jf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4e1e0"]
 
@@ -25,6 +26,11 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1vcv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bs1k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gcmq"]
+shader = ExtResource("6_v56jf")
+shader_parameter/grain_strength = 0.05
+shader_parameter/speed = 1.0
 
 [node name="Whackamole_minigame" type="Node2D" node_paths=PackedStringArray("drawer", "keys", "pop_timer", "stuart")]
 z_index = 5
@@ -151,12 +157,13 @@ autostart = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 z_index = -1
+material = SubResource("ShaderMaterial_0gcmq")
 offset_left = -1098.0
 offset_top = -652.0
 offset_right = 1076.0
 offset_bottom = 661.0
 mouse_filter = 2
-color = Color(0.1804, 0.20019998, 0.22, 0.4745098)
+color = Color(0.1804, 0.20019998, 0.22, 0.6862745)
 
 [connection signal="button_down" from="Level2RegisterDrawer/Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="back_button" to="." method="_on_back_button_button_down"]

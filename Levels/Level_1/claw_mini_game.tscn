@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ctsx0rgrkke0q"]
+[gd_scene load_steps=27 format=3 uid="uid://ctsx0rgrkke0q"]
 
 [ext_resource type="Script" uid="uid://ct815phpxyews" path="res://Levels/Level_1/claw_mini_game.gd" id="1_3hyft"]
 [ext_resource type="Texture2D" uid="uid://cebf0o3gettc3" path="res://Assets/level_1_minigame_bg.png" id="1_n74i4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1k8i1hrh7b1v" path="res://Assets/misc/particle3.png" id="6_g52r2"]
 [ext_resource type="Gradient" uid="uid://purbi78xqmdv" path="res://Assets/misc/fade_in_fade_out.tres" id="7_5e0gk"]
 [ext_resource type="Texture2D" uid="uid://bukgm8c0ng4iw" path="res://Assets/misc/gradient_circle.png" id="8_5e0gk"]
+[ext_resource type="Shader" uid="uid://bido14asx4jmi" path="res://Assets/grain.gdshader" id="9_0w0ks"]
 
 [sub_resource type="Curve2D" id="Curve2D_3hyft"]
 _data = {
@@ -76,6 +77,11 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6xqnv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hpoix"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j71om"]
+shader = ExtResource("9_0w0ks")
+shader_parameter/grain_strength = 0.05
+shader_parameter/speed = 1.0
 
 [node name="ClawMiniGame" type="Node2D" node_paths=PackedStringArray("animation_player", "path_follow", "claw", "claw_attacher")]
 z_index = 5
@@ -250,15 +256,6 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5e0gk")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_0w0ks")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j71om")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-offset_left = -1098.0
-offset_top = -652.0
-offset_right = 1076.0
-offset_bottom = 661.0
-mouse_filter = 2
-color = Color(0.1804, 0.20019998, 0.22, 0.4745098)
-
 [node name="back_button" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 100)
 offset_left = 123.0
@@ -271,6 +268,16 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ye6rc")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6xqnv")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hpoix")
 toggle_mode = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_j71om")
+offset_left = -1098.0
+offset_top = -652.0
+offset_right = 1076.0
+offset_bottom = 661.0
+mouse_filter = 2
+color = Color(0.1804, 0.20019998, 0.22, 0.6862745)
 
 [connection signal="button_down" from="Control/HBoxContainer/left" to="." method="_on_left_button_down"]
 [connection signal="button_up" from="Control/HBoxContainer/left" to="." method="_on_left_button_up"]

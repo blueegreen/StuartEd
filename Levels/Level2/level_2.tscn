@@ -577,7 +577,7 @@ position = Vector2(731, -157)
 [node name="LevelCamera" type="Camera2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.8819366, 0.88193655, 0.88193667, 1)
+color = Color(0.84157467, 0.81992984, 0.7785689, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_elwpa")
@@ -614,6 +614,7 @@ progress = 956.787
 rotates = false
 
 [node name="Player" parent="Level2Scene/Path2D/PathFollow2D" instance=ExtResource("11_jjajc")]
+modulate = Color(1.0627335, 1.0627335, 1.0627335, 1)
 scale = Vector2(-1, 1)
 
 [node name="ShopCharacter" type="Area2D" parent="Level2Scene" node_paths=PackedStringArray("animator")]
