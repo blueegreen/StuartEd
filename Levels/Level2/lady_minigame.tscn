@@ -61,6 +61,7 @@ shader_parameter/grain_strength = 0.05
 shader_parameter/speed = 1.0
 
 [node name="lady_minigame" type="Node2D" node_paths=PackedStringArray("centre_marker")]
+z_index = 5
 script = ExtResource("1_xs3ux")
 num_of_objects = 10
 centre_marker = NodePath("orbit_centre")

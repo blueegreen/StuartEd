@@ -58,6 +58,7 @@ shader_parameter/grain_strength = 0.05
 shader_parameter/speed = 1.0
 
 [node name="screen_mini_game" type="Node2D"]
+z_index = 5
 script = ExtResource("1_tm1ko")
 
 [node name="Level2CameraFeed" type="Sprite2D" parent="."]

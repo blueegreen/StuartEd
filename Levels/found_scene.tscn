@@ -1,0 +1,229 @@
+[gd_scene load_steps=11 format=3 uid="uid://hg307f342ci4"]
+
+[ext_resource type="Script" uid="uid://c67uvcqh8523f" path="res://Levels/found_scene.gd" id="1_7x8bt"]
+[ext_resource type="Shader" uid="uid://bido14asx4jmi" path="res://Assets/grain.gdshader" id="1_p4d0m"]
+[ext_resource type="Texture2D" uid="uid://1bt1q3nqmkaw" path="res://Assets/fonts_ui/stuart_big.png" id="2_7x8bt"]
+[ext_resource type="Texture2D" uid="uid://c216jwb06mitr" path="res://Assets/fonts_ui/ed_big.png" id="3_2hsm0"]
+[ext_resource type="FontFile" uid="uid://b6arkdfy0bfce" path="res://Assets/fonts_ui/MouseMemoirs-Regular.ttf" id="4_eubqy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qh2tj"]
+shader = ExtResource("1_p4d0m")
+shader_parameter/grain_strength = 0.05
+shader_parameter/speed = 1.0
+
+[sub_resource type="Animation" id="Animation_eubqy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("alien:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("alien:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [12.566371]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("text:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("alien:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2hsm0"]
+resource_name = "spin"
+length = 1.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("alien:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.46666667),
+"transitions": PackedFloat32Array(3.6050012, 1, 1),
+"update": 0,
+"values": [Vector2(0.325, 0.325), Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("alien:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.566370614359172]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(4.0000005, 1, 1),
+"update": 0,
+"values": [Vector2(0.415, 0.415), Vector2(1, 1), Vector2(0.97, 0.97)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("text:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5333333, 1.5666667, 1.7333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("alien:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5666667, 1.7333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 1.3333334, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qh2tj"]
+_data = {
+&"RESET": SubResource("Animation_eubqy"),
+&"spin": SubResource("Animation_2hsm0")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_7rraq"]
+font = ExtResource("4_eubqy")
+font_size = 150
+font_color = Color(0.9424263, 0.92274255, 0.8958792, 1)
+
+[node name="found_scene" type="Node2D" node_paths=PackedStringArray("s_spr", "e_spr", "s_lbl", "e_lbl")]
+z_index = 15
+script = ExtResource("1_7x8bt")
+s_spr = NodePath("alien/StuartBig")
+e_spr = NodePath("alien/EdBig")
+s_lbl = NodePath("text/Label")
+e_lbl = NodePath("text/Label2")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_qh2tj")
+offset_left = -1098.0
+offset_top = -652.0
+offset_right = 1076.0
+offset_bottom = 661.0
+mouse_filter = 2
+color = Color(0.1804, 0.20019998, 0.22, 0.8784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qh2tj")
+}
+autoplay = "spin"
+
+[node name="alien" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+rotation = 12.566371
+
+[node name="StuartBig" type="Sprite2D" parent="alien"]
+position = Vector2(0, -40)
+texture = ExtResource("2_7x8bt")
+
+[node name="EdBig" type="Sprite2D" parent="alien"]
+position = Vector2(0, -40)
+texture = ExtResource("3_2hsm0")
+
+[node name="text" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="text"]
+offset_left = -268.0
+offset_top = 316.0
+offset_right = 309.0
+offset_bottom = 552.0
+text = "Stuart found!"
+label_settings = SubResource("LabelSettings_7rraq")
+
+[node name="Label2" type="Label" parent="text"]
+offset_left = -268.0
+offset_top = 316.0
+offset_right = 309.0
+offset_bottom = 552.0
+text = "Ed found!"
+label_settings = SubResource("LabelSettings_7rraq")
+horizontal_alignment = 1

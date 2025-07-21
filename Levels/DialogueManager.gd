@@ -125,7 +125,7 @@ func _end_dialogue(is_success := true):
 func _show_text_box(source: String, dialogue: String):
 	text_box = _text_box_scene.instantiate()
 	text_box.line_finished.connect(_on_text_box_finished_displaying)
-	get_tree().root.add_child(text_box)
+	add_child(text_box)
 	var speaker : Node2D
 	if context_data:
 		speaker = context_data.get_speaker(source)

@@ -9,6 +9,8 @@ signal flag_changed(name: String, value: Variant)
 signal clue_changed(name: String, value: Variant)
 signal level_won
 
+var found_scene : PackedScene = preload("res://Levels/found_scene.tscn")
+
 func _ready():
 	GameState.level_state = self
 
@@ -45,7 +47,20 @@ func _set_win_flag(flag_name: String, value: bool):
 	if win_flags.has(flag_name):
 		win_flags[flag_name] = value
 	
+	if win_flags.has(flag_name) and value:
+		var id := 0
+		match(flag_name):
+			"stuart found":
+				id = 0
+			"ed found":
+				id = 1
+		var new_found_scene : FoundScene = found_scene.instantiate()
+		new_found_scene.mode = id
+		get_tree().root.add_child(new_found_scene)
+	
 	for flag in win_flags:
 		if not win_flags[flag]:
 			return
 	level_won.emit()
+	await get_tree().create_timer(5).timeout
+	get_tree().change_scene_to_file("res://Main/new_level_selector.tscn")

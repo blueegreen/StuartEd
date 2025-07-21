@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b05emusnacq1d"]
+[gd_scene load_steps=10 format=3 uid="uid://b05emusnacq1d"]
 
 [ext_resource type="Script" uid="uid://b6ai1hb7e44wo" path="res://Levels/clue.gd" id="1_le5ty"]
+[ext_resource type="FontFile" uid="uid://c2gowupldi147" path="res://Assets/fonts_ui/RockSalt-Regular.ttf" id="2_riyel"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le5ty"]
 
@@ -15,8 +16,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrhaq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_le5ty"]
-line_spacing = -10.29
-font_size = 30
+line_spacing = -28.265
+font = ExtResource("2_riyel")
+font_size = 25
 font_color = Color(0.20747353, 0.07815468, 0.05101807, 1)
 
 [node name="Clue" type="Button" node_paths=PackedStringArray("label")]

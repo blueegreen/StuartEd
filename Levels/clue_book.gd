@@ -1,7 +1,7 @@
 extends Node2D
 class_name ClueBook
 
-@export var start_pos := Vector2(-107, -217)
+@export var start_pos := Vector2(-107, -200)
 @export var clue_height := 100.
 @export var clue_scene : PackedScene
 @export var animator : AnimationPlayer

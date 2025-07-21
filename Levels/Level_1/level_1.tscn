@@ -1,5 +1,6 @@
-[gd_scene load_steps=73 format=3 uid="uid://cqni4fi1ydgfr"]
+[gd_scene load_steps=74 format=3 uid="uid://cqni4fi1ydgfr"]
 
+[ext_resource type="PackedScene" uid="uid://dehucyhpqlpd2" path="res://Main/ui.tscn" id="1_bmyhu"]
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_fhktt"]
 [ext_resource type="Script" uid="uid://da33m8xjogj2n" path="res://Levels/DialogueManager.gd" id="2_eepv7"]
 [ext_resource type="Script" uid="uid://b4fhhkdkaep2b" path="res://Levels/LevelState.gd" id="4_2e10j"]
@@ -576,6 +577,8 @@ _data = {
 }
 
 [node name="level_1" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_bmyhu")]
 
 [node name="ContextData" type="Node" parent="."]
 script = ExtResource("1_fhktt")

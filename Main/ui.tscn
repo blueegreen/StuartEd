@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://dehucyhpqlpd2"]
+
+[ext_resource type="Script" uid="uid://bgss0q5es2qhn" path="res://Main/ui.gd" id="1_qgkm5"]
+[ext_resource type="Texture2D" uid="uid://b7ftfxgrwakyx" path="res://Assets/fonts_ui/back_ui.png" id="2_4x2x8"]
+[ext_resource type="Texture2D" uid="uid://r7n6741g8o01" path="res://Assets/fonts_ui/reload_ui.png" id="3_sky1y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o71yk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mrtx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wix3x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_reh7j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8un3a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujj6p"]
+
+[node name="UI" type="Node2D"]
+z_index = 10
+script = ExtResource("1_qgkm5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="back" type="Button" parent="."]
+offset_left = -937.99994
+offset_top = -511.0
+offset_right = -663.99994
+offset_bottom = -266.0
+scale = Vector2(0.87, 0.87)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o71yk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7mrtx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wix3x")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_reh7j")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8un3a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ujj6p")
+icon = ExtResource("2_4x2x8")
+
+[node name="reload" type="Button" parent="."]
+offset_left = -937.99994
+offset_top = -298.0
+offset_right = -663.99994
+offset_bottom = -53.0
+scale = Vector2(0.87, 0.87)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o71yk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7mrtx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wix3x")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_reh7j")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8un3a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ujj6p")
+icon = ExtResource("3_sky1y")
+
+[connection signal="button_down" from="back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="reload" to="." method="_on_reload_button_down"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bg8ob4ov828t8"]
+[gd_scene load_steps=30 format=3 uid="uid://bg8ob4ov828t8"]
 
 [ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="1_6tn1n"]
 [ext_resource type="Script" uid="uid://mr3t6c3xokq6" path="res://Main/new_level_selector.gd" id="1_qiqfk"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://d4c2aha8n2djj" path="res://Assets/fonts_ui/left_right_button.png" id="11_m3qm3"]
 [ext_resource type="FontFile" uid="uid://b6arkdfy0bfce" path="res://Assets/fonts_ui/MouseMemoirs-Regular.ttf" id="12_1033m"]
 [ext_resource type="Texture2D" uid="uid://canpnn2ypftie" path="res://Assets/fonts_ui/background.png" id="13_0cx7o"]
+[ext_resource type="Shader" uid="uid://bido14asx4jmi" path="res://Assets/grain.gdshader" id="13_m3qm3"]
+[ext_resource type="Texture2D" uid="uid://b7ftfxgrwakyx" path="res://Assets/fonts_ui/back_ui.png" id="14_m3qm3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbhc1"]
 shader = ExtResource("8_aejnl")
@@ -44,6 +46,60 @@ glow_strength = 1.37
 adjustment_enabled = true
 adjustment_contrast = 1.05
 adjustment_saturation = 0.85
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1033m"]
+shader = ExtResource("13_m3qm3")
+shader_parameter/grain_strength = 0.05
+shader_parameter/speed = 1.0
+
+[sub_resource type="Animation" id="Animation_0cx7o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect4:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f0r0o"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect4:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.3789292, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_llyu1"]
+_data = {
+&"RESET": SubResource("Animation_0cx7o"),
+&"fade_in": SubResource("Animation_f0r0o")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1033m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f0r0o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llyu1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17ckh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ll2eh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yufej"]
 
 [node name="NewLevelSelector" type="Node2D" node_paths=PackedStringArray("stage_name", "level_texture", "blur_overlay", "left_button", "right_button", "hover_detector", "hover_shape")]
 script = ExtResource("1_qiqfk")
@@ -125,3 +181,32 @@ texture = ExtResource("13_0cx7o")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gfbmn")
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_1033m")
+offset_left = -124.0
+offset_top = -105.0
+offset_right = 2050.0
+offset_bottom = 1208.0
+mouse_filter = 2
+color = Color(0.16247691, 0.1468508, 0.104968876, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_llyu1")
+}
+autoplay = "fade_in"
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1033m")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f0r0o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_llyu1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_17ckh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ll2eh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yufej")
+icon = ExtResource("14_m3qm3")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

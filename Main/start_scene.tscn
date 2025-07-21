@@ -16,70 +16,6 @@ shader = ExtResource("4_ejy2n")
 shader_parameter/grain_strength = 0.05
 shader_parameter/speed = 1.0
 
-[sub_resource type="Animation" id="Animation_bg18w"]
-resource_name = "start"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect3:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.533333),
-"transitions": PackedFloat32Array(3.7321322, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StuartTitlecard:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(3.8999996, 5.9),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -129.00002)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TwinUiElement:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(3.8999996, 5.9),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector2(-33, -23), Vector2(-33, 114)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Button:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(4.1, 5.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Button:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(4.1, 4.9000006),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_53hov"]
 length = 0.001
 tracks/0/type = "value"
@@ -375,6 +311,70 @@ tracks/11/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_bg18w"]
+resource_name = "start"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.533333),
+"transitions": PackedFloat32Array(3.7321322, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StuartTitlecard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.8999996, 5.9),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -129.00002)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TwinUiElement:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.8999996, 5.9),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(-33, -23), Vector2(-33, 114)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.1, 5.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.1, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cfqn4"]
 _data = {
 &"RESET": SubResource("Animation_53hov"),
@@ -391,6 +391,21 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8glg8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0k2m"]
+
+[sub_resource type="Animation" id="Animation_cfqn4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_4a4tu"]
 resource_name = "flicker"
@@ -409,21 +424,6 @@ tracks/0/keys = {
 "values": [true, false, true, false, true, false, true, false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_cfqn4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ptjug"]
 _data = {
 &"RESET": SubResource("Animation_cfqn4"),
@@ -434,9 +434,10 @@ _data = {
 font = ExtResource("10_ptjug")
 font_size = 50
 
-[node name="start_scene" type="Node2D" node_paths=PackedStringArray("cutscene_animator")]
+[node name="start_scene" type="Node2D" node_paths=PackedStringArray("cutscene_animator", "play_button")]
 script = ExtResource("1_bg18w")
 cutscene_animator = NodePath("AnimationPlayer")
+play_button = NodePath("Button")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 z_index = -1

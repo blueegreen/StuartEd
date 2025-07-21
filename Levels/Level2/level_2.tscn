@@ -1,5 +1,6 @@
-[gd_scene load_steps=73 format=3 uid="uid://bewv1v6ckfimv"]
+[gd_scene load_steps=74 format=3 uid="uid://bewv1v6ckfimv"]
 
+[ext_resource type="PackedScene" uid="uid://dehucyhpqlpd2" path="res://Main/ui.tscn" id="1_b3aqq"]
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_s6hd2"]
 [ext_resource type="Script" uid="uid://b4fhhkdkaep2b" path="res://Levels/LevelState.gd" id="2_jjajc"]
 [ext_resource type="Script" uid="uid://da33m8xjogj2n" path="res://Levels/DialogueManager.gd" id="3_7msqb"]
@@ -337,7 +338,7 @@ metadata/_custom_type_script = "uid://dkrou68ep8l47"
 [sub_resource type="Resource" id="Resource_t3hxv"]
 script = ExtResource("11_4iujo")
 required_flags = Array[String](["talked to lady", "helped lady", "talked to goth1"])
-dialogue = Array[String](["can someone please get my mother therapy..."])
+dialogue = Array[String](["Goth: can someone please get my mother therapy..."])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
 [sub_resource type="Resource" id="Resource_snsa2"]
@@ -428,7 +429,7 @@ metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
 [sub_resource type="Resource" id="Resource_8uljl"]
 script = ExtResource("11_4iujo")
-required_flags = Array[String](["check cctv"])
+required_flags = Array[String](["checked cctv"])
 dialogue = Array[String](["Player: I need to see that footage", "Cashier: no way", "Player: something interesting should be showing up in it!", "Cashier: no way... wait, what?", "event3"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
@@ -519,6 +520,8 @@ _data = {
 }
 
 [node name="level_2" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_b3aqq")]
 
 [node name="ContextData" type="Node" parent="."]
 script = ExtResource("1_s6hd2")

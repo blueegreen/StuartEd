@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmgkfvckglwi"]
 
 [ext_resource type="Script" uid="uid://catedtwh6tvs8" path="res://Levels/clue_book.gd" id="1_1o5we"]
-[ext_resource type="Texture2D" uid="uid://cxkw57l0wimim" path="res://Assets/sprite_sheet_4.png" id="1_4efew"]
 [ext_resource type="PackedScene" uid="uid://b05emusnacq1d" path="res://Levels/clue.tscn" id="3_5g0og"]
+[ext_resource type="Texture2D" uid="uid://c8ua3kp2x2eof" path="res://Assets/fonts_ui/new_cluebook_sprite.png" id="3_inp17"]
 
 [sub_resource type="Animation" id="Animation_inp17"]
 length = 0.001
@@ -50,10 +50,8 @@ animator = NodePath("AnimationPlayer")
 
 [node name="SpriteSheet4" type="Sprite2D" parent="."]
 modulate = Color(0.95, 0.93764997, 0.8265, 1)
-position = Vector2(-44, 37)
-rotation = -1.4696519
-texture = ExtResource("1_4efew")
-region_enabled = true
+position = Vector2(-697, 82)
+texture = ExtResource("3_inp17")
 region_rect = Rect2(0, 400, 800, 800)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

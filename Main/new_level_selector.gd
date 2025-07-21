@@ -134,3 +134,8 @@ func _process(delta):
 	blur_overlay.set_pivot_offset(level_texture.size / 2)
 
 	_update_hover_detector()
+
+
+func _on_button_button_down():
+	MusicManager.play_song(0)
+	get_tree().change_scene_to_file("res://Main/start_scene.tscn")
