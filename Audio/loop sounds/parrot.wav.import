@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgv60ynm7kptj"
+path="res://.godot/imported/parrot.wav-104c8766df0c65d69c76e3401639cccc.sample"
+
+[deps]
+
+source_file="res://Audio/loop sounds/parrot.wav"
+dest_files=["res://.godot/imported/parrot.wav-104c8766df0c65d69c76e3401639cccc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
