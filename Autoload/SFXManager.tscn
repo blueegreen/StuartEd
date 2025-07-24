@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://d13a3oqd7qf07"]
+[gd_scene load_steps=12 format=3 uid="uid://d13a3oqd7qf07"]
 
 [ext_resource type="Script" uid="uid://dg6cgwk2e3nt4" path="res://Autoload/sfx_manager.gd" id="1_fsbtp"]
+[ext_resource type="AudioStream" uid="uid://d01rpwcgdi6qs" path="res://Audio/Sfx/dialogue_beep_vintage.wav" id="2_0vo0o"]
 [ext_resource type="AudioStream" uid="uid://cvpbbfnpk26ip" path="res://Audio/Sfx/caught_wackamole.wav" id="2_dkvub"]
 [ext_resource type="AudioStream" uid="uid://ceetvshbr42va" path="res://Audio/Sfx/unsucessful_wackamole.wav" id="3_dkvub"]
 [ext_resource type="AudioStream" uid="uid://cd0pd3qr6m5vq" path="res://Audio/Sfx/rightchoice_whirlpool.wav" id="5_2kvog"]
@@ -14,6 +15,7 @@
 [node name="SfxManager" type="Node2D"]
 script = ExtResource("1_fsbtp")
 sfx = Dictionary[String, AudioStream]({
+"beep": ExtResource("2_0vo0o"),
 "cashregisterclick": ExtResource("3_dkvub"),
 "drawer_open": ExtResource("6_0s2ep"),
 "ed_caught": ExtResource("9_sdf7c"),

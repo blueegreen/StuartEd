@@ -47,6 +47,7 @@ func display_text(text_to_display: String, is_question := false, _head_position 
 	_display_letter()
 
 func _display_letter():
+	SfxManager.play_sfx("beep", -10)
 	displaying = true
 	label.text += text[letter_index]
 	letter_index += 1

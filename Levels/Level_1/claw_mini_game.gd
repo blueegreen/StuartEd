@@ -74,7 +74,7 @@ func _on_down_button_up():
 			_grabbed_ball.global_transform = trans
 			break
 	
-	SfxManager.play_sfx("cashregisterclick")
+	SfxManager.play_sfx("cashregisterclick", -15)
 	var claw_final_pos = Vector2(claw.position.x, _claw_start_pos.y)
 	var tween = create_tween()
 	tween.tween_property(claw, "position", claw_final_pos, 0.8).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
@@ -88,7 +88,6 @@ func _on_right_button_up():
 func check_and_shuffle():
 	if _grabbed_ball:
 		if _grabbed_ball.is_stuart:
-			SfxManager.play_sfx("mole_caught")
 			print("stuart_found")
 			stuart_found.emit()
 			if GameState.level_state:
@@ -105,7 +104,7 @@ func check_and_shuffle():
 		_grabbed_ball = null
 	
 	animation_player.play("shuffle")
-	SfxManager.play_sfx("slot_machine")
+	SfxManager.play_sfx("slot_machine", -15)
 	_current_state = state.FREE
 
 

@@ -96,6 +96,7 @@ func _on_texture_gui_input(event):
 		if current_index < level_scenes.size():
 			MusicManager.play_song(current_index + 1)
 			get_tree().change_scene_to_packed(level_scenes[current_index])
+			self.queue_free()
 
 func _on_mouse_enter():
 	blur_overlay.visible = true

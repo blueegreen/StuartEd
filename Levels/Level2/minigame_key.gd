@@ -59,11 +59,11 @@ func pop():
 	
 func _on_button_down():
 	if _current_state == state.STUART:
-		SfxManager.play_sfx("mole_caught")
+		SfxManager.play_sfx("mole_caught",-15)
 		stuart_clicked.emit()
 		_pop_off()
 	else:
-		SfxManager.play_sfx("cashregisterclick")
+		SfxManager.play_sfx("cashregisterclick", -15)
 
 func _pop_off():
 	if pop_tween:

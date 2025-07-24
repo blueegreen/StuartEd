@@ -62,5 +62,5 @@ func _set_win_flag(flag_name: String, value: bool):
 		if not win_flags[flag]:
 			return
 	level_won.emit()
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://Main/new_level_selector.tscn")
