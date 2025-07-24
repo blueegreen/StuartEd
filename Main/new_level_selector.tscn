@@ -185,10 +185,10 @@ environment = SubResource("Environment_gfbmn")
 [node name="ColorRect4" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_1033m")
-offset_left = -124.0
-offset_top = -105.0
-offset_right = 2050.0
-offset_bottom = 1208.0
+offset_left = 67.0
+offset_top = -286.0
+offset_right = 2241.0
+offset_bottom = 1027.0
 mouse_filter = 2
 color = Color(0.16247691, 0.1468508, 0.104968876, 1)
 

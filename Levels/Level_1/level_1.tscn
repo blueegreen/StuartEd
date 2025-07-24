@@ -825,9 +825,6 @@ interaction_resource = SubResource("Resource_o6tuk")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/ArcadeActor"]
 polygon = PackedVector2Array(-145, 155, -104, -71, -48, -128, 55, -75, 312, -83, 327, 225, 87, 260)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level1Scene/ArcadeActor"]
-polygon = PackedVector2Array(800, 242, 726, -198, 761, -253, 829, -247)
-
 [node name="WallActor" type="Area2D" parent="Level1Scene"]
 position = Vector2(-531, -170)
 script = ExtResource("8_vbnv0")

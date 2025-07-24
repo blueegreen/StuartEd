@@ -22,13 +22,15 @@ InputManager="*res://Autoload/InputManager.gd"
 GameState="*res://Autoload/GameState.gd"
 SfxManager="*res://Autoload/SFXManager.tscn"
 MusicManager="*res://Autoload/music_manager.tscn"
+MousePointer="*res://Main/mouse_pointer.tscn"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/size/resizable=false
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 
 [input]

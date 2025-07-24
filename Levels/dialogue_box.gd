@@ -40,7 +40,7 @@ func display_text(text_to_display: String, is_question := false, _head_position 
 	global_position.y -= size.y / 2.
 	
 	if is_question:
-		modulate = Color("f4daac")
+		modulate = Color.LIGHT_PINK
 		#label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	
 	label.text = ""

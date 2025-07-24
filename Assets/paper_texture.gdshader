@@ -14,5 +14,5 @@ void fragment() {
     // Blend base texture with paper texture
     vec3 blended_rgb = mix(base_col.rgb, base_col.rgb * paper_col.rgb, paper_opacity);
 
-    COLOR = vec4(blended_rgb, base_col.a);
+    COLOR = vec4(blended_rgb, base_col.a) * COLOR;
 }

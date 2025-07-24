@@ -5,6 +5,9 @@ signal mouse_released()
 
 var interaction_paused := false
 
+func _ready():
+	get_tree().scene_changed.connect(_reset)
+
 func _unhandled_input(event):
 	if event.is_action_pressed("click") and not event.is_echo() and not interaction_paused:
 		if _process_click():
@@ -39,3 +42,6 @@ func _get_topmost_collider(results: Array) -> Node2D:
 func set_interaction_paused(value: bool):
 	interaction_paused = value
 	print("interaction_paused set to ", value)
+
+func _reset():
+	set_interaction_paused(false)
