@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cl14d6ox8opcb"]
+[gd_scene load_steps=18 format=3 uid="uid://cl14d6ox8opcb"]
 
 [ext_resource type="Texture2D" uid="uid://lvd4v4nmhc1y" path="res://Assets/level_2_stomach_bg.png" id="1_1rees"]
 [ext_resource type="Script" uid="uid://bi6gptrh55u8x" path="res://Levels/Level2/lady_minigame.gd" id="1_xs3ux"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d1cw7dd828jtl" path="res://Assets/misc/particle2.png" id="5_hjd2k"]
 [ext_resource type="Gradient" uid="uid://purbi78xqmdv" path="res://Assets/misc/fade_in_fade_out.tres" id="5_jkil2"]
 [ext_resource type="Shader" uid="uid://bido14asx4jmi" path="res://Assets/grain.gdshader" id="7_jkil2"]
+[ext_resource type="AudioStream" uid="uid://6xfwuesh5881" path="res://Audio/Sfx/washing_machine_sound.wav" id="8_0g0e6"]
 
 [sub_resource type="Animation" id="Animation_aj87v"]
 length = 0.001
@@ -142,5 +143,9 @@ offset_right = 1076.0
 offset_bottom = 661.0
 mouse_filter = 2
 color = Color(0.1804, 0.20019998, 0.22, 0.6862745)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0g0e6")
+autoplay = true
 
 [connection signal="button_down" from="back_button" to="." method="_on_back_button_button_down"]

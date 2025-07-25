@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7axky1c7rjr6"]
+[gd_scene load_steps=27 format=3 uid="uid://b7axky1c7rjr6"]
 
 [ext_resource type="Script" uid="uid://de1yu8osfed80" path="res://Main/start_scene.gd" id="1_bg18w"]
 [ext_resource type="Texture2D" uid="uid://canpnn2ypftie" path="res://Assets/fonts_ui/background.png" id="1_kyjdd"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://d1k8i1hrh7b1v" path="res://Assets/misc/particle3.png" id="8_cfqn4"]
 [ext_resource type="Gradient" uid="uid://purbi78xqmdv" path="res://Assets/misc/fade_in_fade_out.tres" id="9_ptjug"]
 [ext_resource type="FontFile" uid="uid://7vsihnnmxump" path="res://Assets/fonts_ui/Neucha-Regular.ttf" id="10_ptjug"]
+[ext_resource type="AudioStream" uid="uid://d0aj1jicfxa31" path="res://Audio/Sfx/buzz_flicker.wav" id="11_1pukm"]
+[ext_resource type="AudioStream" uid="uid://dp3rsf3yaev42" path="res://Audio/Sfx/buzz_click.wav" id="12_w5oqv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bg18w"]
 shader = ExtResource("4_ejy2n")
@@ -406,6 +408,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4a4tu"]
 resource_name = "flicker"
@@ -422,6 +448,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false, true, false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.03333333, 1.0333333, 1.2, 1.5, 1.6333333, 6.1666665, 6.366667, 6.633333, 6.8333335, 9.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.93333334, 1.4475343, 6.1265063, 6.6, 9.028438),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ptjug"]
@@ -558,5 +608,12 @@ offset_bottom = -118.79999
 text = "Get them back before they cause too much trouble in town!"
 label_settings = SubResource("LabelSettings_h0k2m")
 autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1pukm")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_w5oqv")
+volume_db = -2.0
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

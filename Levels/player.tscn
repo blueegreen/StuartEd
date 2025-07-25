@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnc4cbtrya0b"]
+[gd_scene load_steps=11 format=3 uid="uid://cnc4cbtrya0b"]
 
 [ext_resource type="Script" uid="uid://bphyce4y3eqn6" path="res://Levels/PlayerActor.gd" id="1_cko2x"]
 [ext_resource type="Shader" uid="uid://bwv6w7qfqclrs" path="res://Assets/dropshadow.gdshader" id="2_5rgs0"]
 [ext_resource type="Texture2D" uid="uid://debw8neyun8ib" path="res://Assets/sprite_sheet_2.png" id="2_gwlcl"]
+[ext_resource type="AudioStream" uid="uid://bgc8idnbf0jyb" path="res://Audio/Sfx/walking_sfx.wav" id="4_5rgs0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nkr"]
 shader = ExtResource("2_5rgs0")
@@ -25,6 +26,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_cko2x"]
 resource_name = "idle"
@@ -39,6 +52,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_g0nkr"]
@@ -57,6 +82,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [3, 4]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_5rgs0"]
 resource_name = "walk"
@@ -74,6 +111,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwlcl"]
 _data = {
@@ -86,6 +135,7 @@ _data = {
 [node name="Player" type="Area2D" node_paths=PackedStringArray("animator")]
 z_index = 2
 script = ExtResource("1_cko2x")
+speed = 230.0
 animator = NodePath("AnimationPlayer")
 
 [node name="SpriteSheet2" type="Sprite2D" parent="."]
@@ -108,3 +158,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_gwlcl")
 }
 autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5rgs0")
+volume_db = -5.0
+pitch_scale = 1.25

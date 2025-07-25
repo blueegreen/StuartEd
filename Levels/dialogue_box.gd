@@ -40,14 +40,15 @@ func display_text(text_to_display: String, is_question := false, _head_position 
 	global_position.y -= size.y / 2.
 	
 	if is_question:
-		modulate = Color.LIGHT_PINK
+		modulate = Color.LIGHT_GOLDENROD
 		#label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	
 	label.text = ""
 	_display_letter()
 
 func _display_letter():
-	SfxManager.play_sfx("beep", -10)
+	if letter_index % 3 == 0 :
+		SfxManager.play_sfx("keyboard_click", -10, true)
 	displaying = true
 	label.text += text[letter_index]
 	letter_index += 1

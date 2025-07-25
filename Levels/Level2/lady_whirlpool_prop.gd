@@ -83,19 +83,19 @@ func on_click():
 	
 	var check = func():
 		if _is_ed:
-			SfxManager.play_sfx("ed_caught")
+			SfxManager.play_sfx("ed_caught", 3.)
 			ed_clicked.emit()
 			var fade_tween = create_tween()
 			fade_tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 0.75).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			fade_tween.tween_callback(end_check)
 		else:
-			SfxManager.play_sfx("ed_not_caught")
 			_paused = false
 			_active_area.collision_layer = 5
 			var revert_tween = create_tween()
 			revert_tween.tween_property(self, "global_transform", current_transform, 0.75).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			revert_tween.tween_callback(end_check)
 	
+	SfxManager.play_sfx("ed_not_caught")
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", orbit_centre, .75).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.set_parallel().tween_property(self, "global_rotation", 2 * PI, .75).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cqni4fi1ydgfr"]
+[gd_scene load_steps=75 format=3 uid="uid://cqni4fi1ydgfr"]
 
 [ext_resource type="PackedScene" uid="uid://dehucyhpqlpd2" path="res://Main/ui.tscn" id="1_bmyhu"]
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_fhktt"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://b0ykrtjbbhoce" path="res://Assets/sprite_sheet_3.png" id="12_eepv7"]
 [ext_resource type="Texture2D" uid="uid://gyteslrl45k7" path="res://Assets/level_1_namecard.png" id="13_llsuh"]
 [ext_resource type="PackedScene" uid="uid://ctsx0rgrkke0q" path="res://Levels/Level_1/claw_mini_game.tscn" id="20_kqu4s"]
+[ext_resource type="AudioStream" uid="uid://bwanby66galji" path="res://Audio/Sfx/magical_whoosh.wav" id="22_gqlel"]
 
 [sub_resource type="Environment" id="Environment_byskb"]
 background_mode = 3
@@ -139,6 +140,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("whoosh:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_b6ljx"]
 resource_name = "event2"
@@ -186,8 +199,8 @@ tracks/3/path = NodePath("Level1Scene/KidCharacter:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.5, 2),
-"transitions": PackedFloat32Array(0.35355338, 1),
+"times": PackedFloat32Array(0.33333334, 1.9333333),
+"transitions": PackedFloat32Array(0.6597543, 1),
 "update": 0,
 "values": [Vector2(282, 1), Vector2(1148, -192)]
 }
@@ -198,10 +211,22 @@ tracks/4/path = NodePath("Level1Scene/KidCharacter:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.5, 2),
-"transitions": PackedFloat32Array(0.39229208, 1),
+"times": PackedFloat32Array(0.33333334, 1.9333333),
+"transitions": PackedFloat32Array(0.40612647, 1),
 "update": 0,
 "values": [0.0, 12.566371]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("whoosh:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y0e6u"]
@@ -218,35 +243,34 @@ point_count = 4
 
 [sub_resource type="Resource" id="Resource_odamq"]
 script = ExtResource("9_fhktt")
-dialogue = Array[String](["Owner: hello there!", "Owner: what's your business here?: getting Stuart and Ed", "Owner: yes! two of the weirdest things came in here a while ago!", "Owner:  one of them jumped into the claw machine over there while the other disappeared!"])
-flags_triggered = Array[String](["talked to shop"])
+dialogue = Array[String](["Owner: hello there!", "Owner: what's your business here?: getting Stuart and Ed", "Owner: yes! two of the weirdest things came in here a while ago!", "Owner:  one with horizontal stripes jumped into the claw machine over there while the other disappeared!"])
+flags_triggered = Array[String](["talked to shop", "talked to shop again"])
+clues_triggered = Array[String](["horizontal stripes"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
-[sub_resource type="Resource" id="Resource_c0yvh"]
+[sub_resource type="Resource" id="Resource_tdyyp"]
 script = ExtResource("9_fhktt")
-required_flags = Array[String](["talked to shop"])
-dialogue = Array[String](["Owner: It jumped into the machine with a streak of horizontal stripes", "Owner: but the kid has been hogging it ever since..."])
-flags_triggered = Array[String](["talked to shop again"])
-clues_triggered = Array[String](["horizontal stripes"])
+required_flags = Array[String](["talked to shop again"])
+dialogue = Array[String](["Owner:  one with horizontal stripes jumped into the claw machine over there while the other disappeared!"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
 [sub_resource type="Resource" id="Resource_jpf6d"]
 script = ExtResource("9_fhktt")
-required_flags = Array[String](["talked to shop", "talked to shop again", "talked to fortune"])
+required_flags = Array[String](["talked to shop", "talked to fortune"])
 dialogue = Array[String](["Owner: the lady of dreams hadn't had her orb flicker in 15 years!", "Owner: hmm... all the machines flickered as well when that weird guy came here", "Player: Ed is known for messing with electronics"])
 clues_triggered = Array[String](["entity causes flickering"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
 [sub_resource type="Resource" id="Resource_kqu4s"]
 script = ExtResource("9_fhktt")
-required_flags = Array[String](["talked to shop", "talked to shop again", "talked to fortune", "kid left"])
+required_flags = Array[String](["talked to shop", "talked to fortune", "kid left"])
 dialogue = Array[String](["Owner: looks like the kid won before leaving", "Owner: you wanna try your luck too?", "Owner: I'll give you some free tries at it"])
 flags_triggered = Array[String](["machine unlocked"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
 [sub_resource type="Resource" id="Resource_byskb"]
 script = ExtResource("10_eepv7")
-interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_odamq"), SubResource("Resource_c0yvh"), SubResource("Resource_jpf6d"), SubResource("Resource_kqu4s")])
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_odamq"), SubResource("Resource_tdyyp"), SubResource("Resource_jpf6d"), SubResource("Resource_kqu4s")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
 [sub_resource type="Animation" id="Animation_bmyhu"]
@@ -390,7 +414,7 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_1gvqh"]
 script = ExtResource("9_fhktt")
-dialogue = Array[String](["Player: the kid is engrossed in that machine.", "Player: best leave him be."])
+dialogue = Array[String](["Player: the kid is engrossed in that machine", "Player: best leave him be"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 
 [sub_resource type="Resource" id="Resource_de8wl"]
@@ -700,13 +724,28 @@ scale_amount_max = 0.75
 color = Color(0.7653154, 0.6484944, 0, 1)
 color_ramp = ExtResource("8_kqu4s")
 
-[node name="GradientCircle" type="Sprite2D" parent="."]
+[node name="GradientCircle" type="Node2D" parent="."]
 visible = false
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
 z_index = 11
 position = Vector2(101, 74)
 scale = Vector2(0.21080476, 0.21080476)
+
+[node name="Sprite2D" type="Sprite2D" parent="GradientCircle"]
+modulate = Color(0.95686275, 0, 0.46666667, 0.6039216)
+scale = Vector2(1.3377308, 1.3377308)
 texture = ExtResource("6_byskb")
+
+[node name="Sprite2D3" type="Sprite2D" parent="GradientCircle"]
+texture = ExtResource("6_byskb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="GradientCircle"]
+modulate = Color(2.2639842, 2.2639842, 2.2639842, 1)
+texture = ExtResource("6_byskb")
+
+[node name="whoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_gqlel")
+pitch_scale = 0.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

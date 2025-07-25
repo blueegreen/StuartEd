@@ -25,7 +25,7 @@ font_color = Color(0.13949694, 0.29506874, 0.23451985, 1)
 [node name="register_key" type="Button" node_paths=PackedStringArray("label", "particles", "key", "key_stuart")]
 z_index = 2
 offset_right = 54.0
-offset_bottom = 62.0
+offset_bottom = 82.0
 pivot_offset = Vector2(27, 31)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_pjf26")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_l5751")

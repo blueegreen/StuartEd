@@ -57,6 +57,7 @@ func _set_win_flag(flag_name: String, value: bool):
 		var new_found_scene : FoundScene = found_scene.instantiate()
 		new_found_scene.mode = id
 		get_tree().root.add_child(new_found_scene)
+		SfxManager.play_sfx("win")
 	
 	for flag in win_flags:
 		if not win_flags[flag]:

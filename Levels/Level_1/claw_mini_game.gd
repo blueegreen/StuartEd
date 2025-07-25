@@ -28,7 +28,8 @@ func _ready():
 	"left: stuart should be in one of these...",\
 	"left: do I have enough information to figure it out?"\
 	]
-	GameState.dialogue_manager.start_dialogue(dialogue_script)
+	if GameState.dialogue_manager:
+		GameState.dialogue_manager.start_dialogue(dialogue_script)
 
 func _process(delta):
 	match _current_state:

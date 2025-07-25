@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxp65i2lm28mg"]
+[gd_scene load_steps=27 format=3 uid="uid://bxp65i2lm28mg"]
 
 [ext_resource type="Texture2D" uid="uid://bqhm3nbbrqds8" path="res://Assets/level_1_minigame_2_bg.png" id="1_6quiw"]
 [ext_resource type="Script" uid="uid://b63sx5cvf4c7g" path="res://Levels/Level_1/winner_mini_game.gd" id="1_b8xkn"]
@@ -7,6 +7,8 @@
 [ext_resource type="Gradient" uid="uid://purbi78xqmdv" path="res://Assets/misc/fade_in_fade_out.tres" id="4_868gh"]
 [ext_resource type="Texture2D" uid="uid://bukgm8c0ng4iw" path="res://Assets/misc/gradient_circle.png" id="6_f4d5n"]
 [ext_resource type="Shader" uid="uid://bido14asx4jmi" path="res://Assets/grain.gdshader" id="7_qy6ym"]
+[ext_resource type="AudioStream" uid="uid://d0aj1jicfxa31" path="res://Audio/Sfx/buzz_flicker.wav" id="8_mvx3g"]
+[ext_resource type="AudioStream" uid="uid://dp3rsf3yaev42" path="res://Audio/Sfx/buzz_click.wav" id="9_bqy2j"]
 
 [sub_resource type="Animation" id="Animation_o8g2w"]
 length = 0.001
@@ -21,6 +23,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_b8xkn"]
@@ -53,6 +79,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [1, 2, 1, 2, 1, 2, 1, 2, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 0.6863069, 0.8784728, 1.037086, 1.8, 2.7333333, 3.2515695, 3.4955897),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.9, 1.7721969, 3.233268),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f4d5n"]
@@ -175,6 +225,13 @@ offset_right = 1076.0
 offset_bottom = 661.0
 mouse_filter = 2
 color = Color(0.1804, 0.20019998, 0.22, 0.6862745)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mvx3g")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_bqy2j")
+volume_db = -4.0
 
 [connection signal="toggled" from="Button" to="." method="_on_button_toggled"]
 [connection signal="toggled" from="back_button" to="." method="_on_back_button_toggled"]

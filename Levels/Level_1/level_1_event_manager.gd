@@ -8,6 +8,7 @@ extends EventManager
 @export var lights : Node2D
 
 func event1():
+	await get_tree().process_frame
 	InputManager.set_interaction_paused(true)
 	event_animator.play("event2")
 	await event_animator.animation_finished
@@ -16,6 +17,7 @@ func event1():
 	pass
 
 func event2():
+	await get_tree().process_frame
 	InputManager.set_interaction_paused(true)
 	lights.visible = false
 	var new_machine_game : MinigameScene = claw_game_scene.instantiate()
@@ -23,6 +25,7 @@ func event2():
 	call_deferred("add_sibling", new_machine_game)
 
 func event3():
+	await get_tree().process_frame
 	InputManager.set_interaction_paused(true)
 	lights.visible = false
 	var new_winner : MinigameScene = winner_scene.instantiate()

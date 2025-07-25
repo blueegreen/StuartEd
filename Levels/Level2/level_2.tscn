@@ -452,7 +452,7 @@ metadata/_custom_type_script = "uid://dkrou68ep8l47"
 [sub_resource type="Resource" id="Resource_mrtvk"]
 script = ExtResource("11_4iujo")
 required_flags = Array[String](["talked to cashier1"])
-dialogue = Array[String](["Player: Ah! it appears to have infrared and ultraviolet sensors!", "The security feed should show where they are hiding!"])
+dialogue = Array[String](["Player: Ah! it appears to have infrared and ultraviolet sensors!", "Player: The security feed should show where they are hiding!"])
 flags_triggered = Array[String](["checked cctv"])
 metadata/_custom_type_script = "uid://dkrou68ep8l47"
 

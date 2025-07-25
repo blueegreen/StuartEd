@@ -9,3 +9,8 @@ func _ready():
 		stuart_sprite.frame = 0
 	else:
 		stuart_sprite.frame = randi_range(1, 3)
+
+
+func _on_body_entered(_body: Node) -> void:
+	if randi_range(0, 1) == 0:
+		SfxManager.play_sfx("buzz", -10, true)

@@ -7,6 +7,8 @@
 radius = 44.0
 
 [node name="gacha_ball" type="RigidBody2D" node_paths=PackedStringArray("stuart_sprite")]
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_n64ft")
 stuart_sprite = NodePath("SpriteSheet3")
 
@@ -28,3 +30,5 @@ region_rect = Rect2(0, 0, 2000, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n64ft")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

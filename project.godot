@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.18431373, 0.20392157, 0.22352941, 1)
 config/icon="uid://qyrry3o8ivw3"
 
+[audio]
+
+driver/output_latency=5
+
 [autoload]
 
 InputManager="*res://Autoload/InputManager.gd"
@@ -28,6 +32,7 @@ MousePointer="*res://Main/mouse_pointer.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720

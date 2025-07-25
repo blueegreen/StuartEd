@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d13a3oqd7qf07"]
+[gd_scene load_steps=16 format=3 uid="uid://d13a3oqd7qf07"]
 
 [ext_resource type="Script" uid="uid://dg6cgwk2e3nt4" path="res://Autoload/sfx_manager.gd" id="1_fsbtp"]
 [ext_resource type="AudioStream" uid="uid://d01rpwcgdi6qs" path="res://Audio/Sfx/dialogue_beep_vintage.wav" id="2_0vo0o"]
@@ -11,18 +11,26 @@
 [ext_resource type="AudioStream" uid="uid://bd0r718vq555a" path="res://Audio/Sfx/robot_arm.wav" id="8_hayev"]
 [ext_resource type="AudioStream" uid="uid://do5d7wxjmcwh3" path="res://Audio/loop sounds/kid.wav" id="9_sdf7c"]
 [ext_resource type="AudioStream" uid="uid://cvimf8foliuih" path="res://Audio/Sfx/ed_not_caught.wav" id="10_0vo0o"]
+[ext_resource type="AudioStream" uid="uid://dg8loc0vu5ghn" path="res://Audio/Sfx/keyboard_click.wav" id="12_u623m"]
+[ext_resource type="AudioStream" uid="uid://bv4yrx0mg6ufq" path="res://Audio/Sfx/u3.wav" id="13_kh4c4"]
+[ext_resource type="AudioStream" uid="uid://cl5cdjfijuaq0" path="res://Audio/Sfx/stuarted_found.wav" id="14_bi88e"]
+[ext_resource type="AudioStream" uid="uid://bwanby66galji" path="res://Audio/Sfx/magical_whoosh.wav" id="15_2qfsk"]
 
 [node name="SfxManager" type="Node2D"]
 script = ExtResource("1_fsbtp")
 sfx = Dictionary[String, AudioStream]({
 "beep": ExtResource("2_0vo0o"),
+"buzz": ExtResource("13_kh4c4"),
 "cashregisterclick": ExtResource("3_dkvub"),
 "drawer_open": ExtResource("6_0s2ep"),
 "ed_caught": ExtResource("9_sdf7c"),
 "ed_not_caught": ExtResource("10_0vo0o"),
+"keyboard_click": ExtResource("12_u623m"),
 "mole_caught": ExtResource("2_dkvub"),
 "rightchoice_whirlpool": ExtResource("5_2kvog"),
 "robot_arm": ExtResource("8_hayev"),
 "slot_machine": ExtResource("7_0s2ep"),
+"whoosh": ExtResource("15_2qfsk"),
+"win": ExtResource("14_bi88e"),
 "wrongchoice_whirlpool": ExtResource("6_2kvog")
 })

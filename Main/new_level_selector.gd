@@ -105,9 +105,11 @@ func _on_mouse_exit():
 	blur_overlay.visible = false
 
 func _on_LeftButton_pressed():
+	SfxManager.play_sfx("keyboard_click", 0, true)
 	show_level((current_index - 1 + level_images.size()) % level_images.size())
 
 func _on_RightButton_pressed():
+	SfxManager.play_sfx("keyboard_click", 0, true)
 	show_level((current_index + 1) % level_images.size())
 
 func _process(delta):
