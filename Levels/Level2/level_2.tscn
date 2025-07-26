@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bewv1v6ckfimv"]
+[gd_scene load_steps=75 format=3 uid="uid://bewv1v6ckfimv"]
 
 [ext_resource type="PackedScene" uid="uid://dehucyhpqlpd2" path="res://Main/ui.tscn" id="1_b3aqq"]
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_s6hd2"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ds7tm5k88yiad" path="res://Assets/level_3_namecard.png" id="11_7msqb"]
 [ext_resource type="PackedScene" uid="uid://cnc4cbtrya0b" path="res://Levels/player.tscn" id="11_jjajc"]
 [ext_resource type="Script" uid="uid://dljpblmxv0myl" path="res://Levels/ActionInteractionResource.gd" id="12_4uf0v"]
+[ext_resource type="PackedScene" uid="uid://dsn7devpjvdl1" path="res://Main/parallax_parent.tscn" id="12_elwpa"]
 [ext_resource type="Script" uid="uid://bnqjatayjieo0" path="res://Levels/Actor.gd" id="12_ojwen"]
 
 [sub_resource type="Environment" id="Environment_elwpa"]
@@ -36,6 +37,54 @@ shader_parameter/square_size = 112.5
 shader_parameter/scroll_speed = 50.0
 shader_parameter/angle = 32.3350000000064
 shader_parameter/canvas_size = Vector2(1920, 1080)
+
+[sub_resource type="Resource" id="Resource_kxrwp"]
+script = ExtResource("11_4iujo")
+dialogue = Array[String](["Player: what is the point of department stores?", "Goth: real"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_jp1gv"]
+script = ExtResource("12_4uf0v")
+interactions = Array[ExtResource("11_4iujo")]([SubResource("Resource_kxrwp")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
+[sub_resource type="Animation" id="Animation_jd7qg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.06981317]
+}
+
+[sub_resource type="Animation" id="Animation_ibvsq"]
+resource_name = "swing"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0.06981317, -0.06981317]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe83o"]
+_data = {
+&"RESET": SubResource("Animation_jd7qg"),
+&"swing": SubResource("Animation_ibvsq")
+}
 
 [sub_resource type="Curve2D" id="Curve2D_7msqb"]
 _data = {
@@ -471,54 +520,6 @@ script = ExtResource("12_4uf0v")
 interactions = Array[ExtResource("11_4iujo")]([SubResource("Resource_rsu7e")])
 metadata/_custom_type_script = "uid://dljpblmxv0myl"
 
-[sub_resource type="Resource" id="Resource_kxrwp"]
-script = ExtResource("11_4iujo")
-dialogue = Array[String](["Player: what is the point of department stores?", "Goth: real"])
-metadata/_custom_type_script = "uid://dkrou68ep8l47"
-
-[sub_resource type="Resource" id="Resource_jp1gv"]
-script = ExtResource("12_4uf0v")
-interactions = Array[ExtResource("11_4iujo")]([SubResource("Resource_kxrwp")])
-metadata/_custom_type_script = "uid://dljpblmxv0myl"
-
-[sub_resource type="Animation" id="Animation_jd7qg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.06981317]
-}
-
-[sub_resource type="Animation" id="Animation_ibvsq"]
-resource_name = "swing"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [0.06981317, -0.06981317]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe83o"]
-_data = {
-&"RESET": SubResource("Animation_jd7qg"),
-&"swing": SubResource("Animation_ibvsq")
-}
-
 [node name="level_2" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource("1_b3aqq")]
@@ -526,11 +527,11 @@ _data = {
 [node name="ContextData" type="Node" parent="."]
 script = ExtResource("1_s6hd2")
 speakers = {
-"Cashier": NodePath("../Level2Scene/ShopCharacter"),
-"Goth": NodePath("../Level2Scene/GothCharacter"),
-"Lady": NodePath("../Level2Scene/LadyCharacter"),
-"Parrot": NodePath("../Level2Scene/ParrotCharacter"),
-"Player": NodePath("../Level2Scene/Path2D/PathFollow2D/Player")
+"Cashier": NodePath("../ParallaxParent/ShopCharacter"),
+"Goth": NodePath("../ParallaxParent/GothCharacter"),
+"Lady": NodePath("../ParallaxParent/LadyCharacter"),
+"Parrot": NodePath("../ParallaxParent/ParrotCharacter"),
+"Player": NodePath("../ParallaxParent/Path2D/PathFollow2D/Player")
 }
 metadata/_custom_type_script = "uid://bsqmc8xqmnpbj"
 
@@ -561,10 +562,11 @@ win_flags = {
 }
 metadata/_custom_type_script = "uid://b4fhhkdkaep2b"
 
-[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("context_data", "clue_book")]
+[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("context_data", "clue_book", "dialogue_parallax_layer")]
 script = ExtResource("3_7msqb")
 context_data = NodePath("../ContextData")
 clue_book = NodePath("../ClueBook")
+dialogue_parallax_layer = NodePath("../ParallaxParent2")
 metadata/_custom_type_script = "uid://da33m8xjogj2n"
 
 [node name="EventManager" type="Node" parent="."]
@@ -603,52 +605,77 @@ color = Color(1, 0.9843137, 0.84705883, 1)
 energy = 0.3
 texture = ExtResource("9_s6hd2")
 
-[node name="Level2Scene" type="Sprite2D" parent="."]
+[node name="ParallaxParent2" parent="." instance=ExtResource("12_elwpa")]
+parallax_amount = 0.012000000002444722
+
+[node name="ParallaxParent" parent="." instance=ExtResource("12_elwpa")]
+
+[node name="Level2Scene" type="Sprite2D" parent="ParallaxParent"]
 clip_children = 2
 texture = ExtResource("9_4n5mf")
 
-[node name="Path2D" type="Path2D" parent="Level2Scene"]
+[node name="PlacardActor" type="Area2D" parent="ParallaxParent/Level2Scene"]
+position = Vector2(-77, -271)
+script = ExtResource("12_ojwen")
+interaction_resource = SubResource("Resource_jp1gv")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxParent/Level2Scene/PlacardActor"]
+position = Vector2(0, -142)
+rotation = 0.06981317
+texture = ExtResource("11_7msqb")
+offset = Vector2(75, 425)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/Level2Scene/PlacardActor"]
+libraries = {
+&"": SubResource("AnimationLibrary_qe83o")
+}
+autoplay = "swing"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/Level2Scene/PlacardActor"]
+polygon = PackedVector2Array(-74, 32, -89, -23, -83, -47, 50, -39, 83, 7, 75, 28)
+
+[node name="Path2D" type="Path2D" parent="ParallaxParent"]
 position = Vector2(0, -152)
 curve = SubResource("Curve2D_7msqb")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Level2Scene/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="ParallaxParent/Path2D"]
 position = Vector2(341.6481, 307.80548)
 progress = 956.787
 rotates = false
 
-[node name="Player" parent="Level2Scene/Path2D/PathFollow2D" instance=ExtResource("11_jjajc")]
+[node name="Player" parent="ParallaxParent/Path2D/PathFollow2D" instance=ExtResource("11_jjajc")]
 modulate = Color(1.0627335, 1.0627335, 1.0627335, 1)
 scale = Vector2(-1, 1)
 
-[node name="ShopCharacter" type="Area2D" parent="Level2Scene" node_paths=PackedStringArray("animator")]
+[node name="ShopCharacter" type="Area2D" parent="ParallaxParent" node_paths=PackedStringArray("animator")]
 position = Vector2(-417, 29)
 script = ExtResource("10_bf5cj")
 animator = NodePath("AnimationPlayer")
 interaction_resource = SubResource("Resource_elwpa")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level2Scene/ShopCharacter"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxParent/ShopCharacter"]
 position = Vector2(-9, -2)
 texture = ExtResource("10_jjajc")
 hframes = 2
 region_enabled = true
 region_rect = Rect2(0, 1600, 1200, 800)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level2Scene/ShopCharacter"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/ShopCharacter"]
 libraries = {
 &"": SubResource("AnimationLibrary_u8pby")
 }
 autoplay = "idle"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/ShopCharacter"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/ShopCharacter"]
 polygon = PackedVector2Array(-69, 65, -54, 44, -60, -43, -12, -65, 34, -44, 35, 7, 80, 29, 87, 118, 14, 118, 4, 102)
 
-[node name="ParrotCharacter" type="Area2D" parent="Level2Scene" node_paths=PackedStringArray("animator")]
+[node name="ParrotCharacter" type="Area2D" parent="ParallaxParent" node_paths=PackedStringArray("animator")]
 position = Vector2(-349, -204)
 script = ExtResource("10_bf5cj")
 animator = NodePath("AnimationPlayer")
 interaction_resource = SubResource("Resource_8adgv")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Level2Scene/ParrotCharacter"]
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxParent/ParrotCharacter"]
 position = Vector2(-30, -150)
 texture = ExtResource("10_jjajc")
 offset = Vector2(0, 150)
@@ -657,22 +684,22 @@ frame = 1
 region_enabled = true
 region_rect = Rect2(0, 2400, 1200, 800)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level2Scene/ParrotCharacter"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/ParrotCharacter"]
 libraries = {
 &"": SubResource("AnimationLibrary_4iujo")
 }
 autoplay = "idle"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/ParrotCharacter"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/ParrotCharacter"]
 polygon = PackedVector2Array(-71, 66, -64, -25, -24, -50, 24, -41, 47, 10, 41, 84, -41, 96)
 
-[node name="LadyCharacter" type="Area2D" parent="Level2Scene" node_paths=PackedStringArray("animator")]
+[node name="LadyCharacter" type="Area2D" parent="ParallaxParent" node_paths=PackedStringArray("animator")]
 position = Vector2(-208, -132)
 script = ExtResource("10_bf5cj")
 animator = NodePath("AnimationPlayer")
 interaction_resource = SubResource("Resource_jd7qg")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Level2Scene/LadyCharacter"]
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxParent/LadyCharacter"]
 position = Vector2(-65, 77)
 texture = ExtResource("10_jjajc")
 offset = Vector2(0, 150)
@@ -680,22 +707,22 @@ hframes = 2
 region_enabled = true
 region_rect = Rect2(1200, 2400, 1200, 800)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level2Scene/LadyCharacter"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/LadyCharacter"]
 libraries = {
 &"": SubResource("AnimationLibrary_m2qj0")
 }
 autoplay = "idle"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/LadyCharacter"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/LadyCharacter"]
 polygon = PackedVector2Array(-271, 392, -243, 445, -120, 466, -95, 448, -84, 416, 38, 463, 73, 389, 56, 330, 95, 215, 59, 160, 61, 108, 113, 99, 106, -30, 46, -31, -32, -3, -23, 98, 33, 107, 30, 158, -18, 177, -22, 201, -82, 251, -109, 307, -108, 378, -232, 374)
 
-[node name="GothCharacter" type="Area2D" parent="Level2Scene" node_paths=PackedStringArray("animator")]
+[node name="GothCharacter" type="Area2D" parent="ParallaxParent" node_paths=PackedStringArray("animator")]
 position = Vector2(-18, 53)
 script = ExtResource("10_bf5cj")
 animator = NodePath("AnimationPlayer")
 interaction_resource = SubResource("Resource_snsa2")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Level2Scene/GothCharacter"]
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxParent/GothCharacter"]
 position = Vector2(9, -71)
 texture = ExtResource("10_jjajc")
 offset = Vector2(0, 150)
@@ -703,63 +730,43 @@ hframes = 2
 region_enabled = true
 region_rect = Rect2(1200, 1600, 1200, 800)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level2Scene/GothCharacter"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/GothCharacter"]
 libraries = {
 &"": SubResource("AnimationLibrary_ibvsq")
 }
 autoplay = "idle"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/GothCharacter"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/GothCharacter"]
 polygon = PackedVector2Array(-6, 268, -37, 139, -28, 111, -55, 58, -21, 25, -52, -44, -27, -76, 34, -61, 74, -67, 66, -39, 87, -23, 26, 36, 50, 39, 98, 83, 39, 116, 52, 156, 41, 279, 12, 133, -6, 144)
 
-[node name="RegisterActor" type="Area2D" parent="Level2Scene"]
+[node name="RegisterActor" type="Area2D" parent="ParallaxParent"]
 position = Vector2(-512, 125)
 script = ExtResource("12_ojwen")
 interaction_resource = SubResource("Resource_rws8d")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/RegisterActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/RegisterActor"]
 polygon = PackedVector2Array(-59, -25, -50, 15, 75, 33, 82, 22, 20, -22, -17, -44, -50, -48)
 
-[node name="ScreenActor" type="Area2D" parent="Level2Scene"]
+[node name="ScreenActor" type="Area2D" parent="ParallaxParent"]
 position = Vector2(-547, -19)
 script = ExtResource("12_ojwen")
 interaction_resource = SubResource("Resource_nq6sy")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/ScreenActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/ScreenActor"]
 polygon = PackedVector2Array(-84, 56, 63, 67, 76, -54, -70, -92, -87, -61, -96, 32)
 
-[node name="CCTVActor" type="Area2D" parent="Level2Scene"]
+[node name="CCTVActor" type="Area2D" parent="ParallaxParent"]
 position = Vector2(274, -193)
 script = ExtResource("12_ojwen")
 interaction_resource = SubResource("Resource_jk7vm")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/CCTVActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/CCTVActor"]
 polygon = PackedVector2Array(-51, -7, -34, 37, 51, 13, 63, -28, 112, -82, 64, -156, 44, -156, 92, -83, 48, -35)
 
-[node name="ShelfActor" type="Area2D" parent="Level2Scene"]
+[node name="ShelfActor" type="Area2D" parent="ParallaxParent"]
 position = Vector2(160, -43)
 script = ExtResource("12_ojwen")
 interaction_resource = SubResource("Resource_jbof5")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/ShelfActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/ShelfActor"]
 polygon = PackedVector2Array(-162, 317, -188, -14, 145, -12, 147, 6, 319, 6, 357, 216, 189, 223, 197, 294)
-
-[node name="PlacardActor" type="Area2D" parent="Level2Scene"]
-position = Vector2(-77, -271)
-script = ExtResource("12_ojwen")
-interaction_resource = SubResource("Resource_jp1gv")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level2Scene/PlacardActor"]
-position = Vector2(0, -142)
-rotation = 0.06981317
-texture = ExtResource("11_7msqb")
-offset = Vector2(75, 425)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level2Scene/PlacardActor"]
-libraries = {
-&"": SubResource("AnimationLibrary_qe83o")
-}
-autoplay = "swing"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level2Scene/PlacardActor"]
-polygon = PackedVector2Array(-74, 32, -89, -23, -83, -47, 50, -39, 83, 7, 75, 28)

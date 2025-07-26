@@ -23,7 +23,7 @@ outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [node name="DialogueBox" type="MarginContainer" node_paths=PackedStringArray("label", "letter_display_timer")]
-z_index = 10
+z_index = 14
 offset_right = 100.0
 offset_bottom = 75.0
 script = ExtResource("1_u8kkh")

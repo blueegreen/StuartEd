@@ -3,13 +3,15 @@
 [ext_resource type="Script" uid="uid://cmq85pvw7lhci" path="res://Main/mouse_pointer.gd" id="1_etwdi"]
 [ext_resource type="Texture2D" uid="uid://d3o1hy744oad7" path="res://Assets/fonts_ui/mouse_sprite_sheet2.png" id="2_etwdi"]
 
-[node name="mouse_pointer" type="Node2D" node_paths=PackedStringArray("mouse_sprite")]
-top_level = true
-z_index = 20
+[node name="mouse_pointer" type="CanvasLayer"]
+layer = 3
+follow_viewport_enabled = true
+
+[node name="mouse_pointer" type="Node2D" parent="." node_paths=PackedStringArray("mouse_sprite")]
 script = ExtResource("1_etwdi")
 mouse_sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="mouse_pointer"]
 position = Vector2(21, 29)
 texture = ExtResource("2_etwdi")
 hframes = 3

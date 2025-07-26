@@ -4,6 +4,8 @@ class_name DialogueManager
 @export var context_data : ContextData
 @export var clue_book : ClueBook
 
+@export var dialogue_parallax_layer : ParallaxParent
+
 signal dialogue_finished
 
 var _current_script : Array[String]
@@ -125,7 +127,10 @@ func _end_dialogue(is_success := true):
 func _show_text_box(source: String, dialogue: String):
 	text_box = _text_box_scene.instantiate()
 	text_box.line_finished.connect(_on_text_box_finished_displaying)
-	add_child(text_box)
+	if dialogue_parallax_layer:
+		dialogue_parallax_layer.add_child(text_box)
+	else:
+		add_child(text_box)
 	var speaker : Node2D
 	if context_data:
 		speaker = context_data.get_speaker(source)

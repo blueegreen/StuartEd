@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cqni4fi1ydgfr"]
+[gd_scene load_steps=76 format=3 uid="uid://cqni4fi1ydgfr"]
 
 [ext_resource type="PackedScene" uid="uid://dehucyhpqlpd2" path="res://Main/ui.tscn" id="1_bmyhu"]
 [ext_resource type="Script" uid="uid://bsqmc8xqmnpbj" path="res://Levels/ContextData.gd" id="1_fhktt"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://deo65img6xb2y" path="res://Assets/sprite_sheet_1.png" id="11_vbnv0"]
 [ext_resource type="Texture2D" uid="uid://b0ykrtjbbhoce" path="res://Assets/sprite_sheet_3.png" id="12_eepv7"]
 [ext_resource type="Texture2D" uid="uid://gyteslrl45k7" path="res://Assets/level_1_namecard.png" id="13_llsuh"]
+[ext_resource type="PackedScene" uid="uid://dsn7devpjvdl1" path="res://Main/parallax_parent.tscn" id="14_smy0f"]
 [ext_resource type="PackedScene" uid="uid://ctsx0rgrkke0q" path="res://Levels/Level_1/claw_mini_game.tscn" id="20_kqu4s"]
 [ext_resource type="AudioStream" uid="uid://bwanby66galji" path="res://Audio/Sfx/magical_whoosh.wav" id="22_gqlel"]
 
@@ -45,7 +46,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Level1Scene/WinnerActor/SpriteSheet3:frame")
+tracks/0/path = NodePath("ParallaxParent/WinnerActor/SpriteSheet3:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +63,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Level1Scene/WinnerActor/SpriteSheet3:frame")
+tracks/0/path = NodePath("ParallaxParent/WinnerActor/SpriteSheet3:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -119,7 +120,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Level1Scene/KidCharacter:position")
+tracks/3/path = NodePath("ParallaxParent/KidCharacter:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -131,7 +132,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Level1Scene/KidCharacter:rotation")
+tracks/4/path = NodePath("ParallaxParent/KidCharacter:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -195,7 +196,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Level1Scene/KidCharacter:position")
+tracks/3/path = NodePath("ParallaxParent/KidCharacter:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -207,7 +208,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Level1Scene/KidCharacter:rotation")
+tracks/4/path = NodePath("ParallaxParent/KidCharacter:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -327,6 +328,76 @@ _data = {
 &"talk": SubResource("Animation_jpf6d")
 }
 
+[sub_resource type="Resource" id="Resource_1gvqh"]
+script = ExtResource("9_fhktt")
+dialogue = Array[String](["Player: the kid is engrossed in that machine", "Player: best leave him be"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_de8wl"]
+script = ExtResource("9_fhktt")
+required_flags = Array[String](["talked to shop"])
+dialogue = Array[String](["Kid: What?", "Kid: Leave me alone man I'm tryna win big here!"])
+metadata/_custom_type_script = "uid://dkrou68ep8l47"
+
+[sub_resource type="Resource" id="Resource_b6ljx"]
+script = ExtResource("10_eepv7")
+interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_1gvqh"), SubResource("Resource_de8wl")])
+metadata/_custom_type_script = "uid://dljpblmxv0myl"
+
+[sub_resource type="Animation" id="Animation_1gvqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteSheet3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mtdwk"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteSheet3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_de8wl"]
+resource_name = "talk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteSheet3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b6ljx"]
+_data = {
+&"RESET": SubResource("Animation_1gvqh"),
+&"idle": SubResource("Animation_mtdwk"),
+&"talk": SubResource("Animation_de8wl")
+}
+
 [sub_resource type="Resource" id="Resource_bmyhu"]
 script = ExtResource("9_fhktt")
 dialogue = Array[String](["Player: she seems one with the cosmos", "Player: best leave her be"])
@@ -410,76 +481,6 @@ _data = {
 &"RESET": SubResource("Animation_smy0f"),
 &"idle": SubResource("Animation_gqlel"),
 &"talk": SubResource("Animation_d8g6h")
-}
-
-[sub_resource type="Resource" id="Resource_1gvqh"]
-script = ExtResource("9_fhktt")
-dialogue = Array[String](["Player: the kid is engrossed in that machine", "Player: best leave him be"])
-metadata/_custom_type_script = "uid://dkrou68ep8l47"
-
-[sub_resource type="Resource" id="Resource_de8wl"]
-script = ExtResource("9_fhktt")
-required_flags = Array[String](["talked to shop"])
-dialogue = Array[String](["Kid: What?", "Kid: Leave me alone man I'm tryna win big here!"])
-metadata/_custom_type_script = "uid://dkrou68ep8l47"
-
-[sub_resource type="Resource" id="Resource_b6ljx"]
-script = ExtResource("10_eepv7")
-interactions = Array[ExtResource("9_fhktt")]([SubResource("Resource_1gvqh"), SubResource("Resource_de8wl")])
-metadata/_custom_type_script = "uid://dljpblmxv0myl"
-
-[sub_resource type="Animation" id="Animation_1gvqh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteSheet3:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_mtdwk"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteSheet3:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_de8wl"]
-resource_name = "talk"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteSheet3:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b6ljx"]
-_data = {
-&"RESET": SubResource("Animation_1gvqh"),
-&"idle": SubResource("Animation_mtdwk"),
-&"talk": SubResource("Animation_de8wl")
 }
 
 [sub_resource type="Resource" id="Resource_i77d6"]
@@ -607,10 +608,10 @@ _data = {
 [node name="ContextData" type="Node" parent="."]
 script = ExtResource("1_fhktt")
 speakers = {
-"Fortune": NodePath("../Level1Scene/FortuneCharacter"),
-"Kid": NodePath("../Level1Scene/KidCharacter"),
-"Owner": NodePath("../Level1Scene/OwnerCharacter"),
-"Player": NodePath("../Level1Scene/Path2D/PathFollow2D/Player")
+"Fortune": NodePath("../ParallaxParent/FortuneCharacter"),
+"Kid": NodePath("../ParallaxParent/KidCharacter"),
+"Owner": NodePath("../ParallaxParent/OwnerCharacter"),
+"Player": NodePath("../ParallaxParent/Path2D/PathFollow2D/Player")
 }
 metadata/_custom_type_script = "uid://bsqmc8xqmnpbj"
 
@@ -637,17 +638,18 @@ win_flags = {
 }
 metadata/_custom_type_script = "uid://b4fhhkdkaep2b"
 
-[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("context_data", "clue_book")]
+[node name="DialogueManager" type="Node" parent="." node_paths=PackedStringArray("context_data", "clue_book", "dialogue_parallax_layer")]
 script = ExtResource("2_eepv7")
 context_data = NodePath("../ContextData")
 clue_book = NodePath("../ClueBook")
+dialogue_parallax_layer = NodePath("../ParallaxParent2")
 metadata/_custom_type_script = "uid://da33m8xjogj2n"
 
 [node name="EventManager" type="Node" parent="." node_paths=PackedStringArray("kid", "flicker_animator", "event_animator", "lights")]
 script = ExtResource("4_fhktt")
 claw_game_scene = ExtResource("20_kqu4s")
 winner_scene = ExtResource("6_kqu4s")
-kid = NodePath("../Level1Scene/KidCharacter")
+kid = NodePath("../ParallaxParent/KidCharacter")
 flicker_animator = NodePath("../AnimationPlayer")
 event_animator = NodePath("../AnimationPlayer2")
 lights = NodePath("../lighting")
@@ -758,30 +760,31 @@ libraries = {
 &"": SubResource("AnimationLibrary_y0e6u")
 }
 
-[node name="Level1Scene" type="Sprite2D" parent="."]
-clip_children = 2
-texture = ExtResource("5_odamq")
+[node name="ParallaxParent2" parent="." instance=ExtResource("14_smy0f")]
+parallax_amount = 0.012000000002444722
 
-[node name="Path2D" type="Path2D" parent="Level1Scene"]
+[node name="ParallaxParent" parent="." instance=ExtResource("14_smy0f")]
+
+[node name="Path2D" type="Path2D" parent="ParallaxParent"]
 position = Vector2(56, -167)
 curve = SubResource("Curve2D_n0qsc")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Level1Scene/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="ParallaxParent/Path2D"]
 position = Vector2(-76.365814, 378.88208)
 rotation = 0.020081816
 progress = 461.40427
 rotates = false
 
-[node name="Player" parent="Level1Scene/Path2D/PathFollow2D" instance=ExtResource("11_c0yvh")]
+[node name="Player" parent="ParallaxParent/Path2D/PathFollow2D" instance=ExtResource("11_c0yvh")]
 
-[node name="OwnerCharacter" type="Area2D" parent="Level1Scene" node_paths=PackedStringArray("animator")]
+[node name="OwnerCharacter" type="Area2D" parent="ParallaxParent" node_paths=PackedStringArray("animator")]
 z_index = 1
 position = Vector2(-194, -149)
 script = ExtResource("7_joalh")
 animator = NodePath("AnimationPlayer")
 interaction_resource = SubResource("Resource_byskb")
 
-[node name="SpriteSheet1" type="Sprite2D" parent="Level1Scene/OwnerCharacter"]
+[node name="SpriteSheet1" type="Sprite2D" parent="ParallaxParent/OwnerCharacter"]
 light_mask = 0
 position = Vector2(-11, 117)
 texture = ExtResource("11_vbnv0")
@@ -789,120 +792,124 @@ hframes = 2
 region_enabled = true
 region_rect = Rect2(0, 800, 1200, 800)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/OwnerCharacter"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/OwnerCharacter"]
 position = Vector2(-64, 175)
 polygon = PackedVector2Array(-80, 28, -80, -43, -52, -72, -10, -122, -10, -181, 36, -228, 78, -234, 120, -214, 225, -134, 210, -105, 76, -105, 120, -55, 169, -73, 190, -42, 134, 2, 81, -21, 109, 41, 110, 155, 61, 180, 44, 80, -53, 76)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level1Scene/OwnerCharacter"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/OwnerCharacter"]
 libraries = {
 &"": SubResource("AnimationLibrary_gqlel")
 }
 autoplay = "idle"
 
-[node name="FortuneCharacter" type="Area2D" parent="Level1Scene" node_paths=PackedStringArray("animator")]
-z_index = 1
-position = Vector2(110, -40)
-script = ExtResource("7_joalh")
-animator = NodePath("AnimationPlayer")
-interaction_resource = SubResource("Resource_mtdwk")
-
-[node name="SpriteSheet2" type="Sprite2D" parent="Level1Scene/FortuneCharacter"]
-position = Vector2(-44, 33)
-texture = ExtResource("11_vbnv0")
-hframes = 2
-region_enabled = true
-region_rect = Rect2(1200, 0, 1200, 800)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/FortuneCharacter"]
-position = Vector2(6, 31)
-polygon = PackedVector2Array(-40, 243, -74, 45, -37, -96, 16, -102, 44, 13, 38, 234)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level1Scene/FortuneCharacter"]
-libraries = {
-&"": SubResource("AnimationLibrary_mtdwk")
-}
-autoplay = "idle"
-
-[node name="KidCharacter" type="Area2D" parent="Level1Scene" node_paths=PackedStringArray("animator")]
+[node name="KidCharacter" type="Area2D" parent="ParallaxParent" node_paths=PackedStringArray("animator")]
 z_index = 1
 position = Vector2(282, 1)
 script = ExtResource("7_joalh")
 animator = NodePath("AnimationPlayer")
 interaction_resource = SubResource("Resource_b6ljx")
 
-[node name="SpriteSheet3" type="Sprite2D" parent="Level1Scene/KidCharacter"]
+[node name="SpriteSheet3" type="Sprite2D" parent="ParallaxParent/KidCharacter"]
 position = Vector2(7, 14)
 texture = ExtResource("11_vbnv0")
 hframes = 2
 region_enabled = true
 region_rect = Rect2(0, 0, 1200, 800)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/KidCharacter"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/KidCharacter"]
 position = Vector2(36, 19)
 polygon = PackedVector2Array(-53, 135, -43, 29, -76, 24, -45, 10, -80, -31, -24, -80, 31, -52, 2, 5, 44, 19, 11, 29, 34, 118, 24, 120, -42, 127)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level1Scene/KidCharacter"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/KidCharacter"]
 libraries = {
 &"": SubResource("AnimationLibrary_b6ljx")
 }
 autoplay = "idle"
 
-[node name="VendingActor" type="Area2D" parent="Level1Scene"]
+[node name="FortuneCharacter" type="Area2D" parent="ParallaxParent" node_paths=PackedStringArray("animator")]
+z_index = 1
+position = Vector2(110, -40)
+script = ExtResource("7_joalh")
+animator = NodePath("AnimationPlayer")
+interaction_resource = SubResource("Resource_mtdwk")
+
+[node name="SpriteSheet2" type="Sprite2D" parent="ParallaxParent/FortuneCharacter"]
+position = Vector2(-44, 33)
+texture = ExtResource("11_vbnv0")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(1200, 0, 1200, 800)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/FortuneCharacter"]
+position = Vector2(6, 31)
+polygon = PackedVector2Array(-40, 243, -74, 45, -37, -96, 16, -102, 44, 13, 38, 234)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/FortuneCharacter"]
+libraries = {
+&"": SubResource("AnimationLibrary_mtdwk")
+}
+autoplay = "idle"
+
+[node name="VendingActor" type="Area2D" parent="ParallaxParent"]
 position = Vector2(277, -111)
 script = ExtResource("8_vbnv0")
 interaction_resource = SubResource("Resource_ga5c8")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/VendingActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/VendingActor"]
 visible = false
 polygon = PackedVector2Array(-103, -109, 80, -155, 172, 359, -108, 380)
 
-[node name="ArcadeActor" type="Area2D" parent="Level1Scene"]
+[node name="ArcadeActor" type="Area2D" parent="ParallaxParent"]
 position = Vector2(-340, -83)
 script = ExtResource("8_vbnv0")
 interaction_resource = SubResource("Resource_o6tuk")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/ArcadeActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/ArcadeActor"]
 polygon = PackedVector2Array(-145, 155, -104, -71, -48, -128, 55, -75, 312, -83, 327, 225, 87, 260)
 
-[node name="WallActor" type="Area2D" parent="Level1Scene"]
+[node name="WallActor" type="Area2D" parent="ParallaxParent"]
 position = Vector2(-531, -170)
 script = ExtResource("8_vbnv0")
 interaction_resource = SubResource("Resource_2e10j")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/WallActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/WallActor"]
 polygon = PackedVector2Array(-2, -200, 54, -111, 15, 220, -98, 133, -47, -187)
 
-[node name="WinnerActor" type="Area2D" parent="Level1Scene"]
+[node name="WinnerActor" type="Area2D" parent="ParallaxParent"]
 position = Vector2(245, -280)
 script = ExtResource("8_vbnv0")
 interaction_resource = SubResource("Resource_5wbbn")
 
-[node name="SpriteSheet3" type="Sprite2D" parent="Level1Scene/WinnerActor"]
+[node name="SpriteSheet3" type="Sprite2D" parent="ParallaxParent/WinnerActor"]
 position = Vector2(4, -18)
 texture = ExtResource("12_eepv7")
 hframes = 3
 region_enabled = true
 region_rect = Rect2(500, 500, 1500, 500)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/WinnerActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/WinnerActor"]
 polygon = PackedVector2Array(-60, -19, -64, 44, 78, 8, 56, -51)
 
-[node name="PlacardActor" type="Area2D" parent="Level1Scene"]
+[node name="Level1Scene" type="Sprite2D" parent="ParallaxParent"]
+clip_children = 2
+texture = ExtResource("5_odamq")
+
+[node name="PlacardActor" type="Area2D" parent="ParallaxParent/Level1Scene"]
 position = Vector2(-75, -294)
 script = ExtResource("8_vbnv0")
 interaction_resource = SubResource("Resource_nol20")
 
-[node name="Level1Namecard" type="Sprite2D" parent="Level1Scene/PlacardActor"]
+[node name="Level1Namecard" type="Sprite2D" parent="ParallaxParent/Level1Scene/PlacardActor"]
 modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
 position = Vector2(-3, -121)
 rotation = 0.10447469
 texture = ExtResource("13_llsuh")
 offset = Vector2(75, 420)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1Scene/PlacardActor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParallaxParent/Level1Scene/PlacardActor"]
 polygon = PackedVector2Array(-121, -31, -93, 54, 109, 30, 54, -35)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level1Scene/PlacardActor"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxParent/Level1Scene/PlacardActor"]
 libraries = {
 &"": SubResource("AnimationLibrary_jpf6d")
 }

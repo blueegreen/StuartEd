@@ -1,12 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://b7axky1c7rjr6"]
+[gd_scene load_steps=29 format=3 uid="uid://b7axky1c7rjr6"]
 
 [ext_resource type="Script" uid="uid://de1yu8osfed80" path="res://Main/start_scene.gd" id="1_bg18w"]
 [ext_resource type="Texture2D" uid="uid://canpnn2ypftie" path="res://Assets/fonts_ui/background.png" id="1_kyjdd"]
 [ext_resource type="Texture2D" uid="uid://f2kb8kqwf1eb" path="res://Assets/fonts_ui/cutscene.png" id="2_jfucu"]
 [ext_resource type="Texture2D" uid="uid://b0y32tvnyonqv" path="res://Assets/fonts_ui/stuart_titlecard.png" id="2_oq0ge"]
+[ext_resource type="PackedScene" uid="uid://dsn7devpjvdl1" path="res://Main/parallax_parent.tscn" id="3_uw3qk"]
 [ext_resource type="Shader" uid="uid://bido14asx4jmi" path="res://Assets/grain.gdshader" id="4_ejy2n"]
 [ext_resource type="Texture2D" uid="uid://big7tw7kwuheu" path="res://Assets/fonts_ui/twin_ui_element.png" id="5_4a4tu"]
 [ext_resource type="FontFile" uid="uid://br3jctb0hgwis" path="res://Assets/fonts_ui/DMSerifDisplay-Regular.ttf" id="6_4a4tu"]
+[ext_resource type="Script" uid="uid://ceomw8lnjh3q1" path="res://Main/hover_zoom.gd" id="7_smc4p"]
 [ext_resource type="Texture2D" uid="uid://d1k8i1hrh7b1v" path="res://Assets/misc/particle3.png" id="8_cfqn4"]
 [ext_resource type="Gradient" uid="uid://purbi78xqmdv" path="res://Assets/misc/fade_in_fade_out.tres" id="9_ptjug"]
 [ext_resource type="FontFile" uid="uid://7vsihnnmxump" path="res://Assets/fonts_ui/Neucha-Regular.ttf" id="10_ptjug"]
@@ -35,7 +37,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StuartTitlecard:position")
+tracks/1/path = NodePath("ParallaxParent/StuartTitlecard:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -47,7 +49,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TwinUiElement:position")
+tracks/2/path = NodePath("ParallaxParent/TwinUiElement:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -183,7 +185,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StuartTitlecard:position")
+tracks/1/path = NodePath("ParallaxParent/StuartTitlecard:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -195,7 +197,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TwinUiElement:position")
+tracks/2/path = NodePath("ParallaxParent/TwinUiElement:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -331,7 +333,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StuartTitlecard:position")
+tracks/1/path = NodePath("ParallaxParent/StuartTitlecard:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -343,7 +345,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TwinUiElement:position")
+tracks/2/path = NodePath("ParallaxParent/TwinUiElement:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -383,16 +385,6 @@ _data = {
 &"cutscene": SubResource("Animation_33mov"),
 &"start": SubResource("Animation_bg18w")
 }
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptjug"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33mov"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4bpb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8glg8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0k2m"]
 
 [sub_resource type="Animation" id="Animation_cfqn4"]
 length = 0.001
@@ -480,6 +472,16 @@ _data = {
 &"flicker": SubResource("Animation_4a4tu")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptjug"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33mov"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4bpb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8glg8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0k2m"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_h0k2m"]
 font = ExtResource("10_ptjug")
 font_size = 50
@@ -509,20 +511,6 @@ offset_bottom = 661.0
 mouse_filter = 2
 color = Color(0.13333334, 0.12156863, 0.101960786, 1)
 
-[node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.7497799, 0.7497801, 0.74977976, 1)
-scale = Vector2(1.9068153, 2.186814)
-texture = ExtResource("1_kyjdd")
-
-[node name="StuartTitlecard" type="Sprite2D" parent="."]
-scale = Vector2(1.5468142, 1.5468142)
-texture = ExtResource("2_oq0ge")
-
-[node name="TwinUiElement" type="Sprite2D" parent="."]
-position = Vector2(-33, -23)
-scale = Vector2(1.5783006, 1.5642214)
-texture = ExtResource("5_4a4tu")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -531,12 +519,34 @@ libraries = {
 }
 autoplay = "start"
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ptjug")
+}
+autoplay = "flicker"
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.7497799, 0.7497801, 0.74977976, 1)
+scale = Vector2(1.9068153, 2.186814)
+texture = ExtResource("1_kyjdd")
+
+[node name="ParallaxParent" parent="." instance=ExtResource("3_uw3qk")]
+
+[node name="TwinUiElement" type="Sprite2D" parent="ParallaxParent"]
+position = Vector2(-33, -23)
+scale = Vector2(1.5783006, 1.5642214)
+texture = ExtResource("5_4a4tu")
+
+[node name="StuartTitlecard" type="Sprite2D" parent="ParallaxParent"]
+scale = Vector2(1.5468142, 1.5468142)
+texture = ExtResource("2_oq0ge")
+
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = -81.0
-offset_top = 43.0
-offset_right = 87.0
-offset_bottom = 147.0
+offset_left = -84.0
+offset_top = 4.0
+offset_right = 84.0
+offset_bottom = 108.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_4a4tu")
 theme_override_font_sizes/font_size = 75
@@ -548,11 +558,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_h0k2m")
 disabled = true
 text = "PLAY"
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ptjug")
-}
-autoplay = "flicker"
+[node name="hover_zoom" type="Node" parent="Button"]
+script = ExtResource("7_smc4p")
+metadata/_custom_type_script = "uid://ceomw8lnjh3q1"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 16
@@ -615,5 +623,11 @@ stream = ExtResource("11_1pukm")
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_w5oqv")
 volume_db = -2.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bg8ob4ov828t8"]
+[gd_scene load_steps=26 format=3 uid="uid://bg8ob4ov828t8"]
 
 [ext_resource type="Texture2D" uid="uid://dmm4nit50uph8" path="res://Assets/level_1_scene.png" id="1_6tn1n"]
 [ext_resource type="Script" uid="uid://mr3t6c3xokq6" path="res://Main/new_level_selector.gd" id="1_qiqfk"]
@@ -14,19 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://canpnn2ypftie" path="res://Assets/fonts_ui/background.png" id="13_0cx7o"]
 [ext_resource type="Shader" uid="uid://bido14asx4jmi" path="res://Assets/grain.gdshader" id="13_m3qm3"]
 [ext_resource type="Texture2D" uid="uid://b7ftfxgrwakyx" path="res://Assets/fonts_ui/back_ui.png" id="14_m3qm3"]
+[ext_resource type="Script" uid="uid://ceomw8lnjh3q1" path="res://Main/hover_zoom.gd" id="15_1033m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbhc1"]
 shader = ExtResource("8_aejnl")
 shader_parameter/bend_strength = 5.400000000008731
 shader_parameter/mouse_offset = Vector2(0, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_gfbmn"]
-line_spacing = -40.815
-font = ExtResource("12_1033m")
-font_size = 110
-shadow_size = 21
-shadow_color = Color(0, 0, 0, 0.6431373)
-shadow_offset = Vector2(1, 6.275)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8w5xm"]
 shader = ExtResource("10_dbhc1")
@@ -91,26 +84,24 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1033m"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f0r0o"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llyu1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17ckh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ll2eh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yufej"]
+[sub_resource type="LabelSettings" id="LabelSettings_gfbmn"]
+line_spacing = -40.815
+font = ExtResource("12_1033m")
+font_size = 110
+shadow_size = 21
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_offset = Vector2(1, 6.275)
 
 [node name="NewLevelSelector" type="Node2D" node_paths=PackedStringArray("stage_name", "level_texture", "blur_overlay", "left_button", "right_button", "hover_detector", "hover_shape")]
 script = ExtResource("1_qiqfk")
 level_images = Array[Texture2D]([ExtResource("1_6tn1n"), ExtResource("4_aejnl")])
 level_scenes = Array[PackedScene]([ExtResource("5_dbhc1"), ExtResource("6_8w5xm")])
 stage_names = Array[String](["ARCADE", "DEPT.   STORE"])
-stage_name = NodePath("Label")
+stage_name = NodePath("UI/Label")
 level_texture = NodePath("LevelTexture")
 blur_overlay = NodePath("blur_overlay")
-left_button = NodePath("LeftButton")
-right_button = NodePath("RightButton")
+left_button = NodePath("UI/HBoxContainer/LeftButton")
+right_button = NodePath("UI/HBoxContainer/RightButton")
 hover_detector = NodePath("Area2D")
 hover_shape = NodePath("Area2D/CollisionShape2D")
 
@@ -128,35 +119,6 @@ material = ExtResource("9_gfbmn")
 offset_right = 192.0
 offset_bottom = 108.0
 texture = ExtResource("10_gfbmn")
-
-[node name="LeftButton" type="TextureButton" parent="."]
-offset_left = 626.0
-offset_top = 834.0
-offset_right = 887.0
-offset_bottom = 1110.0
-scale = Vector2(0.675, 0.675)
-texture_normal = ExtResource("11_m3qm3")
-
-[node name="RightButton" type="TextureButton" parent="."]
-offset_left = 1057.0
-offset_top = 833.99994
-offset_right = 1318.0
-offset_bottom = 1110.0
-scale = Vector2(0.675, 0.675)
-texture_normal = ExtResource("11_m3qm3")
-flip_h = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = 757.0
-offset_top = 813.0
-offset_right = 1110.0
-offset_bottom = 1019.0
-text = "arcade"
-label_settings = SubResource("LabelSettings_gfbmn")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
 
 [node name="BackgroundShader" type="ColorRect" parent="."]
 z_index = -2
@@ -198,15 +160,55 @@ libraries = {
 }
 autoplay = "fade_in"
 
-[node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_1033m")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_f0r0o")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_llyu1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_17ckh")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ll2eh")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yufej")
-icon = ExtResource("14_m3qm3")
+[node name="UI" type="CanvasLayer" parent="."]
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 598.0
+offset_top = 792.0
+offset_right = 1272.0
+offset_bottom = 1068.0
+
+[node name="LeftButton" type="TextureButton" parent="UI/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_m3qm3")
+
+[node name="hover_zoom" type="Node" parent="UI/HBoxContainer/LeftButton"]
+script = ExtResource("15_1033m")
+metadata/_custom_type_script = "uid://ceomw8lnjh3q1"
+
+[node name="HSeparator" type="HSeparator" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(144, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1033m")
+
+[node name="RightButton" type="TextureButton" parent="UI/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_m3qm3")
+flip_h = true
+
+[node name="hover_zoom" type="Node" parent="UI/HBoxContainer/RightButton"]
+script = ExtResource("15_1033m")
+metadata/_custom_type_script = "uid://ceomw8lnjh3q1"
+
+[node name="Label" type="Label" parent="UI"]
+offset_left = 757.0
+offset_top = 813.0
+offset_right = 1110.0
+offset_bottom = 1019.0
+text = "arcade"
+label_settings = SubResource("LabelSettings_gfbmn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="Button" type="TextureButton" parent="UI"]
+offset_right = 266.0
+offset_bottom = 237.0
+texture_normal = ExtResource("14_m3qm3")
+
+[node name="hover_zoom" type="Node" parent="UI/Button"]
+script = ExtResource("15_1033m")
+metadata/_custom_type_script = "uid://ceomw8lnjh3q1"
+
+[connection signal="button_down" from="UI/Button" to="." method="_on_button_button_down"]

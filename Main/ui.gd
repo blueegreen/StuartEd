@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 
 func _on_back_button_down():
